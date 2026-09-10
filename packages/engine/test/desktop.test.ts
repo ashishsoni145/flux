@@ -2,11 +2,10 @@ import { describe, it, expect } from "vitest";
 import { DaemonSupervisor } from "../../desktop/src/main/daemon-supervisor.js";
 import { IpcService } from "../../desktop/src/main/ipc-handlers.js";
 import { TerminalSession } from "../../desktop/src/main/pty-terminal.js";
-import { existsSync } from "node:fs";
-import { join } from "node:path";
+import { resolve, join } from "node:path";
 
 describe("FluxIDE Desktop Platform Foundation", () => {
-  const workspaceRoot = process.cwd();
+  const workspaceRoot = resolve(__dirname, "../../..");
 
   describe("1. Daemon Supervisor", () => {
     it("should initialize with default port and probe daemon health", async () => {

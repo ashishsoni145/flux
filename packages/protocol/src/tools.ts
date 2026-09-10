@@ -16,7 +16,11 @@ export type ToolCategory =
   | "mcp"
   | "search"
   | "deployment"
-  | "documentation";
+  | "documentation"
+  | "intelligence"
+  | "verification"
+  | "security"
+  | "custom";
 
 // ─── Tool Registration ──────────────────────────────────────
 export interface ToolRegistration {
@@ -27,6 +31,7 @@ export interface ToolRegistration {
   readonly requiredPermissions: readonly string[];
   readonly isDangerous: boolean;
   readonly isDestructive: boolean;
+  readonly parameters?: Record<string, unknown>;
 }
 
 // ─── Tool Invocation ────────────────────────────────────────

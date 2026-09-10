@@ -6,10 +6,11 @@
  */
 
 // ─── Verification Status ────────────────────────────────────
-export type VerificationStatus = "pending" | "passed" | "failed" | "skipped" | "partial";
+export type VerificationStatus = "pending" | "passed" | "failed" | "skipped" | "partial" | "verified";
 
 // ─── Verification Check ────────────────────────────────────
 export interface VerificationCheck {
+  readonly id?: string;
   readonly name: string;
   readonly category:
     | "build"
@@ -40,6 +41,7 @@ export interface ProofOfCompletion {
 
   /** Overall verdict */
   readonly verified: boolean;
+  readonly status?: VerificationStatus;
 
   /** Individual checks */
   readonly checks: VerificationCheck[];

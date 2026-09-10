@@ -17,7 +17,6 @@ import type {
   CompletionRequest,
   ToolInvocation,
   InteractionMode,
-  TokenUsage,
   StreamChunk,
 } from "@fluxide/protocol";
 import type { ModelRouter } from "@fluxide/model-gateway";
@@ -42,7 +41,7 @@ export class AgentLoop {
   constructor(
     private readonly router: ModelRouter,
     private readonly toolRuntime: ToolRuntime,
-    private readonly permissionGate: PermissionGate,
+    readonly permissionGate: PermissionGate,
     private readonly checkpointManager: CheckpointManager,
     private readonly server: FluxServer,
     private readonly contextEngine?: ContextEngine
@@ -70,10 +69,8 @@ export class AgentLoop {
 
       // Add user message to history
       history.push({
-        id: generateId("msg"),
         role: "user",
         content: prompt,
-        timestamp: new Date().toISOString(),
       });
 
       const maxTurns = mode === "ask" ? 1 : 15;
@@ -164,8 +161,8 @@ export class AgentLoop {
               },
               timestamp: new Date().toISOString(),
             });
-          } else if (chunk.type === "tool_call") {
-            accumulatedToolCalls.push(chunk.toolCall);
+          } else if (chunk.type === "tool_call_start" || chunk.type === "tool_call_delta") {
+            // Streaming tool call chunks handled by provider
           } else if (chunk.type === "done") {
             stopReason = (chunk.stopReason as any) ?? "end_turn";
           } else if (chunk.type === "error") {
@@ -183,10 +180,8 @@ export class AgentLoop {
 
         // Save assistant response to history
         history.push({
-          id: generateId("msg"),
           role: "assistant",
           content: assistantText,
-          timestamp: new Date().toISOString(),
         });
 
         // Execute tool calls if proposed
@@ -208,10 +203,11 @@ export class AgentLoop {
               const targetPath = (tc.input["path"] as string) ?? "";
               if (targetPath) {
                 try {
-                  const cp = await this.checkpointManager.createCheckpoint(
-                    targetPath,
-                    `Before ${tc.name}`
-                  );
+                  const cp = await this.checkpointManager.createCheckpoint({
+                    workspacePath,
+                    description: `Before ${tc.name}`,
+                    files: [targetPath],
+                  });
                   this.server.sendToClient(clientId, {
                     id: generateId("msg"),
                     type: "checkpoint:created",
@@ -219,7 +215,7 @@ export class AgentLoop {
                     timestamp: new Date().toISOString(),
                   });
                 } catch {
-                  // Non-fatal if file doesn't exist yet (e.g. new file creation)
+                  // Non-fatal if file doesn't exist yet
                 }
               }
             }
@@ -229,6 +225,8 @@ export class AgentLoop {
               id: tc.id,
               toolName: tc.name,
               input: tc.input,
+              agentId: "agent-1",
+              timestamp: new Date().toISOString(),
             };
 
             const result = await this.toolRuntime.execute(invocation);
@@ -247,11 +245,9 @@ export class AgentLoop {
 
             // Feed tool result back to history
             history.push({
-              id: generateId("msg"),
               role: "tool",
               toolCallId: tc.id,
               content: result.output,
-              timestamp: new Date().toISOString(),
             });
           }
         } else {
