@@ -1,0 +1,34 @@
+{
+  "name": "@fluxide/engine",
+  "version": "0.1.0",
+  "private": true,
+  "description": "FluxIDE core daemon — agent runtime, tool execution, and WebSocket server",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "scripts": {
+    "build": "tsup src/index.ts --format esm --dts --clean",
+    "dev": "tsup src/index.ts --format esm --dts --watch --onSuccess \"node dist/index.js\"",
+    "start": "node dist/index.js",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "clean": "rm -rf dist"
+  },
+  "dependencies": {
+    "@fluxide/protocol": "*",
+    "@fluxide/model-gateway": "*",
+    "ws": "^8.18.0"
+  },
+  "devDependencies": {
+    "@types/ws": "^8.5.0",
+    "typescript": "^5.8.0",
+    "tsup": "^8.4.0",
+    "vitest": "^3.2.0"
+  }
+}

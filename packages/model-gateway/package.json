@@ -1,0 +1,30 @@
+{
+  "name": "@fluxide/model-gateway",
+  "version": "0.1.0",
+  "private": true,
+  "description": "FluxIDE Model Gateway — multi-provider AI abstraction with intelligent routing",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "scripts": {
+    "build": "tsup src/index.ts --format esm --dts --clean",
+    "dev": "tsup src/index.ts --format esm --dts --watch",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "clean": "rm -rf dist"
+  },
+  "dependencies": {
+    "@fluxide/protocol": "*"
+  },
+  "devDependencies": {
+    "typescript": "^5.8.0",
+    "tsup": "^8.4.0",
+    "vitest": "^3.2.0"
+  }
+}
