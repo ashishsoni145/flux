@@ -17,7 +17,7 @@
     "clean": "rm -rf dist"
   },
   "dependencies": {
-    "@fluxide/protocol": "*",
+    "@fluxide/protocol": "workspace:*",
     "ws": "^8.18.0"
   },
   "devDependencies": {

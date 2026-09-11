@@ -21,8 +21,8 @@
     "clean": "rm -rf dist"
   },
   "dependencies": {
-    "@fluxide/protocol": "*",
-    "@fluxide/model-gateway": "*",
+    "@fluxide/protocol": "workspace:*",
+    "@fluxide/model-gateway": "workspace:*",
     "ws": "^8.18.0"
   },
   "devDependencies": {

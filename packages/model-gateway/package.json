@@ -20,7 +20,7 @@
     "clean": "rm -rf dist"
   },
   "dependencies": {
-    "@fluxide/protocol": "*"
+    "@fluxide/protocol": "workspace:*"
   },
   "devDependencies": {
     "typescript": "^5.8.0",
