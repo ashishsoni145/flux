@@ -42,7 +42,7 @@ export class AccountingManager {
    */
   calculateCost(model: string, inputTokens: number, outputTokens: number): number {
     const key = Object.keys(MODEL_PRICING).find((k) => model.toLowerCase().includes(k)) ?? "default";
-    const pricing = MODEL_PRICING[key] ?? MODEL_PRICING.default;
+    const pricing: ModelPricing = MODEL_PRICING[key] ?? MODEL_PRICING["default"] ?? { inputPerMillion: 2.0, outputPerMillion: 8.0 };
 
     const inputCost = (inputTokens / 1_000_000) * pricing.inputPerMillion;
     const outputCost = (outputTokens / 1_000_000) * pricing.outputPerMillion;

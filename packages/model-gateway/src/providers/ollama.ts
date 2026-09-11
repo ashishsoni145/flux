@@ -145,25 +145,20 @@ export class OllamaProvider implements ModelProviderAdapter {
         const dataStr = trimmed.slice(6).trim();
         if (dataStr === "[DONE]") {
           for (const [, call] of toolCallBuffers) {
-            try {
               yield {
-                type: "tool_call",
-                toolCall: {
-                  id: call.id,
-                  name: call.name,
-                  input: JSON.parse(call.arguments || "{}"),
-                },
+                type: "tool_call_start",
+                id: call.id,
+                name: call.name,
               };
-            } catch {
               yield {
-                type: "tool_call",
-                toolCall: {
-                  id: call.id,
-                  name: call.name,
-                  input: { raw: call.arguments },
-                },
+                type: "tool_call_delta",
+                id: call.id,
+                input: call.arguments || "{}",
               };
-            }
+              yield {
+                type: "tool_call_end",
+                id: call.id,
+              };
           }
           yield { type: "done", stopReason: "end_turn" };
           return;
@@ -194,6 +189,14 @@ export class OllamaProvider implements ModelProviderAdapter {
 
           if (choice.finish_reason) {
             const stopReason = choice.finish_reason === "tool_calls" ? "tool_use" : "end_turn";
+            if (choice.finish_reason === "tool_calls") {
+              for (const [, call] of toolCallBuffers) {
+                yield { type: "tool_call_start", id: call.id, name: call.name };
+                yield { type: "tool_call_delta", id: call.id, input: call.arguments || "{}" };
+                yield { type: "tool_call_end", id: call.id };
+              }
+              toolCallBuffers.clear();
+            }
             yield { type: "done", stopReason };
             return;
           }
@@ -210,14 +213,43 @@ export class OllamaProvider implements ModelProviderAdapter {
     request: CompletionRequest,
     stream: boolean
   ): Record<string, unknown> {
-    const messages: Array<{ role: string; content: string }> = [];
+    const messages: Array<Record<string, unknown>> = [];
 
     if (request.systemPrompt) {
       messages.push({ role: "system", content: request.systemPrompt });
     }
 
-    for (const m of request.messages) {
-      messages.push({ role: m.role === "tool" ? "user" : m.role, content: m.content });
+    for (const message of request.messages) {
+      if (message.role === "tool") {
+        messages.push({
+          role: "tool",
+          tool_call_id: message.toolCallId,
+          content: this.textContent(message.content),
+        });
+        continue;
+      }
+
+      if (message.role === "assistant" && Array.isArray(message.content)) {
+        const text = message.content
+          .filter((block) => block.type === "text")
+          .map((block) => block.text)
+          .join("");
+        const toolCalls = message.content
+          .filter((block) => block.type === "tool_use")
+          .map((block) => ({
+            id: block.id,
+            type: "function",
+            function: { name: block.name, arguments: JSON.stringify(block.input) },
+          }));
+        messages.push({
+          role: "assistant",
+          content: text || null,
+          ...(toolCalls.length > 0 ? { tool_calls: toolCalls } : {}),
+        });
+        continue;
+      }
+
+      messages.push({ role: message.role, content: this.textContent(message.content) });
     }
 
     const body: Record<string, unknown> = {
@@ -242,6 +274,14 @@ export class OllamaProvider implements ModelProviderAdapter {
     }
 
     return body;
+  }
+
+  private textContent(content: CompletionRequest["messages"][number]["content"]): string {
+    if (typeof content === "string") return content;
+    return content
+      .filter((block) => block.type === "text")
+      .map((block) => block.text)
+      .join("");
   }
 
   private parseResponse(
@@ -278,16 +318,15 @@ export class OllamaProvider implements ModelProviderAdapter {
     const outputTokens = usageRaw["completion_tokens"] ?? 0;
 
     const usage: TokenUsage = {
-      promptTokens: inputTokens,
-      completionTokens: outputTokens,
-      totalTokens: inputTokens + outputTokens,
-      estimatedCostUSD: 0.0, // Local models are 100% free
+      inputTokens,
+      outputTokens,
+      estimatedCostUsd: 0.0, // Local models are 100% free
     };
 
     return {
       id: (data["id"] as string) ?? `ollama_${Date.now()}`,
       model,
-      text,
+      content: text,
       toolCalls,
       stopReason: finishReason === "tool_calls" ? "tool_use" : "end_turn",
       usage,

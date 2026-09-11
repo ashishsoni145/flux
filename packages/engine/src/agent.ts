@@ -1,30 +1,15 @@
-/**
- * FluxIDE Engine — Autonomous Agent Loop
- *
- * Implements the core multi-turn execution loop for autonomous agents.
- * Supports:
- * - Agent mode: autonomous reasoning, tool execution, and self-healing.
- * - Plan mode: spec-first planning without mutations.
- * - Ask mode: read-only exploratory assistance.
- * - Checkpoint creation before file mutations.
- * - Permission checks via PermissionGate.
- * - Real-time streaming to connected WebSocket clients.
- */
-
+/** Shared Desktop/CLI agent loop: plan, execute approved tools, and prove mutations. */
+import { isAbsolute, relative, resolve, sep } from "node:path";
 import { generateId } from "@fluxide/protocol";
-import type {
-  ChatMessage,
-  CompletionRequest,
-  ToolInvocation,
-  InteractionMode,
-  StreamChunk,
-} from "@fluxide/protocol";
+import type { AgentAction, ChatMessage, CompletionRequest, InteractionMode, ProofOfCompletion, StreamChunk, ToolInvocation, VerificationCheck } from "@fluxide/protocol";
 import type { ModelRouter } from "@fluxide/model-gateway";
 import type { ToolRuntime } from "./tools.js";
 import type { PermissionGate } from "./permissions.js";
 import type { CheckpointManager } from "./checkpoints.js";
 import type { FluxServer } from "./server.js";
 import type { ContextEngine } from "./context.js";
+import type { VerificationEngine } from "./verification.js";
+import type { AccountingManager } from "./accounting.js";
 
 export interface AgentTurnOptions {
   clientId: string;
@@ -33,6 +18,14 @@ export interface AgentTurnOptions {
   mode?: InteractionMode;
   workspacePath?: string;
 }
+
+export interface AgentLoopServices {
+  readonly verification?: VerificationEngine;
+  readonly accounting?: AccountingManager;
+}
+
+interface BufferedToolCall { id: string; name: string; input: string; }
+const WRITE_TOOLS = new Set(["fs_write_file", "fs_patch_file"]);
 
 export class AgentLoop {
   private conversationHistory = new Map<string, ChatMessage[]>();
@@ -44,296 +37,217 @@ export class AgentLoop {
     readonly permissionGate: PermissionGate,
     private readonly checkpointManager: CheckpointManager,
     private readonly server: FluxServer,
-    private readonly contextEngine?: ContextEngine
+    private readonly contextEngine?: ContextEngine,
+    private readonly services: AgentLoopServices = {}
   ) {}
 
-  /**
-   * Run a turn in response to a user prompt.
-   */
   async runTurn(options: AgentTurnOptions): Promise<void> {
     const { clientId, sessionId, prompt, mode = "agent", workspacePath = process.cwd() } = options;
+    if (!prompt.trim()) return this.sendError(clientId, "A task description is required.");
+    if (this.activeTurns.has(sessionId)) return this.sendError(clientId, "A turn is already running for this session.");
 
-    if (this.activeTurns.has(sessionId)) {
-      this.sendError(clientId, "A turn is already running for this session.");
-      return;
-    }
-
+    const actions: AgentAction[] = [];
+    const modifiedFiles = new Set<string>();
+    let succeeded = false;
     this.activeTurns.add(sessionId);
-
     try {
-      let history = this.conversationHistory.get(sessionId);
-      if (!history) {
-        history = [];
-        this.conversationHistory.set(sessionId, history);
-      }
+      const history = this.conversationHistory.get(sessionId) ?? [];
+      this.conversationHistory.set(sessionId, history);
+      history.push({ role: "user", content: prompt });
+      const root = resolve(workspacePath);
+      const context = await this.getContext(prompt, sessionId, clientId, actions);
+      const tools = this.toolsForMode(mode);
+      let complete = false;
 
-      // Add user message to history
-      history.push({
-        role: "user",
-        content: prompt,
-      });
-
-      const maxTurns = mode === "ask" ? 1 : 15;
-      let turnCount = 0;
-      let isDone = false;
-
-      // Assemble living intelligence (Brain + Memory + Context)
-      let contextBlock = "";
-      if (this.contextEngine) {
-        try {
-          const assembled = await this.contextEngine.assembleContext({
-            prompt,
-            taskId: sessionId,
-          });
-          if (assembled.items.length > 0) {
-            contextBlock =
-              `\n\n--- LIVING PROJECT INTELLIGENCE & CONTEXT ---\n` +
-              assembled.items.map((i) => i.content).join("\n\n") +
-              `\n---------------------------------------------\n`;
-          }
-        } catch (err) {
-          console.warn("[AgentLoop] Context assembly notice:", err);
-        }
-      }
-
-      const systemPrompt = this.buildSystemPrompt(mode, workspacePath, contextBlock);
-      const tools = mode === "ask" 
-        ? this.toolRuntime.getToolDefinitions().filter((t) => t.name.startsWith("fs_read") || t.name === "fs_list_dir" || t.name === "fs_search" || t.name === "git_status" || t.name === "git_diff" || t.name.startsWith("brain_") || t.name.startsWith("memory_"))
-        : mode === "plan"
-        ? this.toolRuntime.getToolDefinitions().filter((t) => !t.name.startsWith("fs_write") && !t.name.startsWith("fs_patch") && t.name !== "terminal_execute")
-        : this.toolRuntime.getToolDefinitions();
-
-      while (!isDone && turnCount < maxTurns) {
-        turnCount++;
-
-        const request: CompletionRequest = {
-          model: "auto",
-          messages: history,
-          systemPrompt,
-          tools: tools.length > 0 ? tools : undefined,
-          temperature: mode === "plan" ? 0.3 : 0.2,
-          maxTokens: 8192,
-        };
-
-        this.server.sendToClient(clientId, {
-          id: generateId("msg"),
-          type: "agent:status",
-          payload: {
-            id: sessionId,
-            status: "running",
-            turn: turnCount,
-            mode,
-          },
-          timestamp: new Date().toISOString(),
+      for (let turn = 1; turn <= (mode === "ask" ? 1 : 15) && !complete; turn += 1) {
+        this.send(clientId, "agent:status", {
+          id: sessionId, status: "thinking", actions, filesRead: [], filesModified: [...modifiedFiles],
+          commandsExecuted: [], startedAt: new Date().toISOString(), agentConfig: this.agentConfig(tools),
         });
-
-        // Send completion via ModelRouter
-        let streamIterable: AsyncIterable<StreamChunk>;
+        const request: CompletionRequest = {
+          model: "auto", messages: history, systemPrompt: this.buildSystemPrompt(mode, root, context),
+          tools: tools.length ? tools : undefined, temperature: mode === "plan" ? 0.3 : 0.2, maxTokens: 8192,
+        };
+        const calls = new Map<string, BufferedToolCall>();
+        let text = "";
         try {
-          streamIterable = this.router.stream(request);
-        } catch (routerErr) {
-          const msg = routerErr instanceof Error ? routerErr.message : String(routerErr);
-          this.server.sendToClient(clientId, {
-            id: generateId("msg"),
-            type: "stream:chunk",
-            payload: {
-              type: "text_delta",
-              text: `\n[Model Router Notice]: ${msg}\n`,
-            },
-            timestamp: new Date().toISOString(),
-          });
-          break;
-        }
-
-        let assistantText = "";
-        const accumulatedToolCalls: Array<{ id: string; name: string; input: Record<string, unknown> }> = [];
-        let stopReason: "end_turn" | "tool_use" | "max_tokens" = "end_turn";
-
-        for await (const chunk of streamIterable) {
-          if (chunk.type === "text_delta") {
-            assistantText += chunk.text;
-            this.server.sendToClient(clientId, {
-              id: generateId("msg"),
-              type: "stream:chunk",
-              payload: {
-                type: "text_delta",
-                text: chunk.text,
-              },
-              timestamp: new Date().toISOString(),
-            });
-          } else if (chunk.type === "tool_call_start" || chunk.type === "tool_call_delta") {
-            // Streaming tool call chunks handled by provider
-          } else if (chunk.type === "done") {
-            stopReason = (chunk.stopReason as any) ?? "end_turn";
-          } else if (chunk.type === "error") {
-            this.server.sendToClient(clientId, {
-              id: generateId("msg"),
-              type: "stream:chunk",
-              payload: {
-                type: "text_delta",
-                text: `\n[Error]: ${chunk.message}\n`,
-              },
-              timestamp: new Date().toISOString(),
-            });
+          for await (const chunk of this.router.stream(request)) {
+            if (chunk.type === "text_delta") { text += chunk.text; this.stream(clientId, chunk); }
+            else if (chunk.type === "thinking_delta") this.stream(clientId, chunk);
+            else if (chunk.type === "tool_call_start") { calls.set(chunk.id, { id: chunk.id, name: chunk.name, input: "" }); this.stream(clientId, chunk); }
+            else if (chunk.type === "tool_call_delta") { const call = calls.get(chunk.id) ?? (calls.size === 1 ? [...calls.values()][0] : undefined); if (call) call.input += chunk.input; this.stream(clientId, chunk); }
+            else if (chunk.type === "tool_call_end") this.stream(clientId, chunk);
+            else if (chunk.type === "usage") {
+              const usage = this.services.accounting?.recordUsage(sessionId, request.model, chunk.usage.inputTokens, chunk.usage.outputTokens) ?? chunk.usage;
+              this.action(clientId, actions, "message", "Recorded model usage.", { model: request.model }, usage);
+              this.stream(clientId, { type: "usage", usage });
+            } else if (chunk.type === "error") {
+              this.stream(clientId, chunk);
+              this.action(clientId, actions, "error", "Model provider returned an error.", { message: chunk.message });
+            }
           }
+        } catch (error) {
+          this.action(clientId, actions, "error", "Model request failed.", { message: this.message(error) });
+          throw error;
         }
 
-        // Save assistant response to history
+        const toolCalls = this.parseToolCalls(calls, clientId, actions);
         history.push({
           role: "assistant",
-          content: assistantText,
+          content: toolCalls.length === 0 ? text : [
+            ...(text ? [{ type: "text" as const, text }] : []),
+            ...toolCalls.map((call) => ({ type: "tool_use" as const, id: call.id, name: call.name, input: call.input })),
+          ],
         });
+        if (toolCalls.length === 0) { complete = true; continue; }
 
-        // Execute tool calls if proposed
-        if (accumulatedToolCalls.length > 0 && mode !== "ask") {
-          for (const tc of accumulatedToolCalls) {
-            this.server.sendToClient(clientId, {
-              id: generateId("msg"),
-              type: "agent:action",
-              payload: {
-                action: "tool_call",
-                tool: tc.name,
-                input: tc.input,
-              },
-              timestamp: new Date().toISOString(),
+        for (const call of toolCalls) {
+          const input = this.normalizeInput(call.input, root);
+          this.action(clientId, actions, "tool_call", `Requested ${call.name}.`, { tool: call.name, input });
+          if (WRITE_TOOLS.has(call.name) && typeof input.path === "string") {
+            const checkpoint = await this.checkpointManager.createCheckpoint({
+              workspacePath: root, taskId: sessionId, agentId: clientId, files: [input.path],
+              description: `Before ${call.name}: ${relative(root, input.path)}`,
             });
-
-            // Checkpoint creation if writing or patching files
-            if (tc.name === "fs_write_file" || tc.name === "fs_patch_file") {
-              const targetPath = (tc.input["path"] as string) ?? "";
-              if (targetPath) {
-                try {
-                  const cp = await this.checkpointManager.createCheckpoint({
-                    workspacePath,
-                    description: `Before ${tc.name}`,
-                    files: [targetPath],
-                  });
-                  this.server.sendToClient(clientId, {
-                    id: generateId("msg"),
-                    type: "checkpoint:created",
-                    payload: cp,
-                    timestamp: new Date().toISOString(),
-                  });
-                } catch {
-                  // Non-fatal if file doesn't exist yet
-                }
-              }
-            }
-
-            // Execute the tool
-            const invocation: ToolInvocation = {
-              id: tc.id,
-              toolName: tc.name,
-              input: tc.input,
-              agentId: "agent-1",
-              timestamp: new Date().toISOString(),
-            };
-
-            const result = await this.toolRuntime.execute(invocation);
-
-            this.server.sendToClient(clientId, {
-              id: generateId("msg"),
-              type: "agent:action",
-              payload: {
-                action: "tool_result",
-                tool: tc.name,
-                output: result.output,
-                isError: result.isError,
-              },
-              timestamp: new Date().toISOString(),
-            });
-
-            // Feed tool result back to history
-            history.push({
-              role: "tool",
-              toolCallId: tc.id,
-              content: result.output,
-            });
+            this.send(clientId, "checkpoint:created", checkpoint);
+            this.action(clientId, actions, "checkpoint", `Created checkpoint for ${relative(root, input.path)}.`, { checkpointId: checkpoint.id });
           }
-        } else {
-          isDone = true;
-        }
-
-        if (stopReason === "end_turn" && accumulatedToolCalls.length === 0) {
-          isDone = true;
+          const result = await this.toolRuntime.execute({ id: call.id, toolName: call.name, input, agentId: clientId, timestamp: new Date().toISOString() } satisfies ToolInvocation);
+          this.action(clientId, actions, "tool_result", result.isError ? `${call.name} failed.` : `${call.name} completed.`, { tool: call.name, output: result.output, isError: result.isError }, undefined, result.durationMs);
+          if (!result.isError && WRITE_TOOLS.has(call.name) && typeof input.path === "string") modifiedFiles.add(input.path);
+          history.push({ role: "tool", toolCallId: call.id, name: call.name, content: result.output });
         }
       }
 
-      // Finish turn
-      this.server.sendToClient(clientId, {
-        id: generateId("msg"),
-        type: "stream:chunk",
-        payload: {
-          type: "done",
-          stopReason: "end_turn",
-        },
-        timestamp: new Date().toISOString(),
-      });
-
-      this.server.sendToClient(clientId, {
-        id: generateId("msg"),
-        type: "agent:status",
-        payload: {
-          id: sessionId,
-          status: "idle",
-        },
-        timestamp: new Date().toISOString(),
-      });
+      if (mode === "agent" && modifiedFiles.size) {
+        const proof = await this.verifyAndProve(clientId, sessionId, root, modifiedFiles, actions);
+        if (proof) this.send(clientId, "poc:generated", proof);
+      }
+      succeeded = true;
+      this.stream(clientId, { type: "done", stopReason: "end_turn" });
     } catch (error) {
-      const errMsg = error instanceof Error ? error.message : String(error);
-      this.sendError(clientId, errMsg);
+      this.sendError(clientId, this.message(error));
     } finally {
       this.activeTurns.delete(sessionId);
+      this.send(clientId, "agent:status", {
+        id: sessionId, status: succeeded ? "completed" : "failed", actions, filesRead: [], filesModified: [...modifiedFiles],
+        commandsExecuted: [], startedAt: new Date().toISOString(), completedAt: new Date().toISOString(), agentConfig: this.agentConfig(this.toolsForMode(mode)),
+      });
     }
   }
 
-  private buildSystemPrompt(mode: InteractionMode, workspacePath: string, contextBlock = ""): string {
-    const base = `You are FluxIDE, an advanced autonomous AI software engineering platform.
-You operate on the local workspace at: ${workspacePath}
+  private async getContext(prompt: string, taskId: string, clientId: string, actions: AgentAction[]): Promise<string> {
+    if (!this.contextEngine) return "";
+    try {
+      const assembled = await this.contextEngine.assembleContext({ prompt, taskId });
+      if (!assembled.items.length) return "";
+      this.action(clientId, actions, "think", "Retrieved ranked project context.", {
+        items: assembled.items.length, estimatedTokens: assembled.totalTokens,
+      });
+      return `\n--- LIVING PROJECT INTELLIGENCE & CONTEXT ---\n${assembled.items.map((item) => item.content).join("\n\n")}\n---------------------------------------------\n`;
+    } catch (error) {
+      this.action(clientId, actions, "error", "Project context retrieval was unavailable.", { message: this.message(error) });
+      return "";
+    }
+  }
 
-Core Operating Principles:
-1. Precision & Rigor: Provide clean, idiomatic, fully functional code. Avoid placeholders or unfinished TODOs.
-2. Safety: Respect file boundaries, permissions, and create rollback-ready states.
-3. Local-First: Inspect the filesystem and files directly before giving answers.${contextBlock}
-`;
-
+  private toolsForMode(mode: InteractionMode) {
+    const tools = this.toolRuntime.getToolDefinitions();
     if (mode === "ask") {
-      return `${base}
-You are in ASK MODE (Read-only).
-- Answer user questions thoroughly using read-only codebase exploration.
-- Do NOT perform file modifications or shell executions.
-`;
+      return tools.filter((tool) => tool.name.startsWith("fs_read") || tool.name === "fs_list_dir" || tool.name === "fs_search" || tool.name === "git_status" || tool.name === "git_diff" || tool.name.startsWith("brain_") || tool.name.startsWith("memory_"));
     }
-
-    if (mode === "plan") {
-      return `${base}
-You are in PLAN MODE (Spec-First Architecture).
-- Research the project and produce a detailed, phased implementation plan.
-- Break requirements down into milestones, modified files, acceptance criteria, and verification steps.
-- Do NOT write or patch code files in plan mode. Output structured Markdown specifications.
-`;
-    }
-
-    return `${base}
-You are in AGENT MODE (Autonomous Software Engineer).
-- Read, modify, execute, test, and verify your changes autonomously.
-- When fixing issues or implementing features:
-  1. Inspect existing code and project structure.
-  2. Implement necessary edits using provided filesystem tools.
-  3. Verify code builds and tests pass.
-  4. Explain clearly what was accomplished.
-`;
+    if (mode === "plan") return tools.filter((tool) => !WRITE_TOOLS.has(tool.name) && tool.name !== "terminal_execute");
+    return tools;
   }
 
-  private sendError(clientId: string, message: string): void {
-    this.server.sendToClient(clientId, {
-      id: generateId("msg"),
-      type: "error",
-      payload: {
-        code: "AGENT_ERROR",
-        message,
-      },
-      timestamp: new Date().toISOString(),
+  private parseToolCalls(calls: ReadonlyMap<string, BufferedToolCall>, clientId: string, actions: AgentAction[]): Array<{ id: string; name: string; input: Record<string, unknown> }> {
+    const parsed: Array<{ id: string; name: string; input: Record<string, unknown> }> = [];
+    for (const call of calls.values()) {
+      if (!call.name) {
+        this.action(clientId, actions, "error", "Ignored a malformed tool call without a name.");
+        continue;
+      }
+      try {
+        const input: unknown = JSON.parse(call.input || "{}");
+        if (!input || typeof input !== "object" || Array.isArray(input)) throw new Error("tool arguments must be a JSON object");
+        parsed.push({ id: call.id, name: call.name, input: input as Record<string, unknown> });
+      } catch (error) {
+        this.action(clientId, actions, "error", `Ignored malformed arguments for ${call.name}.`, { message: this.message(error) });
+      }
+    }
+    return parsed;
+  }
+
+  private normalizeInput(input: Record<string, unknown>, root: string): Record<string, unknown> {
+    const normalized = { ...input };
+    for (const key of ["path", "cwd"] as const) {
+      const value = normalized[key];
+      if (typeof value !== "string" || !value) continue;
+      const candidate = resolve(root, value);
+      const fromRoot = relative(root, candidate);
+      if (fromRoot === "" || fromRoot === ".." || fromRoot.startsWith(`..${sep}`) || isAbsolute(fromRoot)) {
+        throw new Error(`${key} must remain inside the active workspace.`);
+      }
+      normalized[key] = candidate;
+    }
+    return normalized;
+  }
+
+  private async verifyAndProve(clientId: string, taskId: string, root: string, modifiedFiles: ReadonlySet<string>, actions: AgentAction[]): Promise<ProofOfCompletion | undefined> {
+    if (!this.services.verification) return undefined;
+    const invocation: ToolInvocation = {
+      id: generateId("verify"), toolName: "workspace_verify", input: { strategies: ["typecheck", "test"] }, agentId: clientId, timestamp: new Date().toISOString(),
+    };
+    const result = await this.toolRuntime.execute(invocation);
+    this.action(clientId, actions, "tool_result", result.isError ? "Automated verification could not run." : "Automated verification completed.", { tool: "workspace_verify", output: result.output, isError: result.isError }, undefined, result.durationMs);
+
+    let checks: VerificationCheck[] = [];
+    try {
+      const parsed: unknown = JSON.parse(result.output);
+      if (parsed && typeof parsed === "object" && Array.isArray((parsed as { checks?: unknown }).checks)) {
+        checks = (parsed as { checks: VerificationCheck[] }).checks;
+      }
+    } catch {
+      checks = [{ name: "automated_verify", category: "unit_test", status: "failed", evidence: result.output, durationMs: result.durationMs }];
+    }
+    if (result.isError && checks.length === 0) {
+      checks = [{ name: "automated_verify", category: "unit_test", status: "failed", evidence: result.output, durationMs: result.durationMs }];
+    }
+    const proof = this.services.verification.createProof({
+      taskId,
+      requirementsMet: ["Approved file changes were applied."],
+      filesModified: [...modifiedFiles].map((path) => relative(root, path)),
+      checks,
     });
+    this.action(clientId, actions, "message", proof.verified ? "Generated verified Proof of Work." : "Generated Proof of Work with unresolved verification risks.", { proofId: proof.id, verified: proof.verified });
+    return proof;
   }
+
+  private buildSystemPrompt(mode: InteractionMode, workspacePath: string, context: string): string {
+    const base = `You are FluxIDE, an autonomous software-engineering agent operating in ${workspacePath}.
+Use workspace-relative paths only. Inspect before changing, make the smallest safe change, and explain verified evidence.${context}`;
+    if (mode === "ask") return `${base}\nASK MODE: use only read-only tools and do not modify files or execute commands.`;
+    if (mode === "plan") return `${base}\nPLAN MODE: produce a structured plan and do not modify files or execute commands.`;
+    return `${base}\nAGENT MODE: plan, use approved tools, run verification after changes, and report remaining risks honestly.`;
+  }
+
+  private agentConfig(tools: ReturnType<ToolRuntime["getToolDefinitions"]>) {
+    return {
+      id: "fluxide-agent", name: "FluxIDE Autonomous Assistant", role: "fullstack_engineer" as const,
+      description: "Shared Desktop and CLI engineering agent", instructions: "Controlled, verification-first workflow.", model: "auto",
+      tools: tools.map((tool) => tool.name), skills: [], permissions: [], maxTokensPerTurn: 8192, maxCostPerTask: 1, toolTimeoutMs: 30000, allowedPaths: ["**"],
+    };
+  }
+
+  private action(clientId: string, actions: AgentAction[], type: AgentAction["type"], summary: string, details?: Record<string, unknown>, tokenUsage?: AgentAction["tokenUsage"], durationMs?: number): void {
+    const entry: AgentAction = { id: generateId("action"), timestamp: new Date().toISOString(), type, summary, ...(details ? { details } : {}), ...(tokenUsage ? { tokenUsage } : {}), ...(durationMs === undefined ? {} : { durationMs }) };
+    actions.push(entry);
+    this.services.accounting?.logAudit(entry, { agentRole: "fullstack_engineer" });
+    this.send(clientId, "agent:action", entry);
+  }
+
+  private stream(clientId: string, payload: StreamChunk): void { this.send(clientId, "stream:chunk", payload); }
+  private send(clientId: string, type: string, payload: unknown): void { this.server.sendToClient(clientId, { id: generateId("msg"), type, payload, timestamp: new Date().toISOString() }); }
+  private sendError(clientId: string, message: string): void { this.send(clientId, "error", { code: "AGENT_ERROR", message }); }
+  private message(error: unknown): string { return error instanceof Error ? error.message : String(error); }
 }

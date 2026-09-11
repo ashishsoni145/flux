@@ -11,15 +11,18 @@ import type {
   PermissionPolicy,
   PermissionScope,
   PermissionRule,
+  PermissionResponse,
 } from "@fluxide/protocol";
 
 /** Callback to request user approval (wired to client via UFP) */
+export type PermissionDecision = PermissionResponse["decision"];
+
 export type ApprovalCallback = (
   scope: string,
   agentId: string,
   toolName: string,
   details: Record<string, unknown>
-) => Promise<boolean>;
+) => Promise<PermissionDecision>;
 
 export class PermissionGate {
   private config: PermissionConfig;
@@ -89,17 +92,28 @@ export class PermissionGate {
 
       case "ask":
         if (this.onApprovalRequired) {
-          const approved = await this.onApprovalRequired(
+          const decision = await this.onApprovalRequired(
             scope,
             agentId,
             toolName,
             input
           );
-          if (approved) {
-            // Grant for the rest of this session
+          if (decision === "allow_session") {
+            // Allow the approved scope for the lifetime of this agent session.
             this.sessionAllowances.add(sessionKey);
           }
-          return approved;
+          if (decision === "allow_project") {
+            this.addRule({
+              scope: scope as PermissionScope,
+              policy: "always_allow",
+              agentId,
+            });
+          }
+
+          // User-level "always" policy is intentionally not persisted here.
+          // A host with authenticated user settings may translate it to a
+          // project policy after enforcing its own organization policy.
+          return decision !== "deny";
         }
         // If no approval callback, default to deny for safety
         console.warn(

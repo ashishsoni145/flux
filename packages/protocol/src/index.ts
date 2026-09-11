@@ -112,5 +112,9 @@ export type {
   ErrorPayload,
 } from "./messages.js";
 
+// ─── Database Schemas & Types ───────────────────────────────
+export * from "./database.js";
+
 // ─── Utility: Generate unique IDs ───────────────────────────
 export { generateId } from "./utils.js";
+

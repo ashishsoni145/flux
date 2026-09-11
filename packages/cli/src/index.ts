@@ -7,13 +7,17 @@
  * agent control, planning, and task management.
  *
  * Usage:
- *   flux                   — interactive chat (agent mode)
+ *   flux                   — interactive agent mode
+ *   flux .                 — open FluxIDE Desktop IDE
  *   flux agent <prompt>    — run an autonomous agent task
+ *   flux chat [prompt]     — interactive AI chat
  *   flux plan <prompt>     — generate a spec-first plan
  *   flux ask <prompt>      — ask a read-only question
+ *   flux review <prompt>   — code review mode
+ *   flux fix <prompt>      — debug and self-healing fix mode
  *   flux status            — show running tasks and agents
  *   flux tools             — list registered tools
- *   flux version            — show version
+ *   flux version           — show version
  */
 
 import { WebSocket } from "ws";
@@ -119,7 +123,7 @@ class FluxClient {
 
   startSession(mode: string, workspacePath: string): void {
     this.send("session:start", {
-      mode,
+      mode: mode as StartSessionPayload["mode"],
       workspacePath,
     } satisfies StartSessionPayload);
   }
@@ -184,7 +188,7 @@ async function startInteractive(
         break;
       }
       case "agent:action": {
-        const action = message.payload as Record<string, unknown>;
+        const action = message.payload as unknown as Record<string, unknown>;
         if (action["action"] === "tool_call") {
           const tool = action["tool"];
           const input = JSON.stringify(action["input"] ?? {});
@@ -200,15 +204,22 @@ async function startInteractive(
         break;
       }
       case "checkpoint:created": {
-        const cp = message.payload as Record<string, unknown>;
+        const cp = message.payload as unknown as Record<string, unknown>;
         console.log(`${color.dim}💾 Checkpoint created: ${cp["description"] ?? cp["id"]}${color.reset}`);
         break;
       }
       case "permission:request": {
-        const req = message.payload as { description?: string };
+        const req = message.payload as { id?: string; description?: string; scope?: string };
         console.log(
           `\n${color.yellow}🔐 Permission required: ${req.description ?? "unknown"}${color.reset}`
         );
+        rl.question(`${color.yellow}Allow once? [y/N] ${color.reset}`, (answer) => {
+          client.send("permission:respond", {
+            requestId: req.id,
+            decision: answer.trim().toLowerCase() === "y" ? "allow_once" : "deny",
+          });
+          rl.prompt();
+        });
         break;
       }
       case "error": {
@@ -271,6 +282,10 @@ async function runOneShot(
           client.disconnect();
           resolve();
         }
+      } else if (message.type === "permission:request") {
+        const request = message.payload as { id?: string; description?: string };
+        console.error(`\n${color.yellow}Permission denied in non-interactive mode: ${request.description ?? "unknown"}.${color.reset}`);
+        client.send("permission:respond", { requestId: request.id, decision: "deny" });
       }
     });
 
@@ -319,12 +334,31 @@ async function main(): Promise<void> {
     process.exit(1);
   }
 
+  // Section 56 CLI Commands: flux ., flux chat, flux fix, etc.
+  if (command === "." || command === "open" || command === "desktop") {
+    console.log(`${color.cyan}${color.bold}⚡ Launching FluxIDE Desktop IDE...${color.reset}`);
+    const { exec } = await import("node:child_process");
+    const desktopUrl = "http://127.0.0.1:48100/desktop";
+    if (process.platform === "win32") {
+      exec(`start "" "${desktopUrl}"`);
+    } else if (process.platform === "darwin") {
+      exec(`open "${desktopUrl}"`);
+    } else {
+      exec(`xdg-open "${desktopUrl}"`);
+    }
+    console.log(`${color.green}✓ FluxIDE Desktop launched at ${desktopUrl}${color.reset}\n`);
+    client.disconnect();
+    process.exit(0);
+  }
+
   // Route to appropriate mode
   const modeCommands = [
     "agent",
+    "chat",
     "plan",
     "ask",
     "review",
+    "fix",
     "debug",
     "design",
     "research",
@@ -333,15 +367,16 @@ async function main(): Promise<void> {
 
   if (command && modeCommands.includes(command)) {
     const prompt = args.slice(1).join(" ");
+    const resolvedMode = command === "chat" ? "ask" : command === "fix" ? "debug" : command;
     if (prompt) {
-      await runOneShot(client, command, prompt);
+      await runOneShot(client, resolvedMode, prompt);
     } else {
-      await startInteractive(client, command);
+      await startInteractive(client, resolvedMode);
     }
   } else if (command === "status") {
     client.onMessage((msg) => {
       if (msg.type === "agent:status") {
-        const payload = msg.payload as { status: string; uptime: number; toolsCount: number; providers: string[]; workspacePath: string };
+        const payload = msg.payload as unknown as { status: string; uptime: number; toolsCount: number; providers: string[]; workspacePath: string };
         console.log(`\n${color.cyan}${color.bold}⚡ FluxIDE Daemon Status:${color.reset}\n`);
         console.log(`  ${color.bold}Health:${color.reset}     ${color.green}Healthy${color.reset}`);
         console.log(`  ${color.bold}Uptime:${color.reset}     ${Math.round(payload.uptime ?? 0)}s`);
@@ -363,7 +398,7 @@ async function main(): Promise<void> {
     }
     client.onMessage((msg) => {
       if (msg.type === "agent:action") {
-        const payload = msg.payload as { action: string; plan: any };
+        const payload = msg.payload as unknown as { action: string; plan: any };
         if (payload.action === "director_plan") {
           console.log(`\n${color.cyan}${color.bold}🎯 AI Director Plan:${color.reset}\n`);
           console.log(`  ${color.bold}Intent:${color.reset}     ${payload.plan.intent}`);
@@ -389,7 +424,7 @@ async function main(): Promise<void> {
     }
     client.onMessage((msg) => {
       if (msg.type === "agent:action") {
-        const payload = msg.payload as { action: string; deliberation: any };
+        const payload = msg.payload as unknown as { action: string; deliberation: any };
         if (payload.action === "council_verdict") {
           console.log(`\n${color.cyan}${color.bold}🏛️ Engineering Council Deliberation:${color.reset}\n`);
           for (const op of payload.deliberation.opinions) {
@@ -407,7 +442,7 @@ async function main(): Promise<void> {
   } else if (command === "health") {
     client.onMessage((msg) => {
       if (msg.type === "agent:action") {
-        const payload = msg.payload as { action: string; report: any };
+        const payload = msg.payload as unknown as { action: string; report: any };
         if (payload.action === "health_report") {
           console.log(`\n${color.cyan}${color.bold}🛡️ Project Health Dashboard:${color.reset}\n`);
           console.log(`  ${color.bold}Overall Score:${color.reset} ${color.green}${payload.report.overallScore}/100${color.reset}\n`);

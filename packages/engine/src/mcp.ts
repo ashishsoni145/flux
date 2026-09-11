@@ -123,7 +123,7 @@ export class McpManager {
           name: prefixedName,
           category: "custom",
           description: `[MCP: ${serverId}] ${tool.description}`,
-          parameters: tool.inputSchema,
+          inputSchema: tool.inputSchema,
           requiredScope: "mcp:execute",
         },
         async (input) => {
@@ -137,14 +137,15 @@ export class McpManager {
    * Execute an MCP tool call via JSON-RPC.
    */
   async callMcpTool(serverId: string, toolName: string, input: Record<string, unknown>): Promise<string> {
-    // In headless or mock environment, return structured JSON confirmation
-    return JSON.stringify({
-      status: "success",
-      mcpServer: serverId,
-      tool: toolName,
-      executedInput: input,
-      result: "MCP tool executed cleanly.",
-    });
+    void input;
+    const process = this.activeProcesses.get(serverId);
+    if (!process) {
+      throw new Error(`MCP server "${serverId}" is not connected.`);
+    }
+    // Starting a configured stdio process is implemented, but JSON-RPC
+    // framing/tool discovery has not been implemented yet. Returning a fake
+    // success here would let an agent claim an external action was performed.
+    throw new Error(`MCP invocation for "${serverId}/${toolName}" is unavailable until JSON-RPC transport is configured.`);
   }
 
   /**

@@ -1,2 +1,6 @@
+trustPolicy: off
+minimumReleaseAge: 0
 packages:
   - "packages/*"
+allowBuilds:
+  esbuild: true

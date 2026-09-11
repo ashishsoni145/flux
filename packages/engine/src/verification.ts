@@ -1,30 +1,11 @@
-/**
- * FluxIDE Engine — Verification Engine & Proof of Completion
- *
- * Implements Section 32 (Proof of Completion), Section 33 (Self-Healing Loop),
- * and Section 40 (Testing Engine).
- *
- * Features:
- * - Auto-detects project test framework (Vitest, Jest, Pytest, Cargo, Go)
- * - Runs test, typecheck, lint, and security checks
- * - Generates verifiable Proof of Completion (PoC) records
- * - Diagnoses failure patterns and formats targeted repair advice for the AgentLoop
- */
-
+/** Verification commands and evidence-based Proof of Work records. */
 import { existsSync, readFileSync } from "node:fs";
 import { join } from "node:path";
 import { terminalExecute } from "./tools/terminal.js";
 import { generateId } from "@fluxide/protocol";
-import type {
-  ProofOfCompletion,
-  VerificationCheck,
-  VerificationStatus,
-} from "@fluxide/protocol";
+import type { ProofOfCompletion, VerificationCheck, VerificationStatus } from "@fluxide/protocol";
 
-export interface VerificationEngineOptions {
-  workspacePath: string;
-}
-
+export interface VerificationEngineOptions { workspacePath: string; }
 export interface SelfHealingDiagnosis {
   errorType: "type_error" | "assertion_failure" | "syntax_error" | "runtime_crash" | "unknown";
   failingFiles: string[];
@@ -33,179 +14,83 @@ export interface SelfHealingDiagnosis {
 }
 
 export class VerificationEngine {
-  private workspacePath: string;
+  constructor(private readonly workspacePath: string | VerificationEngineOptions) {}
 
-  constructor(options: VerificationEngineOptions) {
-    this.workspacePath = options.workspacePath;
+  private get root(): string {
+    return typeof this.workspacePath === "string" ? this.workspacePath : this.workspacePath.workspacePath;
   }
 
-  /**
-   * Detect the active test framework in the workspace.
-   */
   detectTestRunner(): { name: string; command: string } {
-    const pkgPath = join(this.workspacePath, "package.json");
+    const pkgPath = join(this.root, "package.json");
     if (existsSync(pkgPath)) {
       try {
-        const pkg = JSON.parse(readFileSync(pkgPath, "utf8"));
-        const scripts = pkg.scripts || {};
-        const devDeps = pkg.devDependencies || {};
-        const deps = pkg.dependencies || {};
-
-        if (scripts.test && scripts.test !== 'echo "Error: no test specified" && exit 1') {
-          return { name: "npm_test", command: "npm test" };
-        }
-        if (devDeps.vitest || deps.vitest) {
-          return { name: "vitest", command: "npx vitest run" };
-        }
-        if (devDeps.jest || deps.jest) {
-          return { name: "jest", command: "npx jest" };
-        }
-      } catch {
-        // ignore
-      }
+        const pkg = JSON.parse(readFileSync(pkgPath, "utf8")) as { scripts?: Record<string, string>; devDependencies?: Record<string, string>; dependencies?: Record<string, string> };
+        if (pkg.scripts?.test && pkg.scripts.test !== 'echo "Error: no test specified" && exit 1') return { name: "npm_test", command: "npm test" };
+        if (pkg.devDependencies?.vitest || pkg.dependencies?.vitest) return { name: "vitest", command: "npx vitest run" };
+        if (pkg.devDependencies?.jest || pkg.dependencies?.jest) return { name: "jest", command: "npx jest" };
+      } catch { /* invalid package manifest: try other ecosystems */ }
     }
-
-    if (existsSync(join(this.workspacePath, "pytest.ini")) || existsSync(join(this.workspacePath, "tests"))) {
-      return { name: "pytest", command: "pytest" };
-    }
-
-    if (existsSync(join(this.workspacePath, "Cargo.toml"))) {
-      return { name: "cargo_test", command: "cargo test" };
-    }
-
-    if (existsSync(join(this.workspacePath, "go.mod"))) {
-      return { name: "go_test", command: "go test ./..." };
-    }
-
+    if (existsSync(join(this.root, "pytest.ini")) || existsSync(join(this.root, "tests"))) return { name: "pytest", command: "pytest" };
+    if (existsSync(join(this.root, "Cargo.toml"))) return { name: "cargo_test", command: "cargo test" };
+    if (existsSync(join(this.root, "go.mod"))) return { name: "go_test", command: "go test ./..." };
     return { name: "default", command: "npm test --if-present" };
   }
 
-  /**
-   * Run verification suite and assemble a formal Proof of Completion (PoC).
-   */
-  async generateProofOfCompletion(options: {
-    taskId: string;
-    requirementsMet: string[];
-    filesModified: string[];
-    gitDiffSnippet?: string;
-  }): Promise<ProofOfCompletion> {
-    const checks: VerificationCheck[] = [];
-    const testRunner = this.detectTestRunner();
+  async generateProofOfCompletion(options: { taskId: string; requirementsMet: string[]; filesModified: string[]; gitDiffSnippet?: string }): Promise<ProofOfCompletion> {
+    const checks = [
+      await this.executeCheck("typecheck", "npm run typecheck --if-present", "typecheck"),
+      await this.executeCheck("test", this.detectTestRunner().command, "unit_test"),
+      await this.executeCheck("git_status", "git status --short", "git_diff"),
+    ];
+    return this.createProof({ ...options, checks });
+  }
 
-    // 1. Check: Build / Typecheck
-    const typecheckResult = await this.executeCheck("typecheck", "npm run typecheck --if-present");
-    checks.push(typecheckResult);
-
-    // 2. Check: Test execution
-    const testResult = await this.executeCheck("test", testRunner.command);
-    checks.push(testResult);
-
-    // 3. Check: Git Cleanliness / Diff Check
-    const gitCheck = await this.executeCheck("git_status", "git status --short");
-    checks.push(gitCheck);
-
-    const allPassed = checks.every((c) => c.status === "passed");
-    const status: VerificationStatus = allPassed ? "verified" : "failed";
-
+  /** Construct a proof without rerunning commands already authorized by the tool runtime. */
+  createProof(options: { taskId: string; requirementsMet: string[]; filesModified: string[]; checks: VerificationCheck[]; gitDiffSnippet?: string }): ProofOfCompletion {
+    const verified = options.checks.length > 0 && options.checks.every((check) => check.status === "passed" || check.status === "skipped");
     return {
-      id: generateId("poc"),
-      taskId: options.taskId,
-      status,
-      timestamp: new Date().toISOString(),
-      requirementsMet: options.requirementsMet,
-      filesModified: options.filesModified,
-      checks,
-      gitDiff: options.gitDiffSnippet ?? "",
-      remainingRisks: allPassed
-        ? []
-        : ["One or more verification checks failed. Review terminal logs before deployment."],
+      id: generateId("poc"), taskId: options.taskId, taskTitle: `Verification for ${options.taskId}`,
+      verified, status: verified ? "verified" : "failed", checks: options.checks,
+      requirementsSatisfied: options.requirementsMet, filesChanged: options.filesModified, diffSha: options.gitDiffSnippet,
+      remainingRisks: verified ? [] : ["One or more verification checks failed or could not be run. Review the evidence before accepting changes."],
+      generatedAt: new Date().toISOString(),
     };
   }
 
-  /**
-   * Run a single verification check command.
-   */
-  private async executeCheck(
-    name: string,
-    command: string
-  ): Promise<VerificationCheck> {
+  async verifyWorkspace(options: { strategies?: string[]; customCommand?: string } = {}): Promise<{ passed: boolean; summary: string; checks: VerificationCheck[] }> {
+    if (options.customCommand) {
+      const check = await this.executeCheck("automated_verify", options.customCommand, "unit_test");
+      return { passed: check.status === "passed", summary: check.status === "passed" ? "Verification passed cleanly." : "Verification failed.", checks: [check] };
+    }
+    const strategies = options.strategies?.length ? options.strategies : ["typecheck", "test"];
+    const checks: VerificationCheck[] = [];
+    for (const strategy of strategies) {
+      if (strategy === "typecheck") checks.push(await this.executeCheck("typecheck", "npm run typecheck --if-present", "typecheck"));
+      else if (strategy === "test") checks.push(await this.executeCheck("test", this.detectTestRunner().command, "unit_test"));
+      else if (strategy === "lint") checks.push(await this.executeCheck("lint", "npm run lint --if-present", "lint"));
+    }
+    const passed = checks.length > 0 && checks.every((check) => check.status === "passed");
+    return { passed, summary: passed ? "Verification passed cleanly." : "Verification failed.", checks };
+  }
+
+  diagnoseFailure(output: string): SelfHealingDiagnosis {
+    const tsMatch = output.match(/([a-zA-Z0-9_/\\.-]+\.ts)\((\d+),(\d+)\): error TS(\d+):/);
+    if (tsMatch?.[1] && tsMatch[2] && tsMatch[4]) {
+      return { errorType: "type_error", failingFiles: [tsMatch[1]], suggestedAction: `Fix TypeScript error TS${tsMatch[4]} in ${tsMatch[1]} at line ${tsMatch[2]}.`, rawErrorSnippet: output.slice(0, 1000) };
+    }
+    if (output.includes("SyntaxError")) return { errorType: "syntax_error", failingFiles: [], suggestedAction: "Correct the reported syntax error.", rawErrorSnippet: output.slice(0, 1000) };
+    if (output.includes("AssertionError") || output.includes("expect(")) return { errorType: "assertion_failure", failingFiles: [], suggestedAction: "Align the implementation with the failing assertion.", rawErrorSnippet: output.slice(0, 1000) };
+    return { errorType: "unknown", failingFiles: [], suggestedAction: "Review the failing command output and stack trace.", rawErrorSnippet: output.slice(0, 1000) };
+  }
+
+  private async executeCheck(name: string, command: string, category: VerificationCheck["category"]): Promise<VerificationCheck> {
     const start = Date.now();
     try {
-      const output = await terminalExecute({
-        command,
-        cwd: this.workspacePath,
-        timeoutMs: 60_000,
-      });
-
-      const failed = output.includes("Exit code: 1") || output.includes("Exit code: 2") || output.includes("FAIL");
-
-      return {
-        id: generateId("chk"),
-        name,
-        type: name as any,
-        command,
-        status: failed ? "failed" : "passed",
-        output: output.slice(0, 4000), // budget output size
-        durationMs: Date.now() - start,
-      };
-    } catch (err) {
-      return {
-        id: generateId("chk"),
-        name,
-        type: name as any,
-        command,
-        status: "failed",
-        error: err instanceof Error ? err.message : String(err),
-        durationMs: Date.now() - start,
-      };
+      const evidence = await terminalExecute({ command, cwd: this.root, timeoutMs: 60_000 });
+      const failed = /Exit code: [^0]|\bFAIL\b/.test(evidence);
+      return { id: generateId("check"), name, category, status: failed ? "failed" : "passed", evidence: evidence.slice(0, 4000), details: { command }, durationMs: Date.now() - start };
+    } catch (error) {
+      return { id: generateId("check"), name, category, status: "failed", evidence: error instanceof Error ? error.message : String(error), details: { command }, durationMs: Date.now() - start };
     }
-  }
-
-  /**
-   * Diagnose failure outputs to suggest self-healing actions.
-   */
-  diagnoseFailure(output: string): SelfHealingDiagnosis {
-    const failingFiles: string[] = [];
-    let errorType: SelfHealingDiagnosis["errorType"] = "unknown";
-    let suggestedAction = "Review failing logs and inspect the stack trace.";
-
-    // Detect TypeScript errors
-    const tsMatch = output.match(/([a-zA-Z0-9_/\\.-]+\.ts)\((\d+),(\d+)\): error TS(\d+):/);
-    if (tsMatch) {
-      errorType = "type_error";
-      failingFiles.push(tsMatch[1]);
-      suggestedAction = `Fix TypeScript compile error TS${tsMatch[4]} in ${tsMatch[1]} at line ${tsMatch[2]}.`;
-    } else if (output.includes("SyntaxError")) {
-      errorType = "syntax_error";
-      suggestedAction = "Correct syntax error or unclosed brackets in modified file.";
-    } else if (output.includes("AssertionError") || output.includes("expect(")) {
-      errorType = "assertion_failure";
-      suggestedAction = "Align code implementation with test expectations or update out-of-date assertions.";
-    }
-
-    return {
-      errorType,
-      failingFiles,
-      suggestedAction,
-      rawErrorSnippet: output.slice(0, 1000),
-    };
-  }
-
-  /**
-   * Standard quick verify for backwards compatibility.
-   */
-  async verifyWorkspace(options: {
-    strategies?: string[];
-    customCommand?: string;
-  } = {}): Promise<{ passed: boolean; summary: string; checks: VerificationCheck[] }> {
-    const runner = this.detectTestRunner();
-    const command = options.customCommand ?? runner.command;
-    const check = await this.executeCheck("automated_verify", command);
-
-    return {
-      passed: check.status === "passed",
-      summary: check.status === "passed" ? "✅ Verification passed cleanly." : "❌ Verification failed.",
-      checks: [check],
-    };
   }
 }

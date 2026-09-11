@@ -1,0 +1,3134 @@
+{
+  "package.json": {
+    "mtime": 1789109739.4407246,
+    "seen": 1789114531.1284847,
+    "ast_hash": "d35e47df14e7c3a0cf32e0be096bf551",
+    "semantic_hash": ""
+  },
+  "packages/cli/package.json": {
+    "mtime": 1789100952.2404401,
+    "seen": 1789106441.0468411,
+    "ast_hash": "7729a1106c8b357ac383975deef3438c",
+    "semantic_hash": ""
+  },
+  "packages/cli/src/index.ts": {
+    "mtime": 1789113754.7025292,
+    "seen": 1789114531.1284847,
+    "ast_hash": "2b15d521fae5543471a0053f37dc0a0e",
+    "semantic_hash": ""
+  },
+  "packages/cli/tsconfig.json": {
+    "mtime": 1789100952.2434652,
+    "seen": 1789106441.0468411,
+    "ast_hash": "544812d0dfc1ddc525b0866cef5b8e77",
+    "semantic_hash": ""
+  },
+  "packages/engine/package.json": {
+    "mtime": 1789100952.2577212,
+    "seen": 1789106441.0468411,
+    "ast_hash": "47746f513718f146a82d8e74d5ba5d51",
+    "semantic_hash": ""
+  },
+  "packages/engine/src/checkpoints.ts": {
+    "mtime": 1789112736.7256413,
+    "seen": 1789114531.1345263,
+    "ast_hash": "31517e1741aadae2a041d93657136bf0",
+    "semantic_hash": ""
+  },
+  "packages/engine/src/index.ts": {
+    "mtime": 1789113975.8030949,
+    "seen": 1789114531.1345263,
+    "ast_hash": "001701c21f362434e8dbe7238affe855",
+    "semantic_hash": ""
+  },
+  "packages/engine/src/permissions.ts": {
+    "mtime": 1789112663.3938909,
+    "seen": 1789114531.1345263,
+    "ast_hash": "e18df6548379a42dc5efd59d4de1ed85",
+    "semantic_hash": ""
+  },
+  "packages/engine/src/server.ts": {
+    "mtime": 1789113496.1572938,
+    "seen": 1789114531.1345263,
+    "ast_hash": "d14d32e12ada46a6e96ba98f8e6d7445",
+    "semantic_hash": ""
+  },
+  "packages/engine/src/tools.ts": {
+    "mtime": 1789106650.2948363,
+    "seen": 1789106835.576745,
+    "ast_hash": "b66b30743f773f014ca531c331351be7",
+    "semantic_hash": ""
+  },
+  "packages/engine/src/tools/filesystem.ts": {
+    "mtime": 1789100952.2783759,
+    "seen": 1789106441.0468411,
+    "ast_hash": "8e164129f5bc4e327cd2b7258ca75f68",
+    "semantic_hash": ""
+  },
+  "packages/engine/src/tools/git.ts": {
+    "mtime": 1789100952.2783759,
+    "seen": 1789106441.0468411,
+    "ast_hash": "7337c9386e90e9d4470363b53ba3d7c2",
+    "semantic_hash": ""
+  },
+  "packages/engine/src/tools/terminal.ts": {
+    "mtime": 1789100952.2783759,
+    "seen": 1789106441.0468411,
+    "ast_hash": "7be826db3084deb59f0fbfd49f1aa43f",
+    "semantic_hash": ""
+  },
+  "packages/engine/tsconfig.json": {
+    "mtime": 1789100952.2957003,
+    "seen": 1789106441.0468411,
+    "ast_hash": "544812d0dfc1ddc525b0866cef5b8e77",
+    "semantic_hash": ""
+  },
+  "packages/model-gateway/package.json": {
+    "mtime": 1789100952.2957003,
+    "seen": 1789106441.0468411,
+    "ast_hash": "f072fe6314669ab062ddbd8d82e32ee1",
+    "semantic_hash": ""
+  },
+  "packages/model-gateway/src/index.ts": {
+    "mtime": 1789100952.301898,
+    "seen": 1789106441.0468411,
+    "ast_hash": "5a751ec5e53e0bd9ba9880475c03aee0",
+    "semantic_hash": ""
+  },
+  "packages/model-gateway/src/provider.ts": {
+    "mtime": 1789100952.3024144,
+    "seen": 1789106441.0468411,
+    "ast_hash": "e3fd404f9d7a6da57d5ce940a874e45c",
+    "semantic_hash": ""
+  },
+  "packages/model-gateway/src/providers/anthropic.ts": {
+    "mtime": 1789112873.0875883,
+    "seen": 1789114531.1440687,
+    "ast_hash": "0b9a302ad9915680d7e027a4a75c5f52",
+    "semantic_hash": ""
+  },
+  "packages/model-gateway/src/router.ts": {
+    "mtime": 1789112765.412639,
+    "seen": 1789114531.1440687,
+    "ast_hash": "36199aeb1aa9ca8beb49b16ece36aac8",
+    "semantic_hash": ""
+  },
+  "packages/model-gateway/tsconfig.json": {
+    "mtime": 1789100952.3068604,
+    "seen": 1789106441.0468411,
+    "ast_hash": "544812d0dfc1ddc525b0866cef5b8e77",
+    "semantic_hash": ""
+  },
+  "packages/protocol/package.json": {
+    "mtime": 1789100952.3115594,
+    "seen": 1789106441.0468411,
+    "ast_hash": "0e3fee08d7361daa70c2679b89fbc863",
+    "semantic_hash": ""
+  },
+  "packages/protocol/src/agents.ts": {
+    "mtime": 1789100952.3115594,
+    "seen": 1789106441.0468411,
+    "ast_hash": "2f6be906df89399f5ff2d2fea3a5fb1a",
+    "semantic_hash": ""
+  },
+  "packages/protocol/src/brain.ts": {
+    "mtime": 1789100952.3115594,
+    "seen": 1789106441.0468411,
+    "ast_hash": "dcefd7648ecff9e444de7911c982f5c3",
+    "semantic_hash": ""
+  },
+  "packages/protocol/src/checkpoints.ts": {
+    "mtime": 1789100952.3115594,
+    "seen": 1789106441.0468411,
+    "ast_hash": "4ab20e95acd9d69f95f3f086ed2dda23",
+    "semantic_hash": ""
+  },
+  "packages/protocol/src/index.ts": {
+    "mtime": 1789108131.3198223,
+    "seen": 1789108314.1117642,
+    "ast_hash": "2aa04fd62c9cf14bced2f4ec9e31b71d",
+    "semantic_hash": ""
+  },
+  "packages/protocol/src/memory.ts": {
+    "mtime": 1789100952.3176157,
+    "seen": 1789106441.0468411,
+    "ast_hash": "577c0b8be1fdae2086a7cd167c2daf61",
+    "semantic_hash": ""
+  },
+  "packages/protocol/src/messages.ts": {
+    "mtime": 1789100952.3176157,
+    "seen": 1789106441.0468411,
+    "ast_hash": "daef4d2ad94c9c9cae74d73260b5893a",
+    "semantic_hash": ""
+  },
+  "packages/protocol/src/models.ts": {
+    "mtime": 1789100952.318926,
+    "seen": 1789106441.0468411,
+    "ast_hash": "8ddcdd65d2a32e64534d2987713cfa63",
+    "semantic_hash": ""
+  },
+  "packages/protocol/src/modes.ts": {
+    "mtime": 1789100952.318926,
+    "seen": 1789106441.0468411,
+    "ast_hash": "55aa998c856061f18db70a1a539e8596",
+    "semantic_hash": ""
+  },
+  "packages/protocol/src/permissions.ts": {
+    "mtime": 1789112644.6627238,
+    "seen": 1789114531.1491914,
+    "ast_hash": "db5b7cf9ed12b2b102212e5fcda3514f",
+    "semantic_hash": ""
+  },
+  "packages/protocol/src/task.ts": {
+    "mtime": 1789100952.318926,
+    "seen": 1789106441.0468411,
+    "ast_hash": "7ecb101f45509279a41a41512b83641a",
+    "semantic_hash": ""
+  },
+  "packages/protocol/src/tools.ts": {
+    "mtime": 1789106143.5575917,
+    "seen": 1789106441.0468411,
+    "ast_hash": "597081cf184935e6992ba7b9540113d0",
+    "semantic_hash": ""
+  },
+  "packages/protocol/src/utils.ts": {
+    "mtime": 1789100952.325202,
+    "seen": 1789106441.0468411,
+    "ast_hash": "797649a7911b704010a3c01356dcafbe",
+    "semantic_hash": ""
+  },
+  "packages/protocol/src/verification.ts": {
+    "mtime": 1789100952.3268611,
+    "seen": 1789106441.0468411,
+    "ast_hash": "78ba726e859cce8670b4d68d2dca7176",
+    "semantic_hash": ""
+  },
+  "packages/protocol/tsconfig.json": {
+    "mtime": 1789100952.3273752,
+    "seen": 1789106441.0468411,
+    "ast_hash": "544812d0dfc1ddc525b0866cef5b8e77",
+    "semantic_hash": ""
+  },
+  "tsconfig.base.json": {
+    "mtime": 1789100952.3456728,
+    "seen": 1789106441.0468411,
+    "ast_hash": "76e9f7a6ae76c18c6fa5b94008a9e7e0",
+    "semantic_hash": ""
+  },
+  "turbo.json": {
+    "mtime": 1789100952.3456728,
+    "seen": 1789106441.0468411,
+    "ast_hash": "6718972e81238238deb8369cdf00a1fb",
+    "semantic_hash": ""
+  },
+  ".agents/rules/graphify.md": {
+    "mtime": 1789100952.1528547,
+    "seen": 1789106441.0468411,
+    "ast_hash": "a0e4d192b9e2e17256124dbfc8e24e6a",
+    "semantic_hash": "a0e4d192b9e2e17256124dbfc8e24e6a"
+  },
+  ".agents/workflows/graphify.md": {
+    "mtime": 1789100952.1528547,
+    "seen": 1789106441.0468411,
+    "ast_hash": "a831cf3669f1e6ab85d8a80ebe655f99",
+    "semantic_hash": "a831cf3669f1e6ab85d8a80ebe655f99"
+  },
+  ".github/copilot-instructions.md": {
+    "mtime": 1789100952.1528547,
+    "seen": 1789106441.0468411,
+    "ast_hash": "2b23503628bf2ec71d067a85ca8948ab",
+    "semantic_hash": "2b23503628bf2ec71d067a85ca8948ab"
+  },
+  "ai_ide_research_and_build_prompt.md": {
+    "mtime": 1789100952.166844,
+    "seen": 1789106441.0468411,
+    "ast_hash": "6285f906bc44bac5a87c95004c828aa9",
+    "semantic_hash": ""
+  },
+  "pnpm-workspace.yaml": {
+    "mtime": 1789105021.3917594,
+    "seen": 1789106441.0468411,
+    "ast_hash": "ee62495aca9a73052d8d004c07bd09f3",
+    "semantic_hash": ""
+  },
+  "packages/engine/src/agent.ts": {
+    "mtime": 1789113014.1413257,
+    "seen": 1789114531.1284847,
+    "ast_hash": "c61605e42375f53938f511eb16c49457",
+    "semantic_hash": ""
+  },
+  "packages/engine/src/brain.ts": {
+    "mtime": 1789100952.262717,
+    "seen": 1789106441.0468411,
+    "ast_hash": "a659b7033e55c8919a99d843f687db2f",
+    "semantic_hash": ""
+  },
+  "packages/engine/src/context.ts": {
+    "mtime": 1789106081.3506935,
+    "seen": 1789106441.0468411,
+    "ast_hash": "63baf806bcac24a595cb9ad2310c0f8f",
+    "semantic_hash": ""
+  },
+  "packages/engine/src/memory.ts": {
+    "mtime": 1789100952.2737772,
+    "seen": 1789106441.0468411,
+    "ast_hash": "da87b9ea570efedce7a6322e97ba55bb",
+    "semantic_hash": ""
+  },
+  "packages/engine/src/tasks.ts": {
+    "mtime": 1789100952.2783759,
+    "seen": 1789106441.0468411,
+    "ast_hash": "4fa3f3015257e795e3a5ce505ee6c7b9",
+    "semantic_hash": ""
+  },
+  "packages/engine/src/verification.ts": {
+    "mtime": 1789113144.1354861,
+    "seen": 1789114531.1345263,
+    "ast_hash": "58ba13e916df8f223b61036ab5f22d18",
+    "semantic_hash": ""
+  },
+  "packages/model-gateway/src/providers/gemini.ts": {
+    "mtime": 1789112849.782125,
+    "seen": 1789114531.1440687,
+    "ast_hash": "75540d91af19f57aee8dc732359509e2",
+    "semantic_hash": ""
+  },
+  "packages/model-gateway/src/providers/ollama.ts": {
+    "mtime": 1789112831.8961396,
+    "seen": 1789114531.1440687,
+    "ast_hash": "da4466cf3749b8a0ba128fcca4e0c456",
+    "semantic_hash": ""
+  },
+  "packages/model-gateway/src/providers/openai.ts": {
+    "mtime": 1789112804.824268,
+    "seen": 1789114531.1440687,
+    "ast_hash": "c3b772b998e07f408273705605c5283b",
+    "semantic_hash": ""
+  },
+  "scripts/build.js": {
+    "mtime": 1789106253.8302386,
+    "seen": 1789106441.0468411,
+    "ast_hash": "3b8e83aa0685bdd5020b7ba7d38e5e28",
+    "semantic_hash": ""
+  },
+  "start-env.ps1": {
+    "mtime": 1789100952.3433833,
+    "seen": 1789106441.0468411,
+    "ast_hash": "2cc75484c6a6cdae2580d71d15173637",
+    "semantic_hash": ""
+  },
+  "packages/engine/src/accounting.ts": {
+    "mtime": 1789106065.4362724,
+    "seen": 1789106441.0468411,
+    "ast_hash": "8088013ae2dccc8c22ce1f5267e25e6d",
+    "semantic_hash": ""
+  },
+  "packages/engine/src/agents/personas.ts": {
+    "mtime": 1789100952.2617161,
+    "seen": 1789106441.0468411,
+    "ast_hash": "a1b2c56e9d85c55d6d6c5d4e7548ed68",
+    "semantic_hash": ""
+  },
+  "packages/engine/src/centers/api.ts": {
+    "mtime": 1789100952.2648919,
+    "seen": 1789106441.0468411,
+    "ast_hash": "e843e790cb3b6665f0344919809200ba",
+    "semantic_hash": ""
+  },
+  "packages/engine/src/centers/database.ts": {
+    "mtime": 1789100952.2648919,
+    "seen": 1789106441.0468411,
+    "ast_hash": "1a15b14fd3e32ab62438511dfa11970d",
+    "semantic_hash": ""
+  },
+  "packages/engine/src/centers/health.ts": {
+    "mtime": 1789100952.2648919,
+    "seen": 1789106441.0468411,
+    "ast_hash": "a6b8651cf29c64b21a031eecfcfa2cf0",
+    "semantic_hash": ""
+  },
+  "packages/engine/src/council.ts": {
+    "mtime": 1789100952.2696557,
+    "seen": 1789106441.0468411,
+    "ast_hash": "e5b24ff832095ca2ddee52ab5317a56b",
+    "semantic_hash": ""
+  },
+  "packages/engine/src/director.ts": {
+    "mtime": 1789100952.2696557,
+    "seen": 1789106441.0468411,
+    "ast_hash": "f4fa87dbcfe77dd3f230e59f8c741688",
+    "semantic_hash": ""
+  },
+  "packages/engine/src/mcp.ts": {
+    "mtime": 1789113557.7677546,
+    "seen": 1789114531.1345263,
+    "ast_hash": "f985f31fbdf88becfb58ca70cfb7ab11",
+    "semantic_hash": ""
+  },
+  "packages/engine/src/mutex.ts": {
+    "mtime": 1789100952.2757332,
+    "seen": 1789106441.0468411,
+    "ast_hash": "e5a1aa34c2c1b9837d8dce05c684e0f7",
+    "semantic_hash": ""
+  },
+  "packages/engine/src/rules.ts": {
+    "mtime": 1789100952.2783759,
+    "seen": 1789106441.0468411,
+    "ast_hash": "446023965d7dcff22dbf601f8dd68214",
+    "semantic_hash": ""
+  },
+  "packages/engine/src/security.ts": {
+    "mtime": 1789100952.2783759,
+    "seen": 1789106441.0468411,
+    "ast_hash": "ff48ef3829e8771e83aa0691b0a0b6e5",
+    "semantic_hash": ""
+  },
+  "packages/engine/src/vault.ts": {
+    "mtime": 1789113946.5776036,
+    "seen": 1789114531.1345263,
+    "ast_hash": "931e924e52e8aefc5504eda23c968798",
+    "semantic_hash": ""
+  },
+  "packages/engine/src/web/dashboard.ts": {
+    "mtime": 1789100952.2783759,
+    "seen": 1789106441.0468411,
+    "ast_hash": "8b0e6b8ab14cb83c673d295cb5c7a690",
+    "semantic_hash": ""
+  },
+  "packages/engine/test/engine.test.ts": {
+    "mtime": 1789100952.2957003,
+    "seen": 1789106441.0468411,
+    "ast_hash": "b531ceb440404224f7346d2ce24ac230",
+    "semantic_hash": ""
+  },
+  "packages/desktop/package.json": {
+    "mtime": 1789100952.2454748,
+    "seen": 1789106441.0468411,
+    "ast_hash": "0fd3fd48e5af96cbb4d6fd261a3addbd",
+    "semantic_hash": ""
+  },
+  "packages/desktop/src/index.ts": {
+    "mtime": 1789100952.247556,
+    "seen": 1789106441.0468411,
+    "ast_hash": "166f2efa2001cb7aa0bd1bdb10954ff2",
+    "semantic_hash": ""
+  },
+  "packages/desktop/src/main/daemon-supervisor.ts": {
+    "mtime": 1789100952.2496948,
+    "seen": 1789106441.0468411,
+    "ast_hash": "e829fe299dae7a92f669fb2b97dd1fcf",
+    "semantic_hash": ""
+  },
+  "packages/desktop/src/main/index.ts": {
+    "mtime": 1789100952.2507231,
+    "seen": 1789106441.0468411,
+    "ast_hash": "900c9ff3f7e7df4aac6ff7018c1803ac",
+    "semantic_hash": ""
+  },
+  "packages/desktop/src/main/ipc-handlers.ts": {
+    "mtime": 1789100952.2517085,
+    "seen": 1789106441.0468411,
+    "ast_hash": "be9fbeb9f0ee680071ee9a006fd81555",
+    "semantic_hash": ""
+  },
+  "packages/desktop/src/main/pty-terminal.ts": {
+    "mtime": 1789100952.252717,
+    "seen": 1789106441.0468411,
+    "ast_hash": "ff0c3ae8fc754e2fad73db978e189327",
+    "semantic_hash": ""
+  },
+  "packages/desktop/tsconfig.json": {
+    "mtime": 1789100952.2557225,
+    "seen": 1789106441.0468411,
+    "ast_hash": "544812d0dfc1ddc525b0866cef5b8e77",
+    "semantic_hash": ""
+  },
+  "packages/engine/src/web/desktop.ts": {
+    "mtime": 1789100952.2783759,
+    "seen": 1789106441.0468411,
+    "ast_hash": "5bcaab08347cbb2dfa42c6a2c525f4de",
+    "semantic_hash": ""
+  },
+  "packages/engine/test/desktop.test.ts": {
+    "mtime": 1789100952.2938957,
+    "seen": 1789106441.0468411,
+    "ast_hash": "1acbb89b5810373835bb805e3b883129",
+    "semantic_hash": ""
+  },
+  "scripts/install-desktop.ps1": {
+    "mtime": 1789100952.3299303,
+    "seen": 1789106441.0468411,
+    "ast_hash": "33ebbcac40090d547208303587bb48e2",
+    "semantic_hash": ""
+  },
+  "packages/desktop/src/renderer/index.html": {
+    "mtime": 1789114297.9424088,
+    "seen": 1789114531.1559706,
+    "ast_hash": "7daa95ccedc073e927c07b9f1bbf9811",
+    "semantic_hash": ""
+  },
+  "scripts/pack-desktop.js": {
+    "mtime": 1789100952.337371,
+    "seen": 1789106441.0468411,
+    "ast_hash": "10d2048e55f0f975cf7bf1552b54a70d",
+    "semantic_hash": ""
+  },
+  "src-native/FluxLauncher.cs": {
+    "mtime": 1789114099.0189903,
+    "seen": 1789114531.1491914,
+    "ast_hash": "5e7f07215472e49ebda9ecce87f7d135",
+    "semantic_hash": ""
+  },
+  "src-native/FluxSetup.cs": {
+    "mtime": 1789114191.7768874,
+    "seen": 1789114531.1491914,
+    "ast_hash": "fc659ff31a82f8662361ad622be76942",
+    "semantic_hash": ""
+  },
+  "packages/cli/vitest.config.ts": {
+    "mtime": 1789100952.2434652,
+    "seen": 1789106441.0468411,
+    "ast_hash": "aa2f0b3dfcef6c5ae28d821b04189e7a",
+    "semantic_hash": ""
+  },
+  "packages/engine/tsup.config.ts": {
+    "mtime": 1789100952.2957003,
+    "seen": 1789106441.0468411,
+    "ast_hash": "3032f92f2f184ffb6d6a484f20bd2a27",
+    "semantic_hash": ""
+  },
+  "packages/engine/vitest.config.ts": {
+    "mtime": 1789100952.2957003,
+    "seen": 1789106441.0468411,
+    "ast_hash": "0015f4a73994c3891d4db56a82d508ee",
+    "semantic_hash": ""
+  },
+  "packages/model-gateway/vitest.config.ts": {
+    "mtime": 1789100952.3098774,
+    "seen": 1789106441.0468411,
+    "ast_hash": "aa2f0b3dfcef6c5ae28d821b04189e7a",
+    "semantic_hash": ""
+  },
+  "packages/protocol/vitest.config.ts": {
+    "mtime": 1789100952.328411,
+    "seen": 1789106441.0468411,
+    "ast_hash": "aa2f0b3dfcef6c5ae28d821b04189e7a",
+    "semantic_hash": ""
+  },
+  "README.md": {
+    "mtime": 1789100952.16535,
+    "seen": 1789106441.0468411,
+    "ast_hash": "4cb788e907149dc7fc5e36325d02e15d",
+    "semantic_hash": ""
+  },
+  "prompt.md": {
+    "mtime": 1789104122.5334435,
+    "seen": 1789106441.0468411,
+    "ast_hash": "9fb191aef1dda7cc474002a4ee29d909",
+    "semantic_hash": ""
+  },
+  "packages/engine/src/tools/browser.ts": {
+    "mtime": 1789113521.2572193,
+    "seen": 1789114531.1345263,
+    "ast_hash": "fe4daa3d142e8a4a4516182c28f71f12",
+    "semantic_hash": ""
+  },
+  "packages/engine/src/web/website.ts": {
+    "mtime": 1789106718.052469,
+    "seen": 1789106835.576745,
+    "ast_hash": "314e5436cd25c95689c9885c71fba863",
+    "semantic_hash": ""
+  },
+  "tasks.md": {
+    "mtime": 1789114381.203039,
+    "seen": 1789114531.157587,
+    "ast_hash": "130ecdca2406f6b35be7546e93497459",
+    "semantic_hash": ""
+  },
+  "packages/engine/src/supabase.ts": {
+    "mtime": 1789113775.6612859,
+    "seen": 1789114531.1345263,
+    "ast_hash": "722d8ebf8295fd1d516275983be2f538",
+    "semantic_hash": ""
+  },
+  "packages/protocol/src/database.ts": {
+    "mtime": 1789108124.318905,
+    "seen": 1789108314.1117642,
+    "ast_hash": "a7cd87630e0340e0fc474e29dcc1cd7c",
+    "semantic_hash": ""
+  },
+  "packages/protocol/src/database.types.ts": {
+    "mtime": 1789108102.735885,
+    "seen": 1789108314.1117642,
+    "ast_hash": "024e9a7bba7ef651f09b21e8604085bb",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/DualEngine/SiteList-Consumer.json": {
+    "mtime": 1789111206.5642421,
+    "seen": 1789114531.1284847,
+    "ast_hash": "99914b932bd37a50b983c5e7c90ae93b",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/DualEngine/SiteList-Enterprise.json": {
+    "mtime": 1789111206.4806883,
+    "seen": 1789114531.1284847,
+    "ast_hash": "99914b932bd37a50b983c5e7c90ae93b",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/EntityExtraction/domains_config.json": {
+    "mtime": 1789111148.7997704,
+    "seen": 1789114531.1284847,
+    "ast_hash": "06b7d4a2fb797b093620995397022f5e",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/ESD-Package/scripts/esd_content_main.js": {
+    "mtime": 1787730754.0,
+    "seen": 1789114531.1284847,
+    "ast_hash": "e432794d9bcb6be20023ee4dc03ba7f2",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/MockingBird-Package/scripts/mockingbird_content_main.js": {
+    "mtime": 1787730754.0,
+    "seen": 1789114531.1284847,
+    "ast_hash": "8dcfc95dceb84c7c57cad2395aed8710",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/MockingBird-Package/scripts/worklet_processor.js": {
+    "mtime": 1787730754.0,
+    "seen": 1789114531.1284847,
+    "ast_hash": "a6c57bfcd27f95b1815395ee9f490bc7",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/_locales/cs/messages.json": {
+    "mtime": 1789111139.7312076,
+    "seen": 1789114531.1284847,
+    "ast_hash": "0476ca32167d0f948785d06b53c10d8b",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/_locales/da/messages.json": {
+    "mtime": 1789111139.7360685,
+    "seen": 1789114531.1284847,
+    "ast_hash": "f86483cb5c087268728e2022140b8aee",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/_locales/de/messages.json": {
+    "mtime": 1789111139.7397377,
+    "seen": 1789114531.1284847,
+    "ast_hash": "e1a52d5b42f61c5df37e06b00462af2a",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/_locales/el/messages.json": {
+    "mtime": 1789111139.7421577,
+    "seen": 1789114531.1284847,
+    "ast_hash": "0038cb453ab9907e3db1cf204f4a1ddd",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/_locales/en/messages.json": {
+    "mtime": 1789111139.7471788,
+    "seen": 1789114531.1284847,
+    "ast_hash": "cd35ac2d0431a8bf1af4674d1d35e535",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/_locales/es/messages.json": {
+    "mtime": 1789111139.7471788,
+    "seen": 1789114531.1284847,
+    "ast_hash": "e0a8ba19b2de6ce134266daa82a551d9",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/_locales/es_419/messages.json": {
+    "mtime": 1789111139.7568552,
+    "seen": 1789114531.1284847,
+    "ast_hash": "36157e28bbb0bbcb24e9496d90be92c4",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/_locales/fi/messages.json": {
+    "mtime": 1789111139.7568552,
+    "seen": 1789114531.1284847,
+    "ast_hash": "3f04c493692f90e86b4bd24810032e59",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/_locales/fr/messages.json": {
+    "mtime": 1789111139.7653382,
+    "seen": 1789114531.1284847,
+    "ast_hash": "16261655b80778fe5ed35fe366f767d3",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/_locales/fr_CA/messages.json": {
+    "mtime": 1789111139.7710495,
+    "seen": 1789114531.1284847,
+    "ast_hash": "d366390bb2eb5fec34613ac24d252bdf",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/_locales/hr/messages.json": {
+    "mtime": 1789111139.7750802,
+    "seen": 1789114531.1284847,
+    "ast_hash": "debc4084abab64c5b643e7d54479f0d1",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/_locales/hu/messages.json": {
+    "mtime": 1789111139.779361,
+    "seen": 1789114531.1284847,
+    "ast_hash": "c82dfe19e676da9ded6a874a8051c49d",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/_locales/it/messages.json": {
+    "mtime": 1789111139.779361,
+    "seen": 1789114531.1284847,
+    "ast_hash": "4f0e6fa886f14589e81b8ede91131148",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/_locales/ja/messages.json": {
+    "mtime": 1789111139.786873,
+    "seen": 1789114531.1284847,
+    "ast_hash": "2d3b2216a1764ac7f1807367a6ef50bb",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/_locales/ko/messages.json": {
+    "mtime": 1789111139.7913125,
+    "seen": 1789114531.1284847,
+    "ast_hash": "1cf5806853301fb4e76a6225f7ce8e9d",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/_locales/nb/messages.json": {
+    "mtime": 1789111139.7913125,
+    "seen": 1789114531.1284847,
+    "ast_hash": "44f5e3f8d1a856f068480787a2a99e8c",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/_locales/nl/messages.json": {
+    "mtime": 1789111139.7994597,
+    "seen": 1789114531.1284847,
+    "ast_hash": "4210d106ce5d3bfa479580e1a02cf4c6",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/_locales/pl/messages.json": {
+    "mtime": 1789111139.8032856,
+    "seen": 1789114531.1284847,
+    "ast_hash": "f0e4a5824bcb17c3305a4e907d623d95",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/_locales/pt_BR/messages.json": {
+    "mtime": 1789111139.8032856,
+    "seen": 1789114531.1284847,
+    "ast_hash": "751e6d90dc5734dcf45c8dab018d4992",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/_locales/pt_PT/messages.json": {
+    "mtime": 1789111139.8032856,
+    "seen": 1789114531.1284847,
+    "ast_hash": "b4379d926811b75d60e7b977f7046f22",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/_locales/ru/messages.json": {
+    "mtime": 1789111139.8150768,
+    "seen": 1789114531.1284847,
+    "ast_hash": "b4ca3cb6802ab3e7459e8aa80e411349",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/_locales/sk/messages.json": {
+    "mtime": 1789111139.8200977,
+    "seen": 1789114531.1284847,
+    "ast_hash": "5606b12fa341d7b13030d8438af53825",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/_locales/sr/messages.json": {
+    "mtime": 1789111139.821668,
+    "seen": 1789114531.1284847,
+    "ast_hash": "82588718c5e3812ccab304f2ec295a21",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/_locales/sv/messages.json": {
+    "mtime": 1789111139.8287296,
+    "seen": 1789114531.1284847,
+    "ast_hash": "07cad45ea597c15409c75e4a4cb5a034",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/_locales/tr/messages.json": {
+    "mtime": 1789111139.8337035,
+    "seen": 1789114531.1284847,
+    "ast_hash": "dd705af1cded7d2fca194d761f2fd510",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/_locales/zh_CN/messages.json": {
+    "mtime": 1789111139.8368092,
+    "seen": 1789114531.1284847,
+    "ast_hash": "bfc2f023e33458645ab61d1faa0235e2",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/_locales/zh_TW/messages.json": {
+    "mtime": 1789111139.838271,
+    "seen": 1789114531.1284847,
+    "ast_hash": "39ef0890f66877deb7fdddaf89e1d3b9",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/_metadata/verified_contents.json": {
+    "mtime": 1787930354.0,
+    "seen": 1789114531.1284847,
+    "ast_hash": "32e17388dfaf5574c027a31435df7d2b",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/about.js": {
+    "mtime": 1787730754.0,
+    "seen": 1789114531.1284847,
+    "ast_hash": "c525ce967f835eefb756629be3ceaa55",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/activate_banner_mb.js": {
+    "mtime": 1787730754.0,
+    "seen": 1789114531.1284847,
+    "ast_hash": "6d7ccd1e80ea1bcd32e30fe4228c2495",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/advanced_protection_signal.js": {
+    "mtime": 1787730754.0,
+    "seen": 1789114531.1284847,
+    "ast_hash": "e0ee5a2b32a7d1602606ad4321f2de12",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/advanced_protection_signal_toast.js": {
+    "mtime": 1787730754.0,
+    "seen": 1789114531.1284847,
+    "ast_hash": "e0ee5a2b32a7d1602606ad4321f2de12",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/background.js": {
+    "mtime": 1787730754.0,
+    "seen": 1789114531.1284847,
+    "ast_hash": "65bf5382bede8618bbb78509b47b350a",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/dfd_landing_page.js": {
+    "mtime": 1787730754.0,
+    "seen": 1789114531.1284847,
+    "ast_hash": "7bd968f51bc509d91b4de46c46bec4e9",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/dnr_rules/sdk_block_rules.json": {
+    "mtime": 1787730754.0,
+    "seen": 1789114531.1284847,
+    "ast_hash": "9c9b6d1b03893aacecc464d3863406c7",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/download_scan_popup.js": {
+    "mtime": 1787730754.0,
+    "seen": 1789114531.1284847,
+    "ast_hash": "e0ee5a2b32a7d1602606ad4321f2de12",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/dws.js": {
+    "mtime": 1787730754.0,
+    "seen": 1789114531.1284847,
+    "ast_hash": "e0ee5a2b32a7d1602606ad4321f2de12",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/esd_enrolled_detection_toast.js": {
+    "mtime": 1787730754.0,
+    "seen": 1789114531.1284847,
+    "ast_hash": "e0ee5a2b32a7d1602606ad4321f2de12",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/esd_enrolled_intro_toast.js": {
+    "mtime": 1787730754.0,
+    "seen": 1789114531.1284847,
+    "ast_hash": "e0ee5a2b32a7d1602606ad4321f2de12",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/esd_toast.js": {
+    "mtime": 1787730754.0,
+    "seen": 1789114531.1284847,
+    "ast_hash": "e0ee5a2b32a7d1602606ad4321f2de12",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/foreground_sidebar_main.js": {
+    "mtime": 1787730754.0,
+    "seen": 1789114531.1284847,
+    "ast_hash": "cbc9368e6bf8484c5b8a225bd9b7afa9",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/how_it_works.js": {
+    "mtime": 1787730754.0,
+    "seen": 1789114531.1284847,
+    "ast_hash": "d0350bd4e02321339e39df628932298d",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/iframe_block_page.js": {
+    "mtime": 1787730754.0,
+    "seen": 1789114531.1284847,
+    "ast_hash": "97c67586bdbf2e71f04e634d8efa6c2b",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/interactive_balloon.js": {
+    "mtime": 1787730754.0,
+    "seen": 1789114531.1284847,
+    "ast_hash": "e0ee5a2b32a7d1602606ad4321f2de12",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/json/engines.json": {
+    "mtime": 1787730754.0,
+    "seen": 1789114531.1284847,
+    "ast_hash": "134d709cd0ad6f229c38b40013885427",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/manifest.json": {
+    "mtime": 1789111139.4888263,
+    "seen": 1789114531.1284847,
+    "ast_hash": "d33791011bb8b98d15376691c8cbcb38",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/mb_activate_banner.js": {
+    "mtime": 1787730754.0,
+    "seen": 1789114531.1284847,
+    "ast_hash": "e0ee5a2b32a7d1602606ad4321f2de12",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/mb_page_banner.js": {
+    "mtime": 1787730754.0,
+    "seen": 1789114531.1284847,
+    "ast_hash": "e0ee5a2b32a7d1602606ad4321f2de12",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/mcafee_fonts.js": {
+    "mtime": 1787730754.0,
+    "seen": 1789114531.1284847,
+    "ast_hash": "e0ee5a2b32a7d1602606ad4321f2de12",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/no_native_toast.js": {
+    "mtime": 1787730754.0,
+    "seen": 1789114531.1284847,
+    "ast_hash": "e0ee5a2b32a7d1602606ad4321f2de12",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/nps_survey.js": {
+    "mtime": 1787730754.0,
+    "seen": 1789114531.1284847,
+    "ast_hash": "e831781b66e7c1c813be4930904eb28f",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/page_banner_mb.js": {
+    "mtime": 1787730754.0,
+    "seen": 1789114531.1284847,
+    "ast_hash": "759e4dbc4bc148320f5d3080232a04c6",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/preference.js": {
+    "mtime": 1787730754.0,
+    "seen": 1789114531.1284847,
+    "ast_hash": "cc127389cf879e6688c8b5f7abc877f3",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/scripts/Sailer-Package/feature_collector.js": {
+    "mtime": 1787730754.0,
+    "seen": 1789114531.1284847,
+    "ast_hash": "6c2e649d4c7870908866a16bcf41bd00",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/scripts/content_annotation.js": {
+    "mtime": 1787730754.0,
+    "seen": 1789114531.1284847,
+    "ast_hash": "1dd16762410f32f8ea43af059c34e197",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/scripts/content_aps_balloon.js": {
+    "mtime": 1787730754.0,
+    "seen": 1789114531.1284847,
+    "ast_hash": "0fae9b1fc71ca73525259e06f58cbe86",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/scripts/content_aps_observer.js": {
+    "mtime": 1787730754.0,
+    "seen": 1789114531.1284847,
+    "ast_hash": "31e7f343cf19f9576b7b8c1ddc677564",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/scripts/content_aps_toast.js": {
+    "mtime": 1787730754.0,
+    "seen": 1789114531.1284847,
+    "ast_hash": "b790b45facdef8fbdc5f86517ad4b0ba",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/scripts/content_change_native_installer_url.js": {
+    "mtime": 1787730754.0,
+    "seen": 1789114531.1284847,
+    "ast_hash": "c0e79a0982ced9d7b4a946f293bd0fd6",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/scripts/content_download_scan_popup.js": {
+    "mtime": 1787730754.0,
+    "seen": 1789114531.1284847,
+    "ast_hash": "f3ba88a1ade04aa70a19e694bbed503c",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/scripts/content_esd_enrolled_toast.js": {
+    "mtime": 1787730754.0,
+    "seen": 1789114531.1284847,
+    "ast_hash": "efd3a7a1e47791de402827aae12832e6",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/scripts/content_esd_toast.js": {
+    "mtime": 1787730754.0,
+    "seen": 1789114531.1284847,
+    "ast_hash": "ec34aea6e2c0158a782c35650a365832",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/scripts/content_idps.js": {
+    "mtime": 1787730754.0,
+    "seen": 1789114531.1284847,
+    "ast_hash": "82129e6401ec1b759348936daf64349c",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/scripts/content_iframe_banner.js": {
+    "mtime": 1787730754.0,
+    "seen": 1789114531.1284847,
+    "ast_hash": "50871178ddd114d36b8be2ab0b882ff0",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/scripts/content_iframe_helper.js": {
+    "mtime": 1787730754.0,
+    "seen": 1789114531.1284847,
+    "ast_hash": "22ee9a9a40bc070dd3b2be5e77902d56",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/scripts/content_injection_check.js": {
+    "mtime": 1787730754.0,
+    "seen": 1789114531.1284847,
+    "ast_hash": "cd6b50983b65192ec013f18f0f38d2af",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/scripts/content_mb_activate_banner.js": {
+    "mtime": 1787730754.0,
+    "seen": 1789114531.1284847,
+    "ast_hash": "ef78cd0cdadfe1faaf8d8ea550210cf3",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/scripts/content_mb_banner.js": {
+    "mtime": 1787730754.0,
+    "seen": 1789114531.1284847,
+    "ast_hash": "70dd137b2dba70a5fbd35227ec4a37c7",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/scripts/content_mb_page_banner.js": {
+    "mtime": 1787730754.0,
+    "seen": 1789114531.1284847,
+    "ast_hash": "e621db2e1e92589c57bac38c5a2437f9",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/scripts/content_mb_video_check.js": {
+    "mtime": 1787730754.0,
+    "seen": 1789114531.1284847,
+    "ast_hash": "36ed1bfd28a42d2de09f2336a22264bc",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/scripts/content_navigate_complete.js": {
+    "mtime": 1787730754.0,
+    "seen": 1789114531.1284847,
+    "ast_hash": "a56ef0916388d3abf475f5bed26cee6f",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/scripts/content_no_native_toast.js": {
+    "mtime": 1787730754.0,
+    "seen": 1789114531.1284847,
+    "ast_hash": "d9f9a5f198a54c4601a18cc2503fd378",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/scripts/content_push_notification.js": {
+    "mtime": 1787730754.0,
+    "seen": 1789114531.1284847,
+    "ast_hash": "837195282dc4340d291b83b9d2948e2d",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/scripts/content_rat_detection.js": {
+    "mtime": 1787730754.0,
+    "seen": 1789114531.1284847,
+    "ast_hash": "5100dcb5a76372be18a80464dd93fcd9",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/scripts/content_search_categorization.js": {
+    "mtime": 1787730754.0,
+    "seen": 1789114531.1284847,
+    "ast_hash": "94539730b1c70f265733633054fe2d6f",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/scripts/content_sidebar_main.js": {
+    "mtime": 1787730754.0,
+    "seen": 1789114531.1284847,
+    "ast_hash": "9df15b9c3d669fc62a8b7eb698150683",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/scripts/content_site_listener.js": {
+    "mtime": 1787730754.0,
+    "seen": 1789114531.1284847,
+    "ast_hash": "4388bb84a4cff3cf4af62f49d98b3208",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/scripts/iframe_block.js": {
+    "mtime": 1787730754.0,
+    "seen": 1789114531.1284847,
+    "ast_hash": "a38f6cd838d0bcbe5bc7e72bc69c3a1f",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/scripts/iframe_form_check.js": {
+    "mtime": 1787730754.0,
+    "seen": 1789114531.1284847,
+    "ast_hash": "ca56892826b90f4afb04f3e23889a71d",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/scripts/iframe_form_detection.js": {
+    "mtime": 1787730754.0,
+    "seen": 1789114531.1284847,
+    "ast_hash": "6818773f371dcd5a524234eccb2a7faf",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/settings.js": {
+    "mtime": 1787730754.0,
+    "seen": 1789114531.1284847,
+    "ast_hash": "879af94992f236d2e3c8d631bd4aff06",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/sidebar_esd.js": {
+    "mtime": 1787730754.0,
+    "seen": 1789114531.1284847,
+    "ast_hash": "e0ee5a2b32a7d1602606ad4321f2de12",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/sidebar_home.js": {
+    "mtime": 1787730754.0,
+    "seen": 1789114531.1284847,
+    "ast_hash": "e0ee5a2b32a7d1602606ad4321f2de12",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/sidebar_main.js": {
+    "mtime": 1787730754.0,
+    "seen": 1789114531.1284847,
+    "ast_hash": "e0ee5a2b32a7d1602606ad4321f2de12",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/sidebar_mb.js": {
+    "mtime": 1787730754.0,
+    "seen": 1789114531.1284847,
+    "ast_hash": "e0ee5a2b32a7d1602606ad4321f2de12",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/sidebar_mb_faq.js": {
+    "mtime": 1787730754.0,
+    "seen": 1789114531.1284847,
+    "ast_hash": "e0ee5a2b32a7d1602606ad4321f2de12",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/sidebar_rat_detection.js": {
+    "mtime": 1787730754.0,
+    "seen": 1789114531.1284847,
+    "ast_hash": "e0ee5a2b32a7d1602606ad4321f2de12",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/site_status_block_page.js": {
+    "mtime": 1787730754.0,
+    "seen": 1789114531.1284847,
+    "ast_hash": "ec5dcac24d6ea74f417d8d94f6ef8382",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/site_status_site_report.js": {
+    "mtime": 1787730754.0,
+    "seen": 1789114531.1284847,
+    "ast_hash": "0ff32f9f51dcb160d4fb46607a24955a",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/site_status_typosquatting.js": {
+    "mtime": 1787730754.0,
+    "seen": 1789114531.1284847,
+    "ast_hash": "f7913912438b8a2e2a12965b8077a5d9",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/statistics.js": {
+    "mtime": 1787730754.0,
+    "seen": 1789114531.1284847,
+    "ast_hash": "f13691a5a0a74128823b2ed655343321",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/topbar_iframe_block.js": {
+    "mtime": 1787730754.0,
+    "seen": 1789114531.1284847,
+    "ast_hash": "e0ee5a2b32a7d1602606ad4321f2de12",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/vendors.js": {
+    "mtime": 1787730754.0,
+    "seen": 1789114531.1284847,
+    "ast_hash": "ad392b0eee45a58930b65cae93eb72ea",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/wa-common.js": {
+    "mtime": 1787730754.0,
+    "seen": 1789114531.1284847,
+    "ast_hash": "bebabd6dcad9e429e4e2d05e8f687f2f",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/whitelist.js": {
+    "mtime": 1787730754.0,
+    "seen": 1789114531.1284847,
+    "ast_hash": "f7898ed1901a1ac42a88315e53ac18d0",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/ghbmnnjooekpmoecnnnilnnbdlolhkhi/1.110.1_0/_locales/af/messages.json": {
+    "mtime": 1789111138.3265457,
+    "seen": 1789114531.1284847,
+    "ast_hash": "12403ebcce3ae8287a9e823c0256d205",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/ghbmnnjooekpmoecnnnilnnbdlolhkhi/1.110.1_0/_locales/am/messages.json": {
+    "mtime": 1789111138.3306925,
+    "seen": 1789114531.1284847,
+    "ast_hash": "9721ebce89ec51eb2baeb4159e2e4d8c",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/ghbmnnjooekpmoecnnnilnnbdlolhkhi/1.110.1_0/_locales/ar/messages.json": {
+    "mtime": 1789111138.3334448,
+    "seen": 1789114531.1284847,
+    "ast_hash": "3ec93ea8f8422fda079f8e5b3f386a73",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/ghbmnnjooekpmoecnnnilnnbdlolhkhi/1.110.1_0/_locales/as/messages.json": {
+    "mtime": 1788247016.0,
+    "seen": 1789114531.1284847,
+    "ast_hash": "ccebda0ca2d2ce0ea65b7cc8651175e1",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/ghbmnnjooekpmoecnnnilnnbdlolhkhi/1.110.1_0/_locales/az/messages.json": {
+    "mtime": 1789111138.3334448,
+    "seen": 1789114531.1284847,
+    "ast_hash": "9a798fd298008074e59ecc253e2f2933",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/ghbmnnjooekpmoecnnnilnnbdlolhkhi/1.110.1_0/_locales/be/messages.json": {
+    "mtime": 1788247016.0,
+    "seen": 1789114531.1284847,
+    "ast_hash": "68884dfda320b85f9fc5244c2dd00568",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/ghbmnnjooekpmoecnnnilnnbdlolhkhi/1.110.1_0/_locales/bg/messages.json": {
+    "mtime": 1789111138.3334448,
+    "seen": 1789114531.1284847,
+    "ast_hash": "2e6423f38e148ac5a5a041b1d5989cc0",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/ghbmnnjooekpmoecnnnilnnbdlolhkhi/1.110.1_0/_locales/bn/messages.json": {
+    "mtime": 1789111138.3334448,
+    "seen": 1789114531.1284847,
+    "ast_hash": "651375c6af22e2bcd228347a45e3c2c9",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/ghbmnnjooekpmoecnnnilnnbdlolhkhi/1.110.1_0/_locales/ca/messages.json": {
+    "mtime": 1789111138.347311,
+    "seen": 1789114531.1284847,
+    "ast_hash": "d177261ffe5f8ab4b3796d26835f8331",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/ghbmnnjooekpmoecnnnilnnbdlolhkhi/1.110.1_0/_locales/cs/messages.json": {
+    "mtime": 1789111138.3483393,
+    "seen": 1789114531.1284847,
+    "ast_hash": "ccb00c63e4814f7c46b06e4a142f2de9",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/ghbmnnjooekpmoecnnnilnnbdlolhkhi/1.110.1_0/_locales/cy/messages.json": {
+    "mtime": 1788247016.0,
+    "seen": 1789114531.1284847,
+    "ast_hash": "a86407c6f20818972b80b9384acfbbed",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/ghbmnnjooekpmoecnnnilnnbdlolhkhi/1.110.1_0/_locales/da/messages.json": {
+    "mtime": 1789111138.3542588,
+    "seen": 1789114531.1284847,
+    "ast_hash": "b922f7fd0e8ccac31b411fc26542c5ba",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/ghbmnnjooekpmoecnnnilnnbdlolhkhi/1.110.1_0/_locales/de/messages.json": {
+    "mtime": 1789111138.3542588,
+    "seen": 1789114531.1284847,
+    "ast_hash": "d116453277cc860d196887cec6432ffe",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/ghbmnnjooekpmoecnnnilnnbdlolhkhi/1.110.1_0/_locales/el/messages.json": {
+    "mtime": 1789111138.358762,
+    "seen": 1789114531.1284847,
+    "ast_hash": "9aba4337c670c6349ba38fddc27c2106",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/ghbmnnjooekpmoecnnnilnnbdlolhkhi/1.110.1_0/_locales/en/messages.json": {
+    "mtime": 1789111138.3639529,
+    "seen": 1789114531.1284847,
+    "ast_hash": "07ffbe5f24ca348723ff8c6c488abfb8",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/ghbmnnjooekpmoecnnnilnnbdlolhkhi/1.110.1_0/_locales/en_CA/messages.json": {
+    "mtime": 1789111138.3660452,
+    "seen": 1789114531.1284847,
+    "ast_hash": "07ffbe5f24ca348723ff8c6c488abfb8",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/ghbmnnjooekpmoecnnnilnnbdlolhkhi/1.110.1_0/_locales/en_GB/messages.json": {
+    "mtime": 1789111138.3660452,
+    "seen": 1789114531.1284847,
+    "ast_hash": "3734d498fb377cf5e4e2508b8131c0fa",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/ghbmnnjooekpmoecnnnilnnbdlolhkhi/1.110.1_0/_locales/en_US/messages.json": {
+    "mtime": 1789111138.3660452,
+    "seen": 1789114531.1284847,
+    "ast_hash": "578215fbb8c12cb7e6cd73fbd16ec994",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/ghbmnnjooekpmoecnnnilnnbdlolhkhi/1.110.1_0/_locales/es/messages.json": {
+    "mtime": 1789111138.3660452,
+    "seen": 1789114531.1284847,
+    "ast_hash": "f61916a206ac0e971cdcb63b29e580e3",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/ghbmnnjooekpmoecnnnilnnbdlolhkhi/1.110.1_0/_locales/es_419/messages.json": {
+    "mtime": 1789111138.3937302,
+    "seen": 1789114531.1284847,
+    "ast_hash": "535331f8fb98894877811b14994fea9d",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/ghbmnnjooekpmoecnnnilnnbdlolhkhi/1.110.1_0/_locales/et/messages.json": {
+    "mtime": 1789111138.3957608,
+    "seen": 1789114531.1284847,
+    "ast_hash": "64204786e7a7c1ed9c241f1c59b81007",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/ghbmnnjooekpmoecnnnilnnbdlolhkhi/1.110.1_0/_locales/eu/messages.json": {
+    "mtime": 1788247016.0,
+    "seen": 1789114531.1284847,
+    "ast_hash": "29a1da4acb4c9d04f080bb101e204e93",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/ghbmnnjooekpmoecnnnilnnbdlolhkhi/1.110.1_0/_locales/fa/messages.json": {
+    "mtime": 1789111138.3993735,
+    "seen": 1789114531.1284847,
+    "ast_hash": "097f3ba8de41a0aaf436c783dcfe7ef3",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/ghbmnnjooekpmoecnnnilnnbdlolhkhi/1.110.1_0/_locales/fi/messages.json": {
+    "mtime": 1789111138.3993735,
+    "seen": 1789114531.1284847,
+    "ast_hash": "b38cbd6c2c5bfaa6ee252d573a0b12a1",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/ghbmnnjooekpmoecnnnilnnbdlolhkhi/1.110.1_0/_locales/fil/messages.json": {
+    "mtime": 1789111138.3993735,
+    "seen": 1789114531.1284847,
+    "ast_hash": "fcea43d62605860fff41be26bad80169",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/ghbmnnjooekpmoecnnnilnnbdlolhkhi/1.110.1_0/_locales/fr/messages.json": {
+    "mtime": 1789111138.4067073,
+    "seen": 1789114531.1284847,
+    "ast_hash": "a58c0eebd5dc6bb5d91daf923bd3a2aa",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/ghbmnnjooekpmoecnnnilnnbdlolhkhi/1.110.1_0/_locales/fr_CA/messages.json": {
+    "mtime": 1789111138.4255033,
+    "seen": 1789114531.1284847,
+    "ast_hash": "6cac04bdcc09034981b4ab567b00c296",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/ghbmnnjooekpmoecnnnilnnbdlolhkhi/1.110.1_0/_locales/gl/messages.json": {
+    "mtime": 1789111138.426012,
+    "seen": 1789114531.1284847,
+    "ast_hash": "6baafee2f718befbc7cd58a04ccc6c92",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/ghbmnnjooekpmoecnnnilnnbdlolhkhi/1.110.1_0/_locales/gu/messages.json": {
+    "mtime": 1789111138.4306786,
+    "seen": 1789114531.1284847,
+    "ast_hash": "bc7e1d09028b085b74cb4e04d8a90814",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/ghbmnnjooekpmoecnnnilnnbdlolhkhi/1.110.1_0/_locales/hi/messages.json": {
+    "mtime": 1789111138.4342935,
+    "seen": 1789114531.1284847,
+    "ast_hash": "98a7fc3e2e05afffc1cfe4a029f47476",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/ghbmnnjooekpmoecnnnilnnbdlolhkhi/1.110.1_0/_locales/hr/messages.json": {
+    "mtime": 1789111138.436193,
+    "seen": 1789114531.1284847,
+    "ast_hash": "25cdff9d60c5fc4740a48ef9804bf5c7",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/ghbmnnjooekpmoecnnnilnnbdlolhkhi/1.110.1_0/_locales/hu/messages.json": {
+    "mtime": 1789111138.436193,
+    "seen": 1789114531.1284847,
+    "ast_hash": "8930a51e3ace3dd897c9e61a2aea1d02",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/ghbmnnjooekpmoecnnnilnnbdlolhkhi/1.110.1_0/_locales/hy/messages.json": {
+    "mtime": 1788247016.0,
+    "seen": 1789114531.1284847,
+    "ast_hash": "55de859ad778e0aa9d950ef505b29da9",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/ghbmnnjooekpmoecnnnilnnbdlolhkhi/1.110.1_0/_locales/id/messages.json": {
+    "mtime": 1789111138.4414873,
+    "seen": 1789114531.1284847,
+    "ast_hash": "34d6ee258af9429465ae6a078c2fb1f5",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/ghbmnnjooekpmoecnnnilnnbdlolhkhi/1.110.1_0/_locales/is/messages.json": {
+    "mtime": 1788247016.0,
+    "seen": 1789114531.1284847,
+    "ast_hash": "caeb37f451b5b5e9f5eb2e7e7f46e2d7",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/ghbmnnjooekpmoecnnnilnnbdlolhkhi/1.110.1_0/_locales/it/messages.json": {
+    "mtime": 1789111138.4414873,
+    "seen": 1789114531.1284847,
+    "ast_hash": "0d82b734ef045d5fe7aa680b6a12e711",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/ghbmnnjooekpmoecnnnilnnbdlolhkhi/1.110.1_0/_locales/iw/messages.json": {
+    "mtime": 1788247016.0,
+    "seen": 1789114531.1284847,
+    "ast_hash": "26b1533c0852ee4661ec1a27bd87d6bf",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/ghbmnnjooekpmoecnnnilnnbdlolhkhi/1.110.1_0/_locales/ja/messages.json": {
+    "mtime": 1789111138.4506204,
+    "seen": 1789114531.1284847,
+    "ast_hash": "15ec1963fc113d4ad6e7e59ae5de7c0a",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/ghbmnnjooekpmoecnnnilnnbdlolhkhi/1.110.1_0/_locales/ka/messages.json": {
+    "mtime": 1788247016.0,
+    "seen": 1789114531.1284847,
+    "ast_hash": "83f81d30913dc4344573d7a58bd20d85",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/ghbmnnjooekpmoecnnnilnnbdlolhkhi/1.110.1_0/_locales/kk/messages.json": {
+    "mtime": 1789111138.4521177,
+    "seen": 1789114531.1284847,
+    "ast_hash": "3c511fd37a731a96954e42ad158de568",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/ghbmnnjooekpmoecnnnilnnbdlolhkhi/1.110.1_0/_locales/km/messages.json": {
+    "mtime": 1788247016.0,
+    "seen": 1789114531.1284847,
+    "ast_hash": "b3699c20a94776a5c2f90aef6eb0dad9",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/ghbmnnjooekpmoecnnnilnnbdlolhkhi/1.110.1_0/_locales/kn/messages.json": {
+    "mtime": 1789111138.4555285,
+    "seen": 1789114531.1284847,
+    "ast_hash": "38be0974108fc1cc30f13d8230ee5c40",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/ghbmnnjooekpmoecnnnilnnbdlolhkhi/1.110.1_0/_locales/ko/messages.json": {
+    "mtime": 1789111138.4587252,
+    "seen": 1789114531.1284847,
+    "ast_hash": "f3e59eeeb007144ea26306c20e04c292",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/ghbmnnjooekpmoecnnnilnnbdlolhkhi/1.110.1_0/_locales/lo/messages.json": {
+    "mtime": 1788247016.0,
+    "seen": 1789114531.1284847,
+    "ast_hash": "e20d6c27840b406555e2f5091b118fc5",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/ghbmnnjooekpmoecnnnilnnbdlolhkhi/1.110.1_0/_locales/lt/messages.json": {
+    "mtime": 1789111138.4587252,
+    "seen": 1789114531.1284847,
+    "ast_hash": "970544ab4622701ffdf66dc556847652",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/ghbmnnjooekpmoecnnnilnnbdlolhkhi/1.110.1_0/_locales/lv/messages.json": {
+    "mtime": 1789111138.4646523,
+    "seen": 1789114531.1284847,
+    "ast_hash": "a568a58817375590007d1b8abcaebf82",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/ghbmnnjooekpmoecnnnilnnbdlolhkhi/1.110.1_0/_locales/mk/messages.json": {
+    "mtime": 1788247016.0,
+    "seen": 1789114531.1284847,
+    "ast_hash": "5237e2a0ad375fa0f462b95eeb4b8cfc",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/ghbmnnjooekpmoecnnnilnnbdlolhkhi/1.110.1_0/_locales/ml/messages.json": {
+    "mtime": 1789111138.489531,
+    "seen": 1789114531.1284847,
+    "ast_hash": "4717efe4651f94eff6acb6653e868d1a",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/ghbmnnjooekpmoecnnnilnnbdlolhkhi/1.110.1_0/_locales/mn/messages.json": {
+    "mtime": 1788247016.0,
+    "seen": 1789114531.1284847,
+    "ast_hash": "83e7a14b7fc60d4c66bf313c8a2bef0b",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/ghbmnnjooekpmoecnnnilnnbdlolhkhi/1.110.1_0/_locales/mr/messages.json": {
+    "mtime": 1789111138.4922416,
+    "seen": 1789114531.1284847,
+    "ast_hash": "3b98c4ed8874a160c3789fead5553cfa",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/ghbmnnjooekpmoecnnnilnnbdlolhkhi/1.110.1_0/_locales/ms/messages.json": {
+    "mtime": 1789111138.4940903,
+    "seen": 1789114531.1284847,
+    "ast_hash": "7d273824b1e22426c033ff5d8d7162b7",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/ghbmnnjooekpmoecnnnilnnbdlolhkhi/1.110.1_0/_locales/my/messages.json": {
+    "mtime": 1788247016.0,
+    "seen": 1789114531.1284847,
+    "ast_hash": "342335a22f1886b8bc92008597326b24",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/ghbmnnjooekpmoecnnnilnnbdlolhkhi/1.110.1_0/_locales/ne/messages.json": {
+    "mtime": 1789111138.498163,
+    "seen": 1789114531.1284847,
+    "ast_hash": "4291b668707082a28738168f2d84d0a3",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/ghbmnnjooekpmoecnnnilnnbdlolhkhi/1.110.1_0/_locales/nl/messages.json": {
+    "mtime": 1789111138.5044591,
+    "seen": 1789114531.1284847,
+    "ast_hash": "32df72f14be59a9bc9777113a8b21de6",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/ghbmnnjooekpmoecnnnilnnbdlolhkhi/1.110.1_0/_locales/no/messages.json": {
+    "mtime": 1789111138.5044591,
+    "seen": 1789114531.1284847,
+    "ast_hash": "a1744b0f53ccf889955b95108367f9c8",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/ghbmnnjooekpmoecnnnilnnbdlolhkhi/1.110.1_0/_locales/or/messages.json": {
+    "mtime": 1788247016.0,
+    "seen": 1789114531.1284847,
+    "ast_hash": "2c38f78a74ab24d6aeec34fc890fdf11",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/ghbmnnjooekpmoecnnnilnnbdlolhkhi/1.110.1_0/_locales/pa/messages.json": {
+    "mtime": 1788247016.0,
+    "seen": 1789114531.1284847,
+    "ast_hash": "97f769f51b83d35c260d1f8cfd7990af",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/ghbmnnjooekpmoecnnnilnnbdlolhkhi/1.110.1_0/_locales/pl/messages.json": {
+    "mtime": 1789111138.5044591,
+    "seen": 1789114531.1284847,
+    "ast_hash": "b8d55e4e3b9619784aeca61ba15c9c0f",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/ghbmnnjooekpmoecnnnilnnbdlolhkhi/1.110.1_0/_locales/pt_BR/messages.json": {
+    "mtime": 1789111138.5139775,
+    "seen": 1789114531.1284847,
+    "ast_hash": "aaaa87feff00f6bfec8a3f2e7a247713",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/ghbmnnjooekpmoecnnnilnnbdlolhkhi/1.110.1_0/_locales/pt_PT/messages.json": {
+    "mtime": 1789111138.5176091,
+    "seen": 1789114531.1284847,
+    "ast_hash": "0963f2f3641a62a78b02825f6fa3941c",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/ghbmnnjooekpmoecnnnilnnbdlolhkhi/1.110.1_0/_locales/ro/messages.json": {
+    "mtime": 1789111138.5197449,
+    "seen": 1789114531.1284847,
+    "ast_hash": "bed8332ab788098d276b448ec2b33351",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/ghbmnnjooekpmoecnnnilnnbdlolhkhi/1.110.1_0/_locales/ru/messages.json": {
+    "mtime": 1789111138.5222447,
+    "seen": 1789114531.1284847,
+    "ast_hash": "1ca9a6bd3d62b1abec854ff1864e10b9",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/ghbmnnjooekpmoecnnnilnnbdlolhkhi/1.110.1_0/_locales/si/messages.json": {
+    "mtime": 1788247016.0,
+    "seen": 1789114531.1284847,
+    "ast_hash": "b8a4fd612534a171a9a03c1984bb4bdd",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/ghbmnnjooekpmoecnnnilnnbdlolhkhi/1.110.1_0/_locales/sk/messages.json": {
+    "mtime": 1789111138.525133,
+    "seen": 1789114531.1284847,
+    "ast_hash": "8e55817bf7a87052f11fe554a61c52d5",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/ghbmnnjooekpmoecnnnilnnbdlolhkhi/1.110.1_0/_locales/sl/messages.json": {
+    "mtime": 1789111138.5448868,
+    "seen": 1789114531.1284847,
+    "ast_hash": "bfaefeff32813df91c56b71b79ec2af4",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/ghbmnnjooekpmoecnnnilnnbdlolhkhi/1.110.1_0/_locales/sq/messages.json": {
+    "mtime": 1789111138.5472527,
+    "seen": 1789114531.1284847,
+    "ast_hash": "aa1bc08cf49cbc6a8cb8e6a04c4f1a4a",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/ghbmnnjooekpmoecnnnilnnbdlolhkhi/1.110.1_0/_locales/sr/messages.json": {
+    "mtime": 1789111138.5770588,
+    "seen": 1789114531.1284847,
+    "ast_hash": "7f5f8933d2d078618496c67526a2b066",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/ghbmnnjooekpmoecnnnilnnbdlolhkhi/1.110.1_0/_locales/sv/messages.json": {
+    "mtime": 1789111138.580627,
+    "seen": 1789114531.1284847,
+    "ast_hash": "90d8fb448ce9c0b9ba3d07fb8de6d7ee",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/ghbmnnjooekpmoecnnnilnnbdlolhkhi/1.110.1_0/_locales/sw/messages.json": {
+    "mtime": 1789111138.5817802,
+    "seen": 1789114531.1284847,
+    "ast_hash": "d0579209686889e079d87c23817eddd5",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/ghbmnnjooekpmoecnnnilnnbdlolhkhi/1.110.1_0/_locales/ta/messages.json": {
+    "mtime": 1789111138.6086183,
+    "seen": 1789114531.1284847,
+    "ast_hash": "dcc0d1725aeaeaaf1690ef8053529601",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/ghbmnnjooekpmoecnnnilnnbdlolhkhi/1.110.1_0/_locales/te/messages.json": {
+    "mtime": 1789111138.6121044,
+    "seen": 1789114531.1284847,
+    "ast_hash": "385e65ef723f1c4018eee6e4e56bc03f",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/ghbmnnjooekpmoecnnnilnnbdlolhkhi/1.110.1_0/_locales/th/messages.json": {
+    "mtime": 1789111138.615235,
+    "seen": 1789114531.1284847,
+    "ast_hash": "64077e3d186e585a8bea86ff415aa19d",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/ghbmnnjooekpmoecnnnilnnbdlolhkhi/1.110.1_0/_locales/tr/messages.json": {
+    "mtime": 1789111138.615235,
+    "seen": 1789114531.1284847,
+    "ast_hash": "76b59aaacc7b469792694cf3855d3f4c",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/ghbmnnjooekpmoecnnnilnnbdlolhkhi/1.110.1_0/_locales/uk/messages.json": {
+    "mtime": 1789111138.621905,
+    "seen": 1789114531.1284847,
+    "ast_hash": "970963c25c2cef16bb6f60952e103105",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/ghbmnnjooekpmoecnnnilnnbdlolhkhi/1.110.1_0/_locales/ur/messages.json": {
+    "mtime": 1789111138.6245959,
+    "seen": 1789114531.1284847,
+    "ast_hash": "8b4df6a9281333341c939c244ddb7648",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/ghbmnnjooekpmoecnnnilnnbdlolhkhi/1.110.1_0/_locales/uz/messages.json": {
+    "mtime": 1789111138.6284094,
+    "seen": 1789114531.1284847,
+    "ast_hash": "043e661611bed481ea3d1734a792c5a8",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/ghbmnnjooekpmoecnnnilnnbdlolhkhi/1.110.1_0/_locales/vi/messages.json": {
+    "mtime": 1789111138.6318915,
+    "seen": 1789114531.1284847,
+    "ast_hash": "773a3b9e708d052d6cbaa6d55c8a5438",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/ghbmnnjooekpmoecnnnilnnbdlolhkhi/1.110.1_0/_locales/zh_CN/messages.json": {
+    "mtime": 1789111138.6318915,
+    "seen": 1789114531.1284847,
+    "ast_hash": "de9899623560d8a6f389cb0726abfa7c",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/ghbmnnjooekpmoecnnnilnnbdlolhkhi/1.110.1_0/_locales/zh_HK/messages.json": {
+    "mtime": 1788247016.0,
+    "seen": 1789114531.1284847,
+    "ast_hash": "524e1b2a370d0e71342d05dde3d3e774",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/ghbmnnjooekpmoecnnnilnnbdlolhkhi/1.110.1_0/_locales/zh_TW/messages.json": {
+    "mtime": 1789111138.6318915,
+    "seen": 1789114531.1284847,
+    "ast_hash": "0e60627acfd18f44d4df469d8dce6d30",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/ghbmnnjooekpmoecnnnilnnbdlolhkhi/1.110.1_0/_locales/zu/messages.json": {
+    "mtime": 1788247016.0,
+    "seen": 1789114531.1284847,
+    "ast_hash": "71f916a64f98b6d1b5d1f62d297fdec1",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/ghbmnnjooekpmoecnnnilnnbdlolhkhi/1.110.1_0/_metadata/verified_contents.json": {
+    "mtime": 1789111138.201993,
+    "seen": 1789114531.1284847,
+    "ast_hash": "cb34dbaf9edb253e8bf5b10cb805c8ff",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/ghbmnnjooekpmoecnnnilnnbdlolhkhi/1.110.1_0/dasherSettingSchema.json": {
+    "mtime": 1788247016.0,
+    "seen": 1789114531.1284847,
+    "ast_hash": "4ec1df2da46182103d2ffc3b92d20ca5",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/ghbmnnjooekpmoecnnnilnnbdlolhkhi/1.110.1_0/manifest.json": {
+    "mtime": 1789111138.3051362,
+    "seen": 1789114531.1284847,
+    "ast_hash": "7c261db4c97929e38831ac8ea05fb1a4",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/ghbmnnjooekpmoecnnnilnnbdlolhkhi/1.110.1_0/offscreendocument_main.js": {
+    "mtime": 1788247016.0,
+    "seen": 1789114531.1284847,
+    "ast_hash": "441919691672ce883ebde3ceaa146908",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/ghbmnnjooekpmoecnnnilnnbdlolhkhi/1.110.1_0/page_embed_script.js": {
+    "mtime": 1788247016.0,
+    "seen": 1789114531.1284847,
+    "ast_hash": "0948bf3c4ee3874d911e7cf73684b6e0",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/ghbmnnjooekpmoecnnnilnnbdlolhkhi/1.110.1_0/service_worker_bin_prod.js": {
+    "mtime": 1788247016.0,
+    "seen": 1789114531.1284847,
+    "ast_hash": "9d82da2d26e815161b54d9e21e5448c2",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/jmjflgjpcpepeafmmgdpfkogkghcpiha/1.2.1_0/_metadata/computed_hashes.json": {
+    "mtime": 1789111137.7706852,
+    "seen": 1789114531.1284847,
+    "ast_hash": "5d1d9020ccefd76ca661902e0c229087",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/jmjflgjpcpepeafmmgdpfkogkghcpiha/1.2.1_0/_metadata/verified_contents.json": {
+    "mtime": 1706045306.0,
+    "seen": 1789114531.1284847,
+    "ast_hash": "738e757b92939b24cdbbd0efc2601315",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/jmjflgjpcpepeafmmgdpfkogkghcpiha/1.2.1_0/content.js": {
+    "mtime": 1705943698.0,
+    "seen": 1789114531.1284847,
+    "ast_hash": "3d20584f7f6c8eac79e17cca4207fb79",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/jmjflgjpcpepeafmmgdpfkogkghcpiha/1.2.1_0/content_new.js": {
+    "mtime": 1705943342.0,
+    "seen": 1789114531.1284847,
+    "ast_hash": "3de1e7d989c232fc1b58f4e32de15d64",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/jmjflgjpcpepeafmmgdpfkogkghcpiha/1.2.1_0/manifest.json": {
+    "mtime": 1789111137.6152196,
+    "seen": 1789114531.1284847,
+    "ast_hash": "e805e9e69fd6ecdca65136957b1fb3be",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/arbitration_service_config.json": {
+    "mtime": 1789111123.8767102,
+    "seen": 1789114531.1284847,
+    "ast_hash": "6f261a3b5c5b6d6254697284135a15a8",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Edge Entity Extraction/2026.8.20.1/domains_config_gz/2.0.0-DeepEEEnUsProductByRegexOnly/metadata.json": {
+    "mtime": 1787212294.0,
+    "seen": 1789114531.1284847,
+    "ast_hash": "d8b5eebd93aa9c9a3ce0d328162cfc8e",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Edge Entity Extraction/2026.8.20.1/domains_config_gz/2.0.0-DeepEEEnUs/metadata.json": {
+    "mtime": 1787212294.0,
+    "seen": 1789114531.1284847,
+    "ast_hash": "434210646854056abdf236558446417f",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Edge Entity Extraction/2026.8.20.1/domains_config_gz/2.0.0/metadata.json": {
+    "mtime": 1787212294.0,
+    "seen": 1789114531.1284847,
+    "ast_hash": "5f0a57f6e0d8ed4775f2e157c3c6e8d8",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Edge Entity Extraction/2026.8.20.1/domains_config_gz/3.0.0-DeepEEEnUsProductByRegexOnly/metadata.json": {
+    "mtime": 1787212294.0,
+    "seen": 1789114531.1284847,
+    "ast_hash": "c92759a5e301c9802d6ef88b347244ac",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Edge Entity Extraction/2026.8.20.1/domains_config_gz/3.0.0-DeepEEEnUsRegexOnly/metadata.json": {
+    "mtime": 1787212294.0,
+    "seen": 1789114531.1284847,
+    "ast_hash": "ea7f315a6660dd80fed4290fb7ffb906",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Edge Entity Extraction/2026.8.20.1/domains_config_gz/3.0.0-DeepEEEnUs/metadata.json": {
+    "mtime": 1787212294.0,
+    "seen": 1789114531.1284847,
+    "ast_hash": "446b836d3c4bb75d15b9cf777ff6c5bd",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Edge Entity Extraction/2026.8.20.1/domains_config_gz/3.0.0-HeuristicClassifierOptimization/metadata.json": {
+    "mtime": 1787212294.0,
+    "seen": 1789114531.1284847,
+    "ast_hash": "113376a9b4c90a30b2b38ff806c15048",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Edge Entity Extraction/2026.8.20.1/domains_config_gz/3.0.0/metadata.json": {
+    "mtime": 1787212294.0,
+    "seen": 1789114531.1284847,
+    "ast_hash": "35676165a9aab8ddf5901e02a014a8c3",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Edge Entity Extraction/2026.8.20.1/manifest.json": {
+    "mtime": 1787212598.0,
+    "seen": 1789114531.1284847,
+    "ast_hash": "5de4cd67554db24f71eba94b64692e92",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Edge Entity Extraction/2026.8.20.1/onnx.product.desktop.en/3.2.3/metadata.json": {
+    "mtime": 1787212348.0,
+    "seen": 1789114531.1284847,
+    "ast_hash": "8076de14b123f0a296248abde70c6d71",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/EdgeArbitration/2026.5.28.1/arbitration_priority_list/38.0.1/metadata.json": {
+    "mtime": 1780004324.0,
+    "seen": 1789114531.1284847,
+    "ast_hash": "48bc0cd7dece5068085033faeee785e7",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/EdgeArbitration/2026.5.28.1/arbitration_priority_list/39.0.3/metadata.json": {
+    "mtime": 1780004324.0,
+    "seen": 1789114531.1284847,
+    "ast_hash": "f3483a11fb9a3c52a0830b71ea26b5fe",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/EdgeArbitration/2026.5.28.1/arbitration_priority_list/40.0.2/metadata.json": {
+    "mtime": 1780004324.0,
+    "seen": 1789114531.1284847,
+    "ast_hash": "c382debecc9ae177ef14d9928bd9cd3f",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/EdgeArbitration/2026.5.28.1/arbitration_priority_list/41.0.0/metadata.json": {
+    "mtime": 1780004324.0,
+    "seen": 1789114531.1284847,
+    "ast_hash": "bda2c3f3ff1e9ecc8cbf72fc1f646d95",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/EdgeArbitration/2026.5.28.1/manifest.json": {
+    "mtime": 1780004326.0,
+    "seen": 1789114531.1284847,
+    "ast_hash": "c959000cb980239df2db83645b387ed9",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/EdgeLanguageDetectionModel/2026.1.30.1/manifest.json": {
+    "mtime": 1769811368.0,
+    "seen": 1789114531.1284847,
+    "ast_hash": "aa42bfced06f0748f8779cbfdfb973e0",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/component_crx_cache/metadata.json": {
+    "mtime": 1789111153.435877,
+    "seen": 1789114531.1284847,
+    "ast_hash": "148067f1c0a205dafb862edd40904302",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/extensions_crx_cache/metadata.json": {
+    "mtime": 1789111134.2158213,
+    "seen": 1789114531.1284847,
+    "ast_hash": "2aa9e263ee3796d9ce358460a2451b4c",
+    "semantic_hash": ""
+  },
+  "packages/engine/test/agent-loop.test.ts": {
+    "mtime": 1789113658.3370848,
+    "seen": 1789114531.1409397,
+    "ast_hash": "3de6eae0b8fd429a9e6565e4cbe8d33a",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/html/about.html": {
+    "mtime": 1787730756.0,
+    "seen": 1789114531.1491914,
+    "ast_hash": "a1576a9ee6d193acd663f796e51d27c4",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/html/activate_banner_mb.html": {
+    "mtime": 1787730756.0,
+    "seen": 1789114531.1491914,
+    "ast_hash": "6c5dd834538b8a3172bdcc5d5504864f",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/html/balloon_message/advanced_protection_signal.html": {
+    "mtime": 1787730754.0,
+    "seen": 1789114531.1491914,
+    "ast_hash": "e831d0bb38a7c4b2268aa31fb8a31075",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/html/balloon_message/advanced_protection_signal_toast.html": {
+    "mtime": 1787730754.0,
+    "seen": 1789114531.1491914,
+    "ast_hash": "8e362fa2a0a81164792d2316c3ab931c",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/html/balloon_message/download_scan_popup.html": {
+    "mtime": 1787730754.0,
+    "seen": 1789114531.1491914,
+    "ast_hash": "571c7ff2f447ff481a533d7b7da844f8",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/html/balloon_message/dws.html": {
+    "mtime": 1787730754.0,
+    "seen": 1789114531.1491914,
+    "ast_hash": "d04478fa6b77f6a24a4fd53e204f95d7",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/html/balloon_message/esd_enrolled_detection_toast.html": {
+    "mtime": 1787730754.0,
+    "seen": 1789114531.1491914,
+    "ast_hash": "ac93c9cc8628343a96c600c8237c521c",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/html/balloon_message/esd_enrolled_intro_toast.html": {
+    "mtime": 1787730754.0,
+    "seen": 1789114531.1491914,
+    "ast_hash": "30e26c653aa4029024d74bd06bb9eb7c",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/html/balloon_message/esd_toast.html": {
+    "mtime": 1787730754.0,
+    "seen": 1789114531.1491914,
+    "ast_hash": "91e2ea837c1a1220a5bceed3432e139b",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/html/balloon_message/no_native_toast.html": {
+    "mtime": 1787730754.0,
+    "seen": 1789114531.1491914,
+    "ast_hash": "ab55dbc9bceab6b89e8f5c4012fd6ea8",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/html/dfd_landing_page.html": {
+    "mtime": 1787730756.0,
+    "seen": 1789114531.1491914,
+    "ast_hash": "3c87cf8bdf167079b96f477e3f7e17f9",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/html/foreground_sidebar_main.html": {
+    "mtime": 1787730756.0,
+    "seen": 1789114531.1491914,
+    "ast_hash": "af87131041e2813cb52e93d37380736b",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/html/how_it_works.html": {
+    "mtime": 1787730756.0,
+    "seen": 1789114531.1491914,
+    "ast_hash": "dbe51d6fd8696a3679abf4ec093386b3",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/html/iframe_block_page.html": {
+    "mtime": 1787730756.0,
+    "seen": 1789114531.1491914,
+    "ast_hash": "29bb61f89b03925a97b8743e7b37bba3",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/html/nps_survey.html": {
+    "mtime": 1787730756.0,
+    "seen": 1789114531.1491914,
+    "ast_hash": "27d26dbbee1aa30b95208b600e4bce84",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/html/page_banner_mb.html": {
+    "mtime": 1787730756.0,
+    "seen": 1789114531.1491914,
+    "ast_hash": "e0a9e190c38718c3f02348e834a0ddbf",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/html/preference.html": {
+    "mtime": 1787730756.0,
+    "seen": 1789114531.1491914,
+    "ast_hash": "10d7f50597629d85891e62e1491bc576",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/html/settings.html": {
+    "mtime": 1787730756.0,
+    "seen": 1789114531.1491914,
+    "ast_hash": "42cacdc697cfef500cc800e75e91a463",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/html/sidebar/sidebar_main/sidebar_esd.html": {
+    "mtime": 1787730754.0,
+    "seen": 1789114531.1491914,
+    "ast_hash": "095c20080afb401214d578b37a56f61e",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/html/sidebar/sidebar_main/sidebar_home.html": {
+    "mtime": 1787730754.0,
+    "seen": 1789114531.1491914,
+    "ast_hash": "45c2f2700ae2f00600df35fdda04e0b8",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/html/sidebar/sidebar_main/sidebar_main.html": {
+    "mtime": 1787730754.0,
+    "seen": 1789114531.1491914,
+    "ast_hash": "1386c3bf5217bc1402189b1c0d4950e1",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/html/sidebar/sidebar_main/sidebar_mb.html": {
+    "mtime": 1787730754.0,
+    "seen": 1789114531.1491914,
+    "ast_hash": "6b42acd43b9ee800389742563df5b6f6",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/html/sidebar/sidebar_main/sidebar_mb_faq.html": {
+    "mtime": 1787730754.0,
+    "seen": 1789114531.1491914,
+    "ast_hash": "2ba0afced290f475aa4601d563e421e2",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/html/sidebar/sidebar_rat_detection.html": {
+    "mtime": 1787730754.0,
+    "seen": 1789114531.1491914,
+    "ast_hash": "8a4e3a2e3cf1f52281f57da40f69470e",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/html/site_status_block_page.html": {
+    "mtime": 1787730756.0,
+    "seen": 1789114531.1491914,
+    "ast_hash": "26dc35547929e83d77da00058f5caafb",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/html/site_status_site_report.html": {
+    "mtime": 1787730756.0,
+    "seen": 1789114531.1491914,
+    "ast_hash": "669766018a9e81adc6423d7d8ff6d476",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/html/site_status_typosquatting.html": {
+    "mtime": 1787730756.0,
+    "seen": 1789114531.1491914,
+    "ast_hash": "ebab4243a865e2eca6537760a4600b75",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/html/statistics.html": {
+    "mtime": 1787730756.0,
+    "seen": 1789114531.1491914,
+    "ast_hash": "1468016b4d291ee52b3e3f24d39fbb2b",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/html/topbar/topbar_iframe_block.html": {
+    "mtime": 1787730754.0,
+    "seen": 1789114531.1491914,
+    "ast_hash": "72c516004243eb4b9383ad90838cc1a8",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/html/whitelist.html": {
+    "mtime": 1787730756.0,
+    "seen": 1789114531.1491914,
+    "ast_hash": "ad78a04aa70a36fb05fe31c5ebff6911",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/txt/typosquat.txt": {
+    "mtime": 1787730754.0,
+    "seen": 1789114531.1491914,
+    "ast_hash": "b1a609770ac4c06761412133b118ccc1",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/ghbmnnjooekpmoecnnnilnnbdlolhkhi/1.110.1_0/offscreendocument.html": {
+    "mtime": 1788247016.0,
+    "seen": 1789114531.1491914,
+    "ast_hash": "b747b5922a0bc74bbf0a9bc59df7685f",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/images/action_panel/ap-overlay-logo.svg": {
+    "mtime": 1787730754.0,
+    "seen": 1789114531.157587,
+    "ast_hash": "444999a8e3a0f392e6f1cb935d89dd8d",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/images/action_panel/ap_jumbo_rat.svg": {
+    "mtime": 1787730754.0,
+    "seen": 1789114531.157587,
+    "ast_hash": "f5498b109de5252d077f518db0e68d11",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/images/action_panel/info-circle-icon.svg": {
+    "mtime": 1787730754.0,
+    "seen": 1789114531.157587,
+    "ast_hash": "16991d6d8d07165a6bf5921d48a33c4c",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/images/action_panel/x-icon.svg": {
+    "mtime": 1787730754.0,
+    "seen": 1789114531.157587,
+    "ast_hash": "7301d2e8ceb505be25e2d20ce3c92466",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/images/advanced_protection_signals/checkmark_aps_signal.svg": {
+    "mtime": 1787730754.0,
+    "seen": 1789114531.157587,
+    "ast_hash": "a23c3d84fce6634d178b2133f8e74aa8",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/images/advanced_protection_signals/checkmark_bullet.svg": {
+    "mtime": 1787730754.0,
+    "seen": 1789114531.157587,
+    "ast_hash": "474522e4e9d5e6234dd620fcf9d0fe54",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/images/advanced_protection_signals/close-outline.svg": {
+    "mtime": 1787730754.0,
+    "seen": 1789114531.157587,
+    "ast_hash": "1cb98cb5d4f511bdaefa90948f267841",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/images/advanced_protection_signals/mcafee-logo.svg": {
+    "mtime": 1787730754.0,
+    "seen": 1789114531.157587,
+    "ast_hash": "d140f7d6a0eafe2262be880ae0ce776e",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/images/advanced_protection_signals/question-mark.svg": {
+    "mtime": 1787730754.0,
+    "seen": 1789114531.157587,
+    "ast_hash": "c32451a00fadef2efa6686e01020243f",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/images/advanced_protection_signals/scan_for_you.svg": {
+    "mtime": 1787730754.0,
+    "seen": 1789114531.157587,
+    "ast_hash": "e56db8634f853744741c5acf4376495c",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/images/balloon/hackersafe_icon.png": {
+    "mtime": 1787730754.0,
+    "seen": 1789114531.157587,
+    "ast_hash": "49bb82aa46e9383807dbf1fcb4c5038e",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/images/balloon/logo.png": {
+    "mtime": 1787730754.0,
+    "seen": 1789114531.157587,
+    "ast_hash": "b90992ca471a92779e6bfb4c3f19f354",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/images/banner/close.png": {
+    "mtime": 1787730754.0,
+    "seen": 1789114531.157587,
+    "ast_hash": "c2b58e3a8a5af8b740a61e4c054a9e26",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/images/banner/close_icon_black.svg": {
+    "mtime": 1787730754.0,
+    "seen": 1789114531.157587,
+    "ast_hash": "d94fd7f63dada80edb405ea3eb056533",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/images/banner/close_icon_white.svg": {
+    "mtime": 1787730754.0,
+    "seen": 1789114531.157587,
+    "ast_hash": "50d1122c2820dd23bca8236a7dc961ed",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/images/banner/mb_banner_close.svg": {
+    "mtime": 1787730754.0,
+    "seen": 1789114531.157587,
+    "ast_hash": "69223396e3bfd7ab367a2c9c1cf569de",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/images/browser_action/disabled_16.png": {
+    "mtime": 1789111139.719142,
+    "seen": 1789114531.157587,
+    "ast_hash": "93cb0c6a7bc16c4608961cc1732fedd0",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/images/browser_action/disabled_20.png": {
+    "mtime": 1787730754.0,
+    "seen": 1789114531.157587,
+    "ast_hash": "c4c8fa194823f8a6bdb4ad41b944110f",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/images/browser_action/disabled_32.png": {
+    "mtime": 1789111139.719142,
+    "seen": 1789114531.157587,
+    "ast_hash": "23b3cc9a35a1512e89d7187c8b1205a8",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/images/browser_action/disabled_40.png": {
+    "mtime": 1787730754.0,
+    "seen": 1789114531.157587,
+    "ast_hash": "b7c6e336b833c4ccbf5626ba167c9128",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/images/browser_action/green_16.png": {
+    "mtime": 1787730754.0,
+    "seen": 1789114531.157587,
+    "ast_hash": "916575e87ca461fde65edc2dcccb0134",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/images/browser_action/green_20.png": {
+    "mtime": 1787730754.0,
+    "seen": 1789114531.157587,
+    "ast_hash": "d498609be39540e6b441da31c3de20af",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/images/browser_action/green_32.png": {
+    "mtime": 1787730754.0,
+    "seen": 1789114531.157587,
+    "ast_hash": "a646de09c67221f0b5635b208852fa43",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/images/browser_action/green_40.png": {
+    "mtime": 1787730754.0,
+    "seen": 1789114531.157587,
+    "ast_hash": "844950e5c560a509d18d08fde84cae1e",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/images/browser_action/grey_16.png": {
+    "mtime": 1787730754.0,
+    "seen": 1789114531.157587,
+    "ast_hash": "9296be76cb5d33fd677e956eb01bd3d9",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/images/browser_action/grey_20.png": {
+    "mtime": 1787730754.0,
+    "seen": 1789114531.157587,
+    "ast_hash": "2443e421470af435608c99af44852157",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/images/browser_action/grey_32.png": {
+    "mtime": 1787730754.0,
+    "seen": 1789114531.157587,
+    "ast_hash": "95436926367c0138f001ddc4361bfedf",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/images/browser_action/grey_40.png": {
+    "mtime": 1787730754.0,
+    "seen": 1789114531.157587,
+    "ast_hash": "bae59237da0bbbdabcce1497df6ea17e",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/images/browser_action/hackersafe_16.png": {
+    "mtime": 1787730754.0,
+    "seen": 1789114531.157587,
+    "ast_hash": "916575e87ca461fde65edc2dcccb0134",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/images/browser_action/hackersafe_20.png": {
+    "mtime": 1787730754.0,
+    "seen": 1789114531.157587,
+    "ast_hash": "d498609be39540e6b441da31c3de20af",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/images/browser_action/hackersafe_32.png": {
+    "mtime": 1787730754.0,
+    "seen": 1789114531.157587,
+    "ast_hash": "a646de09c67221f0b5635b208852fa43",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/images/browser_action/hackersafe_40.png": {
+    "mtime": 1787730754.0,
+    "seen": 1789114531.157587,
+    "ast_hash": "844950e5c560a509d18d08fde84cae1e",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/images/browser_action/red_16.png": {
+    "mtime": 1787730754.0,
+    "seen": 1789114531.157587,
+    "ast_hash": "f0df6f75d6f90b2de500837c6627db34",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/images/browser_action/red_20.png": {
+    "mtime": 1787730754.0,
+    "seen": 1789114531.157587,
+    "ast_hash": "279a0be45f69e5c53f7424c704c825f1",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/images/browser_action/red_32.png": {
+    "mtime": 1787730754.0,
+    "seen": 1789114531.157587,
+    "ast_hash": "3fa1923cb874a4138b1b07d83ff989be",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/images/browser_action/red_40.png": {
+    "mtime": 1787730754.0,
+    "seen": 1789114531.157587,
+    "ast_hash": "ac9e077afb0a4c3a13d92992318904dd",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/images/browser_action/yellow_16.png": {
+    "mtime": 1787730754.0,
+    "seen": 1789114531.157587,
+    "ast_hash": "882f79f6dad6ce52dd41f3996e0b2c8c",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/images/browser_action/yellow_20.png": {
+    "mtime": 1787730754.0,
+    "seen": 1789114531.157587,
+    "ast_hash": "626fc8d00fb42160da3429671e641732",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/images/browser_action/yellow_32.png": {
+    "mtime": 1787730754.0,
+    "seen": 1789114531.157587,
+    "ast_hash": "ccd1384dacb82fdd12fe34ad50479933",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/images/browser_action/yellow_40.png": {
+    "mtime": 1787730754.0,
+    "seen": 1789114531.157587,
+    "ast_hash": "a0cdbcae4006b221911f15fabdf28896",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/images/dfd_landing/dfd_landing_desc_check.svg": {
+    "mtime": 1787730754.0,
+    "seen": 1789114531.157587,
+    "ast_hash": "d41bedfa8d19985ec716081094ac2a51",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/images/dfd_landing/dfd_landing_video_eg.svg": {
+    "mtime": 1787730754.0,
+    "seen": 1789114531.157587,
+    "ast_hash": "307d9b97d688b7cd8d716823cf09a2e6",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/images/download_scan/close-outline.svg": {
+    "mtime": 1787730754.0,
+    "seen": 1789114531.157587,
+    "ast_hash": "854d9f4841f3fd6b71c8f0c216590549",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/images/download_scan/download_scan_icon.svg": {
+    "mtime": 1787730754.0,
+    "seen": 1789114531.157587,
+    "ast_hash": "e152a06f544c2445e476f9245721cadf",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/images/download_scan/mcafee_logo_red.svg": {
+    "mtime": 1787730754.0,
+    "seen": 1789114531.157587,
+    "ast_hash": "23868054d056d5052692b09fe9e4e5e5",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/images/download_scan/mcafee_logo_white.svg": {
+    "mtime": 1787730754.0,
+    "seen": 1789114531.157587,
+    "ast_hash": "36d6ae403a1f15b13946b82904c33687",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/images/download_scan/seperator_line.svg": {
+    "mtime": 1787730754.0,
+    "seen": 1789114531.157587,
+    "ast_hash": "20de99f72eed4e646c823f6683f7efd2",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/images/download_scan/webadvisor.svg": {
+    "mtime": 1787730754.0,
+    "seen": 1789114531.157587,
+    "ast_hash": "aa94fe6f7192aac14be72ac6a98b437a",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/images/dws/confirmation-logo.svg": {
+    "mtime": 1787730754.0,
+    "seen": 1789114531.157587,
+    "ast_hash": "69bf1ef2983de97f65c4aa42e7472f85",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/images/dws/error-fill.svg": {
+    "mtime": 1787730754.0,
+    "seen": 1789114531.157587,
+    "ast_hash": "3cb989496c8ddc97be225c95cc37c439",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/images/dws/external-link-logo.svg": {
+    "mtime": 1787730754.0,
+    "seen": 1789114531.157587,
+    "ast_hash": "52acb8689812d4b46cb56a248eeb9f65",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/images/dws/scan-email-logo.svg": {
+    "mtime": 1787730754.0,
+    "seen": 1789114531.157587,
+    "ast_hash": "ea6e8b4848adfeb2eaaa27de5962fc37",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/images/esd/esd_pc_image.png": {
+    "mtime": 1787730754.0,
+    "seen": 1789114531.157587,
+    "ast_hash": "0d387c34e32ab29ff41bdd51b2c24552",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/images/esd_enrolled/email_skeleton.svg": {
+    "mtime": 1787730754.0,
+    "seen": 1789114531.157587,
+    "ast_hash": "45f60cff6b152d00167c925e0b4f0625",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/images/how_it_works/background-bottom.svg": {
+    "mtime": 1787730754.0,
+    "seen": 1789114531.157587,
+    "ast_hash": "3b1a1232507e6bd4cd280944a71f1471",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/images/how_it_works/background-human.svg": {
+    "mtime": 1787730754.0,
+    "seen": 1789114531.157587,
+    "ast_hash": "92b7e1ac77450e5eedce133729c54eda",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/images/how_it_works/facebook.svg": {
+    "mtime": 1787730754.0,
+    "seen": 1789114531.157587,
+    "ast_hash": "f2b7c996810fd9e7b0698fab23df1943",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/images/how_it_works/phishing.svg": {
+    "mtime": 1787730754.0,
+    "seen": 1789114531.157587,
+    "ast_hash": "d5ac8d0033d0e73693484d210a1927fe",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/images/how_it_works/saferdownloads.svg": {
+    "mtime": 1787730754.0,
+    "seen": 1789114531.157587,
+    "ast_hash": "535cf3e3104ca11b733ecd85c288be4a",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/images/how_it_works/securityalerts.svg": {
+    "mtime": 1787730754.0,
+    "seen": 1789114531.157587,
+    "ast_hash": "3102cea620263b4ec9550765f201361f",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/images/how_it_works/socialmedia.svg": {
+    "mtime": 1787730754.0,
+    "seen": 1789114531.157587,
+    "ast_hash": "ca93a52102d359a45dde07653df642d3",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/images/how_it_works/twitter.svg": {
+    "mtime": 1787730754.0,
+    "seen": 1789114531.157587,
+    "ast_hash": "90870165c0eb49b66ff6b7a5854f2dd5",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/images/how_it_works/urlhijacking.svg": {
+    "mtime": 1787730754.0,
+    "seen": 1789114531.157587,
+    "ast_hash": "bc2d8ea056bdbd741342cb93079e96c3",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/images/how_it_works/youtube.svg": {
+    "mtime": 1787730754.0,
+    "seen": 1789114531.157587,
+    "ast_hash": "da42649358713f7d5fbf23c73791c09b",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/images/iframe/block.png": {
+    "mtime": 1787730754.0,
+    "seen": 1789114531.157587,
+    "ast_hash": "b65dd7f9891f99bb7b860196d8bf676c",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/images/mb_dropdown/ic_chevron_down.svg": {
+    "mtime": 1787730754.0,
+    "seen": 1789114531.157587,
+    "ast_hash": "6dfc625c4dc5d74b20716bae8f2ba74d",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/images/mb_dropdown/ic_close.svg": {
+    "mtime": 1787730754.0,
+    "seen": 1789114531.157587,
+    "ast_hash": "3e13e2105b39165dcf85684398e8ca08",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/images/mb_dropdown/ic_notifications.svg": {
+    "mtime": 1787730754.0,
+    "seen": 1789114531.157587,
+    "ast_hash": "2b6d200b766f5a3ddfe4529a48797df7",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/images/mb_dropdown/ic_snooze_notifications.svg": {
+    "mtime": 1787730754.0,
+    "seen": 1789114531.157587,
+    "ast_hash": "2060d707414c50bd334de5b9e874528d",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/images/no_native_toast/button_icon.svg": {
+    "mtime": 1787730754.0,
+    "seen": 1789114531.157587,
+    "ast_hash": "9e49a7357a189e29a30e2482a671a606",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/images/no_native_toast/caution_warning.svg": {
+    "mtime": 1787730754.0,
+    "seen": 1789114531.157587,
+    "ast_hash": "980faa6013fd3e159dba66979c702f37",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/images/no_native_toast/close_btn.svg": {
+    "mtime": 1787730754.0,
+    "seen": 1789114531.157587,
+    "ast_hash": "0200904d60f2a507f0173669984a706b",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/images/no_native_toast/download_arrow.svg": {
+    "mtime": 1787730754.0,
+    "seen": 1789114531.157587,
+    "ast_hash": "db0774f74bc2c10889e9b8015a69de64",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/images/no_native_toast/download_tip.svg": {
+    "mtime": 1787730754.0,
+    "seen": 1789114531.157587,
+    "ast_hash": "651a6c3f257c1420344d6d7d936c7bb2",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/images/no_native_toast/main_picture.svg": {
+    "mtime": 1787730754.0,
+    "seen": 1789114531.157587,
+    "ast_hash": "781eb86c8539b3cf6e6fe7a1427a592c",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/images/no_native_toast/main_picture_alarm.svg": {
+    "mtime": 1787730754.0,
+    "seen": 1789114531.157587,
+    "ast_hash": "c7024e9be1977029854e2ebc642661c3",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/images/no_native_toast/main_picture_arrow.svg": {
+    "mtime": 1787730754.0,
+    "seen": 1789114531.157587,
+    "ast_hash": "e6ccf43c28aecaf99b2df6f10ad8a67e",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/images/no_native_toast/mcafee_landscape.svg": {
+    "mtime": 1787730754.0,
+    "seen": 1789114531.157587,
+    "ast_hash": "a8ef116cdd22932ff11f54f359e1f21e",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/images/no_native_toast/rating_star.svg": {
+    "mtime": 1787730754.0,
+    "seen": 1789114531.157587,
+    "ast_hash": "0751be5480b8deb6ec8359034166d8d0",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/images/no_native_toast/vertical_line.svg": {
+    "mtime": 1787730754.0,
+    "seen": 1789114531.157587,
+    "ast_hash": "15d808d06f819ebd157fa107569b101f",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/images/nps/email_icon.svg": {
+    "mtime": 1787730754.0,
+    "seen": 1789114531.157587,
+    "ast_hash": "e62c567acc5d8e01e7d3dadb14de7638",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/images/nps/phone_icon.svg": {
+    "mtime": 1787730754.0,
+    "seen": 1789114531.157587,
+    "ast_hash": "09aabd7bd13e686ce8c739c50ce5f24c",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/images/nps/rate_review_img.svg": {
+    "mtime": 1787730754.0,
+    "seen": 1789114531.157587,
+    "ast_hash": "36660213f457fa083bf402f4bd8732ef",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/images/nps/thank_you_img.svg": {
+    "mtime": 1787730754.0,
+    "seen": 1789114531.157587,
+    "ast_hash": "fa8d7673deb91fc6c4553e836e4c071f",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/images/overlay/arrow-up.svg": {
+    "mtime": 1787730754.0,
+    "seen": 1789114531.157587,
+    "ast_hash": "4cf3a1b20964ae2b7150ffb77db9d094",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/images/settings/add-gray.png": {
+    "mtime": 1787730754.0,
+    "seen": 1789114531.157587,
+    "ast_hash": "21b011585cb45e26a3b19909513752ee",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/images/settings/add-white.png": {
+    "mtime": 1787730754.0,
+    "seen": 1789114531.157587,
+    "ast_hash": "7fa9e475ab0f70f1715f97f458399b9f",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/images/settings/checkmark-disabled.svg": {
+    "mtime": 1787730754.0,
+    "seen": 1789114531.157587,
+    "ast_hash": "1d6686bfc594e62391c7d5c2b1b3cdb8",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/images/settings/checkmark.svg": {
+    "mtime": 1787730754.0,
+    "seen": 1789114531.157587,
+    "ast_hash": "8252bfa40d72b6d1ed58fc100eac6e63",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/images/settings/facebook-disabled.svg": {
+    "mtime": 1787730754.0,
+    "seen": 1789114531.157587,
+    "ast_hash": "fe2b7520a61092c32badff400f00d496",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/images/settings/facebook.svg": {
+    "mtime": 1787730754.0,
+    "seen": 1789114531.157587,
+    "ast_hash": "f569bfbf7409b40b64f3ece7dfe2582c",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/images/settings/instagram-disabled.svg": {
+    "mtime": 1787730754.0,
+    "seen": 1789114531.157587,
+    "ast_hash": "494be2e5f9239b8b4a08ed072d9d81f7",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/images/settings/instagram.svg": {
+    "mtime": 1787730754.0,
+    "seen": 1789114531.157587,
+    "ast_hash": "8f4c6e3f3a5a571f7f76de7beb1054ec",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/images/settings/linkedin-disabled.svg": {
+    "mtime": 1787730754.0,
+    "seen": 1789114531.157587,
+    "ast_hash": "e03ba80f2fa98e92241d24d881391ff7",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/images/settings/linkedin.svg": {
+    "mtime": 1787730754.0,
+    "seen": 1789114531.157587,
+    "ast_hash": "3fe661e5de95005a38824476ecc23e85",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/images/settings/reddit-disabled.svg": {
+    "mtime": 1787730754.0,
+    "seen": 1789114531.157587,
+    "ast_hash": "8a54fb9d38e1072b28619e29b430cbcb",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/images/settings/reddit.svg": {
+    "mtime": 1787730754.0,
+    "seen": 1789114531.157587,
+    "ast_hash": "8d9f86a9a69c4e2362376ad038e02b72",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/images/settings/remove-gray.png": {
+    "mtime": 1787730754.0,
+    "seen": 1789114531.157587,
+    "ast_hash": "338a11d0e359e5d66dd4163511a8f4ac",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/images/settings/remove-white.png": {
+    "mtime": 1787730754.0,
+    "seen": 1789114531.157587,
+    "ast_hash": "b14973ab6e5372cba0d017b2555906d1",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/images/settings/x-icon.svg": {
+    "mtime": 1787730754.0,
+    "seen": 1789114531.157587,
+    "ast_hash": "3c501ad9f83b68417c35b0c6287d6b1a",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/images/settings/youtube-disabled.svg": {
+    "mtime": 1787730754.0,
+    "seen": 1789114531.157587,
+    "ast_hash": "1da29c03897d34a49a2859ee7e5144d1",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/images/settings/youtube.svg": {
+    "mtime": 1787730754.0,
+    "seen": 1789114531.157587,
+    "ast_hash": "95ab7ba91f3f8d8e331bc046bb9a89b7",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/images/sidebar/arrow_forward.svg": {
+    "mtime": 1787730754.0,
+    "seen": 1789114531.157587,
+    "ast_hash": "f995441602bbfa894146b13db27a6d7e",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/images/sidebar/esd_mail_icon.svg": {
+    "mtime": 1787730754.0,
+    "seen": 1789114531.157587,
+    "ast_hash": "2e354f8d2e379b2244283df6b8b5b0fa",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/images/sidebar/graph_red_icon.svg": {
+    "mtime": 1787730754.0,
+    "seen": 1789114531.157587,
+    "ast_hash": "8fd03463adb60d452df47e352f2ce4c7",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/images/sidebar/home.svg": {
+    "mtime": 1787730754.0,
+    "seen": 1789114531.157587,
+    "ast_hash": "d0ecdff375c24f74221f68225039b36c",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/images/sidebar/ic_browser_history.svg": {
+    "mtime": 1787730754.0,
+    "seen": 1789114531.157587,
+    "ast_hash": "d293c1d1191875ddc377b994ab1041c7",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/images/sidebar/ic_browser_security.svg": {
+    "mtime": 1787730754.0,
+    "seen": 1789114531.157587,
+    "ast_hash": "4acfdde68ac89ada9f7b57e11f16ffa7",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/images/sidebar/ic_chevron_small_left.svg": {
+    "mtime": 1787730754.0,
+    "seen": 1789114531.157587,
+    "ast_hash": "e8b741dc79b08ad9c15e9ceb0aec6458",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/images/sidebar/ic_chevron_small_right.svg": {
+    "mtime": 1787730754.0,
+    "seen": 1789114531.157587,
+    "ast_hash": "8ff4b4e6f525df25cb1c31761b88c3f5",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/images/sidebar/ic_dfd_feedback_check_mark.svg": {
+    "mtime": 1787730754.0,
+    "seen": 1789114531.157587,
+    "ast_hash": "d02841386c05f7eb3dc683e1fadb0a6c",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/images/sidebar/ic_dfd_feedback_thumb_down.svg": {
+    "mtime": 1787730754.0,
+    "seen": 1789114531.157587,
+    "ast_hash": "1cd23920913188c5f781eed3446da22a",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/images/sidebar/ic_dfd_feedback_thumb_up.svg": {
+    "mtime": 1787730754.0,
+    "seen": 1789114531.157587,
+    "ast_hash": "66b465b828c7919d6f8397a9146a8dfd",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/images/sidebar/ic_email_safe.svg": {
+    "mtime": 1787730754.0,
+    "seen": 1789114531.157587,
+    "ast_hash": "41a9145b6947699025944ca2f613fa9d",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/images/sidebar/ic_email_scam.svg": {
+    "mtime": 1787730754.0,
+    "seen": 1789114531.157587,
+    "ast_hash": "32f2e6f4abacde0941a074aee3483173",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/images/sidebar/ic_email_scam_loading.svg": {
+    "mtime": 1787730754.0,
+    "seen": 1789114531.157587,
+    "ast_hash": "317b4b7654d5f7813208ec4c70acf0dd",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/images/sidebar/ic_ereader.svg": {
+    "mtime": 1787730754.0,
+    "seen": 1789114531.157587,
+    "ast_hash": "c3a8d05c5f318caa9ae7669d77a39a4b",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/images/sidebar/ic_full_protection_email.svg": {
+    "mtime": 1787730754.0,
+    "seen": 1789114531.157587,
+    "ast_hash": "035078b5b31c264901535ef2a1843a94",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/images/sidebar/ic_get_protection_email.svg": {
+    "mtime": 1787730754.0,
+    "seen": 1789114531.157587,
+    "ast_hash": "15297e1473afe9bd92c22e631e441ab9",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/images/sidebar/ic_info.svg": {
+    "mtime": 1787730754.0,
+    "seen": 1789114531.157587,
+    "ast_hash": "77df97dd24db39a6ad87eab57dfce8c9",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/images/sidebar/ic_redirect.svg": {
+    "mtime": 1787730754.0,
+    "seen": 1789114531.157587,
+    "ast_hash": "9e924d559e9968a8bdaf4c319ac2de09",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/images/sidebar/ic_search.svg": {
+    "mtime": 1787730754.0,
+    "seen": 1789114531.157587,
+    "ast_hash": "712dc1e4820e4b66d1197182ae159f99",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/images/sidebar/ic_settings.svg": {
+    "mtime": 1787730754.0,
+    "seen": 1789114531.157587,
+    "ast_hash": "1dab673817e0fc5c863efb0793d7b1b1",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/images/sidebar/popup-logo.svg": {
+    "mtime": 1787730754.0,
+    "seen": 1789114531.157587,
+    "ast_hash": "650d3a2956d151d8cbb9b84b76f74ac5",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/images/sidebar/sidebar_logo.svg": {
+    "mtime": 1787730754.0,
+    "seen": 1789114531.157587,
+    "ast_hash": "3e58f3f4abc887f82e200934f8f2db4c",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/images/sidebar/social_facebook.svg": {
+    "mtime": 1787730754.0,
+    "seen": 1789114531.157587,
+    "ast_hash": "4624a2e4b9b2ddf885c9680860523c67",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/images/sidebar/social_linkedin.svg": {
+    "mtime": 1787730754.0,
+    "seen": 1789114531.157587,
+    "ast_hash": "244c302f18a26a287c13375c24d84c8e",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/images/sidebar/social_x.svg": {
+    "mtime": 1787730754.0,
+    "seen": 1789114531.157587,
+    "ast_hash": "c5d67f046cde24f6b2653be12f8a0ef4",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/images/site_status/block_page_upsell_img.svg": {
+    "mtime": 1787730754.0,
+    "seen": 1789114531.157587,
+    "ast_hash": "d222d63ac246dbd995e43a9cae370301",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/images/site_status/block_status_logo_red.svg": {
+    "mtime": 1787730754.0,
+    "seen": 1789114531.157587,
+    "ast_hash": "4c7898b8f7878e43abc215c514b6ef7f",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/images/site_status/block_status_logo_yellow.svg": {
+    "mtime": 1787730754.0,
+    "seen": 1789114531.157587,
+    "ast_hash": "0af68d1e3cea1ea07b581cfc5b3aa36d",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/images/site_status/close_icon.svg": {
+    "mtime": 1787730754.0,
+    "seen": 1789114531.157587,
+    "ast_hash": "097943f80730cca1a88700e0d73250b6",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/images/site_status/feedback_no.svg": {
+    "mtime": 1787730754.0,
+    "seen": 1789114531.157587,
+    "ast_hash": "bee9124073c19e8f45a9327e53140ff4",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/images/site_status/feedback_no_selected.svg": {
+    "mtime": 1787730754.0,
+    "seen": 1789114531.157587,
+    "ast_hash": "c2d199e380b3e03ea658f6e8b42c8b72",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/images/site_status/feedback_yes.svg": {
+    "mtime": 1787730754.0,
+    "seen": 1789114531.157587,
+    "ast_hash": "5342193a6f13584414fd4af30746e970",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/images/site_status/feedback_yes_selected.svg": {
+    "mtime": 1787730754.0,
+    "seen": 1789114531.157587,
+    "ast_hash": "a259a4f978815acaeb40ebe47f8831d3",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/images/site_status/logo.svg": {
+    "mtime": 1787730754.0,
+    "seen": 1789114531.157587,
+    "ast_hash": "ed708c571abb2920ea9e8777d072d33d",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/images/site_status/search_icon.svg": {
+    "mtime": 1787730754.0,
+    "seen": 1789114531.157587,
+    "ast_hash": "60b2f7207496a45ff9d0c56d3196477d",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/images/site_status/side_logo_green.svg": {
+    "mtime": 1787730754.0,
+    "seen": 1789114531.157587,
+    "ast_hash": "22f48a228d0fa0aaa8e5d9cd81b76c18",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/images/site_status/side_logo_red.svg": {
+    "mtime": 1787730754.0,
+    "seen": 1789114531.157587,
+    "ast_hash": "f4bdad9faa659b428063f8116ee83c90",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/images/site_status/side_logo_unknown.svg": {
+    "mtime": 1787730754.0,
+    "seen": 1789114531.157587,
+    "ast_hash": "a9302ba6f9987284855cfb7f66341c49",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/images/site_status/side_logo_yellow.svg": {
+    "mtime": 1787730754.0,
+    "seen": 1789114531.157587,
+    "ast_hash": "0b6684dd5f675c13ed21f28a5dce02f7",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/images/site_status/thanks_feedback_icon.svg": {
+    "mtime": 1787730754.0,
+    "seen": 1789114531.157587,
+    "ast_hash": "c9487f8b7312bb558616c9e7d641c1b8",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/images/site_status/warning_green.svg": {
+    "mtime": 1787730754.0,
+    "seen": 1789114531.157587,
+    "ast_hash": "d63bad5dbd7f8283f048a697269d4927",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/images/site_status/warning_red.svg": {
+    "mtime": 1787730754.0,
+    "seen": 1789114531.157587,
+    "ast_hash": "c5fb6e2c21002496cf142f66ac2c5e2b",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/images/site_status/warning_unknown.svg": {
+    "mtime": 1787730754.0,
+    "seen": 1789114531.157587,
+    "ast_hash": "9b1966801500c78203a89885aaa1a528",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/images/site_status/warning_yellow.svg": {
+    "mtime": 1787730754.0,
+    "seen": 1789114531.157587,
+    "ast_hash": "c6c7c219d1f7f74addcec8ce48f193a5",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/images/site_status/wave_green.svg": {
+    "mtime": 1787730754.0,
+    "seen": 1789114531.157587,
+    "ast_hash": "4c5d32afdab60c45a088141dbce107fa",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/images/site_status/wave_red.svg": {
+    "mtime": 1787730754.0,
+    "seen": 1789114531.157587,
+    "ast_hash": "11e63557a03e92aafaf2a9e3ec1a6f10",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/images/site_status/wave_unknown.svg": {
+    "mtime": 1787730754.0,
+    "seen": 1789114531.157587,
+    "ast_hash": "59d0ed068bcdf2d9d046765ba93418ba",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/images/site_status/wave_yellow.svg": {
+    "mtime": 1787730754.0,
+    "seen": 1789114531.157587,
+    "ast_hash": "11d1f40a53bbd6eb84c41caa4f18c989",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/images/socialmedia/facebook.svg": {
+    "mtime": 1787730754.0,
+    "seen": 1789114531.157587,
+    "ast_hash": "c1bbb27a6bd3ba2b8e5f10773a7dd7dd",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/images/socialmedia/instagram.svg": {
+    "mtime": 1787730754.0,
+    "seen": 1789114531.157587,
+    "ast_hash": "ec44cbe99bfef432e2bd146e40a3dbda",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/images/socialmedia/linkedin.svg": {
+    "mtime": 1787730754.0,
+    "seen": 1789114531.157587,
+    "ast_hash": "bef542fe58ca6fa8bd43becc1b16cc2b",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/images/socialmedia/reddit.svg": {
+    "mtime": 1787730754.0,
+    "seen": 1789114531.157587,
+    "ast_hash": "98d957e469ded2a3b91df483d370fdff",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/images/socialmedia/twitter.svg": {
+    "mtime": 1787730754.0,
+    "seen": 1789114531.157587,
+    "ast_hash": "c5d67f046cde24f6b2653be12f8a0ef4",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/images/socialmedia/youtube.svg": {
+    "mtime": 1787730754.0,
+    "seen": 1789114531.157587,
+    "ast_hash": "0d3dd776cc72181875437f30f4084497",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/images/statistics/downloads-blocked-icon.svg": {
+    "mtime": 1787730754.0,
+    "seen": 1789114531.157587,
+    "ast_hash": "160550c817acbf5cabbdd3b20e903e37",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/images/statistics/downloads-scanned-icon.svg": {
+    "mtime": 1787730754.0,
+    "seen": 1789114531.157587,
+    "ast_hash": "6ea0c55b5563cd9feb4cc13c8e5bad8f",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/images/statistics/pages-blocked-icon.svg": {
+    "mtime": 1787730754.0,
+    "seen": 1789114531.157587,
+    "ast_hash": "711a2cf02bec3f69dfe89909861a62e4",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/images/statistics/pages-scanned-icon.svg": {
+    "mtime": 1787730754.0,
+    "seen": 1789114531.157587,
+    "ast_hash": "9f74e34b99cfe1c362f09f5142836939",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/images/wb/double-chevron.svg": {
+    "mtime": 1787730754.0,
+    "seen": 1789114531.157587,
+    "ast_hash": "9cf074d63080bedfc18bb801e1e9c448",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/images/wb/rocket-icon.svg": {
+    "mtime": 1787730754.0,
+    "seen": 1789114531.157587,
+    "ast_hash": "cbba31c72b7f98b8b9d816ebb33d2666",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/images/wb/stop-video-alert-icon.svg": {
+    "mtime": 1787730754.0,
+    "seen": 1789114531.157587,
+    "ast_hash": "eb2bd2a5786c66709bd1179bbc5a018a",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/images/web_advisor/close_icon.svg": {
+    "mtime": 1787730754.0,
+    "seen": 1789114531.157587,
+    "ast_hash": "85ca046b6c289ec9b30af433760e8ec0",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/images/web_advisor/danger_icon.svg": {
+    "mtime": 1787730754.0,
+    "seen": 1789114531.157587,
+    "ast_hash": "d25c35fbd95038c5c82f2372980faf48",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/images/web_advisor/deepfake_icon.svg": {
+    "mtime": 1787730754.0,
+    "seen": 1789114531.157587,
+    "ast_hash": "2f63f5eb194d2b13893b989bec5c4f2e",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/images/web_advisor/info_icon.svg": {
+    "mtime": 1787730754.0,
+    "seen": 1789114531.157587,
+    "ast_hash": "805d40b882a7ca79ad60df3d018b0e6f",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/images/web_advisor/mcafee_brand.svg": {
+    "mtime": 1787730754.0,
+    "seen": 1789114531.157587,
+    "ast_hash": "16405c6c43a4537a23405324de6ec0b3",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/images/web_advisor/mcafee_brand_white.svg": {
+    "mtime": 1787730754.0,
+    "seen": 1789114531.157587,
+    "ast_hash": "5b802e06768f36ffdfd7ebe0f525b801",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/images/web_advisor/mcafee_dfd_logo.svg": {
+    "mtime": 1787730754.0,
+    "seen": 1789114531.157587,
+    "ast_hash": "ad483ba5a88949f80689e79f1c4f75e3",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/images/web_advisor/mcafee_dfd_logo_line.svg": {
+    "mtime": 1787730754.0,
+    "seen": 1789114531.157587,
+    "ast_hash": "321bcc055c41eaf68ab80e7cf4f8e5bd",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/images/web_advisor/mcafee_esd_logo.svg": {
+    "mtime": 1787730754.0,
+    "seen": 1789114531.157587,
+    "ast_hash": "9ca138414cd69521bb7dd7fbcf591182",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/images/web_advisor/mcafee_logo_dark_red.svg": {
+    "mtime": 1787730754.0,
+    "seen": 1789114531.157587,
+    "ast_hash": "971fc6fd8f0f90e1e2439df5d97414dd",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/images/web_advisor/mcafee_slogan_white.svg": {
+    "mtime": 1787730754.0,
+    "seen": 1789114531.157587,
+    "ast_hash": "10f404e036b0309e755d77e4e0348d5d",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/images/web_advisor/mcafee_webadvisor_logo.svg": {
+    "mtime": 1787730754.0,
+    "seen": 1789114531.157587,
+    "ast_hash": "602508266d365ad23c2c9bf5e352054f",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/images/web_advisor/search_icon.svg": {
+    "mtime": 1787730754.0,
+    "seen": 1789114531.157587,
+    "ast_hash": "51a47620b1c48b4c432921d35d02d123",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/images/web_advisor/shield_red.svg": {
+    "mtime": 1787730754.0,
+    "seen": 1789114531.157587,
+    "ast_hash": "4aa3dc1db89ed85676c25e610df5475c",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/images/web_advisor/shield_white.svg": {
+    "mtime": 1787730754.0,
+    "seen": 1789114531.157587,
+    "ast_hash": "82967a0dd290450f68ea43c8b8dbcac0",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/images/web_advisor/white_mcafee_icon.svg": {
+    "mtime": 1787730754.0,
+    "seen": 1789114531.157587,
+    "ast_hash": "b1e6db34c4c80c9c3bbac653cf043e43",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/images/web_advisor/x-icon.svg": {
+    "mtime": 1787730754.0,
+    "seen": 1789114531.157587,
+    "ast_hash": "15c44de5bf34f917db329b931143b02d",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/images/webadvisor.png": {
+    "mtime": 1789111139.7225327,
+    "seen": 1789114531.157587,
+    "ast_hash": "e04849020ad62a03d1f03273456c55a3",
+    "semantic_hash": ""
+  },
+  ".desktop-profile/Default/Extensions/ghbmnnjooekpmoecnnnilnnbdlolhkhi/1.110.1_0/128.png": {
+    "mtime": 1789111138.318318,
+    "seen": 1789114531.157587,
+    "ast_hash": "12c56e4ed490644e317d466b1dbc8805",
+    "semantic_hash": ""
+  }
+}

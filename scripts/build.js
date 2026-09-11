@@ -12,14 +12,17 @@ const portableNodeModules = join(portableToolsDir, "node_modules");
 const portableBin = join(portableNodeModules, ".bin");
 const portableNode = join(portableToolsDir, "nodejs");
 
-const tsupCmd = existsSync(join(portableBin, "tsup.cmd"))
-  ? join(portableBin, "tsup.cmd")
-  : "tsup";
+const localBin = join(rootDir, "node_modules", ".bin");
+const tsupCmd = existsSync(join(localBin, "tsup.cmd"))
+  ? join(localBin, "tsup.cmd")
+  : existsSync(join(portableBin, "tsup.cmd"))
+    ? join(portableBin, "tsup.cmd")
+    : "tsup";
 
 const buildEnv = {
   ...process.env,
-  PATH: `${portableNode};${portableBin};${process.env.PATH || ""}`,
-  NODE_PATH: `${portableNodeModules};${join(rootDir, "node_modules")}`,
+  PATH: `${localBin};${portableNode};${portableBin};${process.env.PATH || ""}`,
+  NODE_PATH: `${join(rootDir, "node_modules")};${portableNodeModules}`,
 };
 
 for (const pkg of packages) {

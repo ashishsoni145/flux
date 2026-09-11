@@ -46,7 +46,18 @@ describe("FluxIDE Desktop Platform Foundation", () => {
     it("should initialize a terminal session with an id", () => {
       const term = new TerminalSession("term_test", workspaceRoot);
       expect(term.id).toBe("term_test");
-      term.kill();
+    });
+  });
+
+  describe("4. Embedded Desktop IDE HTML Provider", () => {
+    it("should load and return the complete desktop IDE HTML UI", async () => {
+      const { getDesktopIdeHtml } = await import("../src/web/desktop.js");
+      const html = getDesktopIdeHtml(48100);
+      expect(html).toBeDefined();
+      expect(html.length).toBeGreaterThan(1000);
+      expect(html).toContain("FluxIDE");
+      expect(html).toContain("monaco-root");
+      expect(html).toContain("workbench");
     });
   });
 });

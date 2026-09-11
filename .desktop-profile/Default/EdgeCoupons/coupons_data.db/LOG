@@ -1,0 +1,6 @@
+2026/09/11-15:00:03.811 a1ec Reusing MANIFEST D:\New folder\flux\.desktop-profile\Default\EdgeCoupons/coupons_data.db/MANIFEST-000001
+2026/09/11-15:00:03.816 a1ec Recovering log #7
+2026/09/11-15:00:03.818 a1ec Reusing old log D:\New folder\flux\.desktop-profile\Default\EdgeCoupons/coupons_data.db/000007.log 
+2026/09/11-15:00:05.833 c04c Level-0 table #11: started
+2026/09/11-15:00:05.841 c04c Level-0 table #11: 683376 bytes OK
+2026/09/11-15:00:05.844 c04c Delete type=0 #7

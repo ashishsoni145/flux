@@ -6,15 +6,27 @@
  */
 
 import { readFileSync, existsSync } from "node:fs";
-import { resolve } from "node:path";
+import { resolve, dirname } from "node:path";
+import { fileURLToPath } from "node:url";
 
 export function getDesktopIdeHtml(port = 48100): string {
-  const candidate = resolve(process.cwd(), "packages", "desktop", "src", "renderer", "index.html");
-  if (existsSync(candidate)) {
-    try {
-      return readFileSync(candidate, "utf8");
-    } catch {
-      // Fall back to embedded generator
+  const currentDir = typeof import.meta?.url === "string" ? dirname(fileURLToPath(import.meta.url)) : process.cwd();
+  const candidates = [
+    resolve(process.cwd(), "packages", "desktop", "src", "renderer", "index.html"),
+    resolve(process.cwd(), "desktop", "src", "renderer", "index.html"),
+    resolve(process.cwd(), "src", "renderer", "index.html"),
+    resolve(currentDir, "..", "..", "..", "desktop", "src", "renderer", "index.html"),
+    resolve(currentDir, "..", "..", "packages", "desktop", "src", "renderer", "index.html"),
+    resolve(currentDir, "..", "..", "desktop", "src", "renderer", "index.html"),
+  ];
+
+  for (const candidate of candidates) {
+    if (existsSync(candidate)) {
+      try {
+        return readFileSync(candidate, "utf8");
+      } catch {
+        // try next
+      }
     }
   }
 

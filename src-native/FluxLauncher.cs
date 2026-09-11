@@ -18,9 +18,10 @@ namespace FluxIDE
                 string nodeExe = Path.Combine(appDir, "bin", "node.exe");
                 if (!File.Exists(nodeExe))
                 {
-                    // Fall back to portable tools or PATH
-                    string usbNode = @"E:\FluxIDE\tools\nodejs\node.exe";
-                    if (File.Exists(usbNode)) nodeExe = usbNode;
+                    // Fall back to tools packaged next to this installation, then PATH.
+                    string portableNode = Path.GetFullPath(Path.Combine(appDir, "..", "tools", "nodejs", "node.exe"));
+                    if (!File.Exists(portableNode)) portableNode = Path.Combine(appDir, "tools", "nodejs", "node.exe");
+                    if (File.Exists(portableNode)) nodeExe = portableNode;
                     else nodeExe = "node";
                 }
 
@@ -50,8 +51,9 @@ namespace FluxIDE
                     };
 
                     // Inherit PATH and set NODE_PATH
-                    string toolsDir = @"E:\FluxIDE\tools";
-                    string appRoot = @"E:\FluxIDE\fluxIDE APP";
+                    string toolsDir = Path.GetFullPath(Path.Combine(appDir, "..", "tools"));
+                    if (!Directory.Exists(toolsDir)) toolsDir = Path.Combine(appDir, "tools");
+                    string appRoot = appDir;
                     if (Directory.Exists(toolsDir))
                     {
                         string currentPath = Environment.GetEnvironmentVariable("PATH") ?? "";

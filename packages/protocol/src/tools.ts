@@ -28,9 +28,10 @@ export interface ToolRegistration {
   readonly category: ToolCategory;
   readonly description: string;
   readonly inputSchema: Record<string, unknown>;
-  readonly requiredPermissions: readonly string[];
-  readonly isDangerous: boolean;
-  readonly isDestructive: boolean;
+  readonly requiredPermissions?: readonly string[];
+  readonly requiredScope?: string;
+  readonly isDangerous?: boolean;
+  readonly isDestructive?: boolean;
   readonly parameters?: Record<string, unknown>;
 }
 

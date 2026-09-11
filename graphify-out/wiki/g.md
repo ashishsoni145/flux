@@ -1,0 +1,58 @@
+# g
+
+> 28 nodes
+
+## Key Concepts
+
+- **g** (25 connections) — `.desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/scripts/content_mb_activate_banner.js`
+- **m** (11 connections) — `.desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/scripts/content_mb_activate_banner.js`
+- **.query()** (11 connections) — `.desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/scripts/content_mb_activate_banner.js`
+- **.isSafeUrl()** (5 connections) — `.desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/scripts/content_mb_activate_banner.js`
+- **.showSidebarMain()** (5 connections) — `.desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/scripts/content_mb_activate_banner.js`
+- **.focusOrCreateTab()** (5 connections) — `.desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/scripts/content_mb_activate_banner.js`
+- **.addDynamicRule()** (4 connections) — `.desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/scripts/content_mb_activate_banner.js`
+- **.focusTab()** (4 connections) — `.desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/scripts/content_mb_activate_banner.js`
+- **.blockRequest()** (3 connections) — `.desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/scripts/content_mb_activate_banner.js`
+- **.getPongDataWhenReady()** (3 connections) — `.desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/scripts/content_mb_activate_banner.js`
+- **.isSiteAdvisorUrl()** (3 connections) — `.desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/scripts/content_mb_activate_banner.js`
+- **.closePage()** (3 connections) — `.desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/scripts/content_mb_activate_banner.js`
+- **.getPongData()** (3 connections) — `.desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/scripts/content_mb_activate_banner.js`
+- **.showSidebarMain()** (3 connections) — `.desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/scripts/content_mb_activate_banner.js`
+- **.onBeforeRequest()** (3 connections) — `.desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/scripts/content_mb_activate_banner.js`
+- **.isActivityPolicyEnabled()** (2 connections) — `.desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/scripts/content_mb_activate_banner.js`
+- **.isAnyExtensionUrl()** (2 connections) — `.desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/scripts/content_mb_activate_banner.js`
+- **.isEdgeExtPageAndOpenByNative()** (2 connections) — `.desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/scripts/content_mb_activate_banner.js`
+- **.isExtensionUrl()** (2 connections) — `.desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/scripts/content_mb_activate_banner.js`
+- **.updateExcludedTabInSession()** (2 connections) — `.desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/scripts/content_mb_activate_banner.js`
+- **.initText()** (2 connections) — `.desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/scripts/content_mb_activate_banner.js`
+- **.getActiveTab()** (2 connections) — `.desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/scripts/content_mb_activate_banner.js`
+- **.openNewOrNavToUrl()** (2 connections) — `.desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/scripts/content_mb_activate_banner.js`
+- **.getUINumber()** (1 connections) — `.desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/scripts/content_mb_activate_banner.js`
+- **.hasEpochTimeElapsed()** (1 connections) — `.desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/scripts/content_mb_activate_banner.js`
+- *... and 3 more nodes in this community*
+
+## Relationships
+
+- [.get](get.md) (13 shared connections)
+- [o](o.md) (8 shared connections)
+- [log](log.md) (7 shared connections)
+- [t](t.md) (5 shared connections)
+- [_](_.md) (4 shared connections)
+- [H](H.md) (2 shared connections)
+- [d](d.md) (1 shared connections)
+- [l](l.md) (1 shared connections)
+- [i](i.md) (1 shared connections)
+
+## Source Files
+
+- `.desktop-profile/Default/Extensions/fdhgeoginicibhagdmblfikbgbkahibd/8.1.0.9909_0/scripts/content_mb_activate_banner.js`
+
+## Audit Trail
+
+- EXTRACTED: 77 (100%)
+- INFERRED: 0 (0%)
+- AMBIGUOUS: 0 (0%)
+
+---
+
+*Part of the graphify knowledge wiki. See [index](index.md) to navigate.*

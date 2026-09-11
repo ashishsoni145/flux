@@ -7,7 +7,7 @@
  */
 
 import { createServer, type Server as HttpServer } from "node:http";
-import { existsSync, readFileSync, writeFileSync, mkdirSync, readdirSync, statSync, rmSync, renameSync } from "node:fs";
+import { existsSync, readFileSync, writeFileSync, mkdirSync, readdirSync, statSync, rmSync, renameSync, createReadStream } from "node:fs";
 import { resolve, join, basename, relative, dirname, isAbsolute, sep } from "node:path";
 import { exec, execFile } from "node:child_process";
 import { WebSocketServer, type WebSocket } from "ws";
@@ -20,6 +20,7 @@ import type {
 } from "@fluxide/protocol";
 import { getDashboardHtml } from "./web/dashboard.js";
 import { getDesktopIdeHtml } from "./web/desktop.js";
+import { getWebsiteHtml } from "./web/website.js";
 
 export interface FluxServerOptions {
   readonly port: number;
@@ -134,16 +135,53 @@ export class FluxServer {
           return;
         }
 
-        if (url === "/" || url === "/dashboard") {
+        if (url === "/" || url === "/desktop") {
+          res.writeHead(200, { "Content-Type": "text/html; charset=utf-8" });
+          res.end(getDesktopIdeHtml(this.options.port));
+          return;
+        }
+
+        if (url === "/dashboard") {
           res.writeHead(200, { "Content-Type": "text/html; charset=utf-8" });
           res.end(getDashboardHtml(this.options.port));
           return;
         }
 
-        if (url === "/desktop") {
-          res.writeHead(200, { "Content-Type": "text/html; charset=utf-8" });
-          res.end(getDesktopIdeHtml(this.options.port));
+        if (url === "/api/quota") {
+          res.writeHead(200, { "Content-Type": "application/json" });
+          res.end(JSON.stringify({
+            available: false,
+            reason: "Managed quota requires an authenticated backend session.",
+          }));
           return;
+        }
+
+
+        // Official Website & Download Center (Section 53 & Section 54)
+        if (
+          url === "/portal" ||
+          url === "/download" ||
+          url === "/docs" ||
+          url === "/pricing" ||
+          url === "/changelog" ||
+          url === "/extensions"
+        ) {
+          const routeName = url.replace(/^\//, "");
+          res.writeHead(200, { "Content-Type": "text/html; charset=utf-8" });
+          res.end(getWebsiteHtml(routeName, this.options.port));
+          return;
+        }
+
+        if (url === "/FluxIDE.exe") {
+          const exePath = resolve(process.cwd(), "FluxIDE.exe");
+          if (existsSync(exePath)) {
+            res.writeHead(200, {
+              "Content-Type": "application/octet-stream",
+              "Content-Disposition": 'attachment; filename="FluxIDE.exe"',
+            });
+            createReadStream(exePath).pipe(res);
+            return;
+          }
         }
 
         if (url === "/health" || url === "/api/health") {
@@ -353,7 +391,7 @@ export class FluxServer {
             const files: { path: string; status: string; staged: boolean }[] = [];
             for (const line of lines) {
               if (line.startsWith("## ")) {
-                branch = line.slice(3).split("...")[0].trim();
+                branch = line.slice(3).split("...")[0]?.trim() ?? "main";
                 continue;
               }
               const indexStatus = line[0];

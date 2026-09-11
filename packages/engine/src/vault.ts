@@ -129,7 +129,7 @@ export class EncryptedVault {
   /**
    * Set an API key in memory (and persist if passphrase provided).
    */
-  setKey(provider: string, apiKey: string, passphrase?: string): void {
+  async setKey(provider: string, apiKey: string, passphrase?: string): Promise<void> {
     this.inMemoryKeys.set(provider.toLowerCase(), apiKey);
     if (passphrase && this.isUnlocked) {
       const data: VaultData = {
@@ -137,7 +137,7 @@ export class EncryptedVault {
         customEndpoints: Object.fromEntries(this.inMemoryEndpoints),
         updatedAt: new Date().toISOString(),
       };
-      this.save(passphrase, data);
+      await this.save(passphrase, data);
     }
   }
 
@@ -169,7 +169,7 @@ export class EncryptedVault {
   /**
    * Set custom endpoint for a provider (e.g. self-hosted, Ollama, LM Studio).
    */
-  setEndpoint(provider: string, baseUrl: string, passphrase?: string): void {
+  async setEndpoint(provider: string, baseUrl: string, passphrase?: string): Promise<void> {
     this.inMemoryEndpoints.set(provider.toLowerCase(), baseUrl);
     if (passphrase && this.isUnlocked) {
       const data: VaultData = {
@@ -177,7 +177,7 @@ export class EncryptedVault {
         customEndpoints: Object.fromEntries(this.inMemoryEndpoints),
         updatedAt: new Date().toISOString(),
       };
-      this.save(passphrase, data);
+      await this.save(passphrase, data);
     }
   }
 

@@ -69,7 +69,8 @@ export class ToolRuntime {
     }
 
     // ── Permission check ──────────────────────────────────
-    for (const scope of tool.registration.requiredPermissions) {
+    const requiredScopes = tool.registration.requiredPermissions ?? (tool.registration.requiredScope ? [tool.registration.requiredScope] : []);
+    for (const scope of requiredScopes) {
       const allowed = await this.permissionGate.check(
         scope,
         invocation.agentId,
@@ -393,6 +394,83 @@ export function createBuiltinToolRegistrations(): ToolRegistration[] {
         },
       },
       requiredPermissions: ["shell:execute"],
+      isDangerous: false,
+      isDestructive: false,
+    },
+    {
+      name: "browser_navigate",
+      category: "browser",
+      description: "Navigate browser agent to a URL (e.g. dev server, local endpoint).",
+      inputSchema: {
+        type: "object",
+        properties: {
+          url: { type: "string", description: "Target URL (e.g. http://localhost:3000)" },
+          timeoutMs: { type: "number", description: "Timeout in milliseconds" },
+        },
+        required: ["url"],
+      },
+      requiredPermissions: ["net:request"],
+      isDangerous: false,
+      isDestructive: false,
+    },
+    {
+      name: "browser_inspect_dom",
+      category: "browser",
+      description: "Inspect DOM structure, elements, classes, and CSS styling of the currently loaded page.",
+      inputSchema: {
+        type: "object",
+        properties: {
+          selector: { type: "string", description: "CSS selector or element tag (default: body)" },
+          depth: { type: "number", description: "Tree depth to inspect" },
+        },
+      },
+      requiredPermissions: ["net:request"],
+      isDangerous: false,
+      isDestructive: false,
+    },
+    {
+      name: "browser_screenshot",
+      category: "browser",
+      description: "Capture visual debugging snapshot, layout metrics, and component bounds for visual defect analysis.",
+      inputSchema: {
+        type: "object",
+        properties: {
+          fullPage: { type: "boolean", description: "Capture full scrollable page" },
+        },
+      },
+      requiredPermissions: ["net:request"],
+      isDangerous: false,
+      isDestructive: false,
+    },
+    {
+      name: "browser_click",
+      category: "browser",
+      description: "Simulate clicking or focusing on a DOM element on the page.",
+      inputSchema: {
+        type: "object",
+        properties: {
+          selector: { type: "string", description: "CSS selector or element ID to click" },
+          description: { type: "string", description: "Action description" },
+        },
+        required: ["selector"],
+      },
+      requiredPermissions: ["net:request"],
+      isDangerous: false,
+      isDestructive: false,
+    },
+    {
+      name: "browser_type",
+      category: "browser",
+      description: "Simulate typing text into an input or textarea element on the page.",
+      inputSchema: {
+        type: "object",
+        properties: {
+          selector: { type: "string", description: "CSS selector of the input element" },
+          text: { type: "string", description: "Text to type" },
+        },
+        required: ["selector", "text"],
+      },
+      requiredPermissions: ["net:request"],
       isDangerous: false,
       isDestructive: false,
     },

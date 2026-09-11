@@ -41,7 +41,7 @@ import {
   OllamaProvider,
 } from "@fluxide/model-gateway";
 import { generateId } from "@fluxide/protocol";
-import type { InteractionMode, MemoryScope, BrainQuery } from "@fluxide/protocol";
+import type { InteractionMode, MemoryScope, BrainQuery, PermissionScope, PermissionResponse } from "@fluxide/protocol";
 
 // ── Tool executor imports ────────────────────────────────────
 import {
@@ -53,6 +53,13 @@ import {
 } from "./tools/filesystem.js";
 import { terminalExecute } from "./tools/terminal.js";
 import { gitStatus, gitDiff, gitCommit } from "./tools/git.js";
+import {
+  browserNavigate,
+  browserInspectDom,
+  browserScreenshot,
+  browserClick,
+  browserType,
+} from "./tools/browser.js";
 
 // ─── Configuration ──────────────────────────────────────────
 const PORT = parseInt(process.env["FLUX_PORT"] ?? "48100", 10);
@@ -89,7 +96,7 @@ async function boot(): Promise<void> {
   });
 
   if (process.env["FLUX_AUTO_APPROVE"] === "true") {
-    permissionGate.setApprovalCallback(async () => true);
+    permissionGate.setApprovalCallback(async () => "allow_session");
   }
 
   // 2. Initialize living intelligence, security, and rule systems
@@ -181,6 +188,11 @@ async function boot(): Promise<void> {
       });
       return JSON.stringify(res, null, 2);
     },
+    browser_navigate: async (input) => browserNavigate(input as any),
+    browser_inspect_dom: async (input) => browserInspectDom(input as any),
+    browser_screenshot: async (input) => browserScreenshot(input as any),
+    browser_click: async (input) => browserClick(input as any),
+    browser_type: async (input) => browserType(input as any),
   };
 
   for (const reg of registrations) {
@@ -196,7 +208,7 @@ async function boot(): Promise<void> {
       name: "security_scan",
       category: "security",
       description: "Run SAST vulnerability and secret leak analysis across the codebase.",
-      parameters: { type: "object", properties: { maxFiles: { type: "number" } } },
+      inputSchema: { type: "object", properties: { maxFiles: { type: "number" } } },
       requiredScope: "fs:read",
     },
     async (input) => {
@@ -210,7 +222,7 @@ async function boot(): Promise<void> {
       name: "db_query",
       category: "database",
       description: "Execute a SQL query with safety interception against destructive statements.",
-      parameters: {
+      inputSchema: {
         type: "object",
         properties: { query: { type: "string" }, allowDestructive: { type: "boolean" } },
         required: ["query"],
@@ -230,7 +242,7 @@ async function boot(): Promise<void> {
       name: "api_test",
       category: "api",
       description: "Test an HTTP / REST endpoint with status, headers, latency, and response validation.",
-      parameters: {
+      inputSchema: {
         type: "object",
         properties: {
           url: { type: "string" },
@@ -257,7 +269,7 @@ async function boot(): Promise<void> {
       name: "health_check",
       category: "custom",
       description: "Compute evidence-based project health score across Security, Testing, Architecture, Docs, and Debt.",
-      parameters: { type: "object", properties: {} },
+      inputSchema: { type: "object", properties: {} },
       requiredScope: "fs:read",
     },
     async () => {
@@ -271,7 +283,7 @@ async function boot(): Promise<void> {
       name: "council_deliberate",
       category: "custom",
       description: "Convene Engineering Council (Architect, Security, Performance) to debate architectural options and synthesize a verdict.",
-      parameters: {
+      inputSchema: {
         type: "object",
         properties: { problem: { type: "string" }, context: { type: "string" } },
         required: ["problem"],
@@ -291,29 +303,38 @@ async function boot(): Promise<void> {
 
   const anthropicKey = vault.getKey("anthropic") ?? process.env["ANTHROPIC_API_KEY"] ?? "";
   const anthropic = new AnthropicProvider();
-  anthropic.configure({ apiKey: anthropicKey });
+  anthropic.configure({ apiKey: anthropicKey, provider: "anthropic", isEnabled: true });
   router.registerProvider(anthropic);
 
   const openaiKey = vault.getKey("openai") ?? process.env["OPENAI_API_KEY"] ?? "";
   const openai = new OpenAIProvider();
-  openai.configure({ apiKey: openaiKey });
+  openai.configure({ apiKey: openaiKey, provider: "openai", isEnabled: true });
   router.registerProvider(openai);
 
   const geminiKey = vault.getKey("gemini") ?? process.env["GEMINI_API_KEY"] ?? process.env["GOOGLE_API_KEY"] ?? "";
   const gemini = new GeminiProvider();
-  gemini.configure({ apiKey: geminiKey });
+  gemini.configure({ apiKey: geminiKey, provider: "google", isEnabled: true });
   router.registerProvider(gemini);
 
   const ollamaEndpoint = vault.getEndpoint("ollama") ?? process.env["OLLAMA_HOST"] ?? "http://127.0.0.1:11434/v1";
   const ollama = new OllamaProvider();
-  ollama.configure({ baseUrl: ollamaEndpoint });
+  ollama.configure({ baseUrl: ollamaEndpoint, provider: "ollama", isEnabled: true });
   router.registerProvider(ollama);
 
-  const availableProviders = [];
-  if (await anthropic.isAvailable()) availableProviders.push("Anthropic");
-  if (await openai.isAvailable()) availableProviders.push("OpenAI");
-  if (await gemini.isAvailable()) availableProviders.push("Gemini");
-  if (await ollama.isAvailable()) availableProviders.push("Ollama");
+  const availableProviders: string[] = [];
+  const anthropicAvailable = await anthropic.isAvailable();
+  const openaiAvailable = await openai.isAvailable();
+  const geminiAvailable = await gemini.isAvailable();
+  const ollamaAvailable = await ollama.isAvailable();
+  router.setProviderAvailability("anthropic", anthropicAvailable);
+  router.setProviderAvailability("openai", openaiAvailable);
+  router.setProviderAvailability("google", geminiAvailable);
+  router.setProviderAvailability("ollama", ollamaAvailable);
+
+  if (anthropicAvailable) availableProviders.push("Anthropic");
+  if (openaiAvailable) availableProviders.push("OpenAI");
+  if (geminiAvailable) availableProviders.push("Gemini");
+  if (ollamaAvailable) availableProviders.push("Ollama");
 
   console.log(
     `🧠 Configured Model Gateway: ${availableProviders.length > 0 ? availableProviders.join(", ") : "Ollama/Local ready (API keys optional)"}`
@@ -322,6 +343,38 @@ async function boot(): Promise<void> {
   // 5. Initialize Checkpoint Manager & Server
   const checkpointManager = new CheckpointManager();
   const server = new FluxServer({ port: PORT, host: HOST });
+  const clientSessions = new Map<string, { id: string; mode: InteractionMode }>();
+  const pendingApprovals = new Map<
+    string,
+    { resolve: (decision: "allow_once" | "allow_session" | "allow_project" | "allow_always" | "deny") => void; timeout: ReturnType<typeof setTimeout> }
+  >();
+
+  if (process.env["FLUX_AUTO_APPROVE"] !== "true") {
+    permissionGate.setApprovalCallback(async (scope, clientId, toolName, details) => {
+      const requestId = generateId("permission");
+      server.sendToClient(clientId, {
+        id: generateId("msg"),
+        type: "permission:request",
+        payload: {
+          id: requestId,
+          scope: scope as PermissionScope,
+          agentId: clientId,
+          taskId: clientSessions.get(clientId)?.id ?? "unknown",
+          description: `Allow FluxIDE to run ${toolName}?`,
+          details,
+          timestamp: new Date().toISOString(),
+        },
+        timestamp: new Date().toISOString(),
+      });
+      return new Promise((resolveApproval) => {
+        const timeout = setTimeout(() => {
+          pendingApprovals.delete(requestId);
+          resolveApproval("deny");
+        }, 120_000);
+        pendingApprovals.set(requestId, { resolve: resolveApproval, timeout });
+      });
+    });
+  }
 
   // 6. Initialize Agent Loop
   const agentLoop = new AgentLoop(
@@ -330,21 +383,27 @@ async function boot(): Promise<void> {
     permissionGate,
     checkpointManager,
     server,
-    contextEngine
+    contextEngine,
+    {
+      verification: verificationEngine,
+      accounting,
+    }
   );
 
   // ── Register message handlers ─────────────────────────────
 
   server.onMessage("session:start", async (clientId, message) => {
-    const payload = (message.payload as Record<string, unknown>) ?? {};
+    const payload = (message.payload as unknown as Record<string, unknown>) ?? {};
     const mode = (payload["mode"] as InteractionMode) ?? "agent";
     console.log(`🚀 Session started by ${clientId} in [${mode}] mode`);
 
+    const sessionId = generateId("session");
+    clientSessions.set(clientId, { id: sessionId, mode });
     server.sendToClient(clientId, {
       id: generateId("msg"),
       type: "agent:status",
       payload: {
-        id: generateId("session"),
+        id: sessionId,
         agentConfig: {
           id: "default",
           name: "FluxIDE Autonomous Assistant",
@@ -374,8 +433,10 @@ async function boot(): Promise<void> {
   server.onMessage("user:prompt", async (clientId, message) => {
     const payload = (message.payload as { content?: string; mode?: InteractionMode; sessionId?: string; workspacePath?: string }) ?? {};
     const prompt = payload.content ?? "";
-    const sessionId = payload.sessionId ?? "default_session";
-    const mode = payload.mode ?? "agent";
+    const clientSession = clientSessions.get(clientId);
+    const sessionId = payload.sessionId ?? clientSession?.id ?? generateId("session");
+    const mode = payload.mode ?? clientSession?.mode ?? "agent";
+    clientSessions.set(clientId, { id: sessionId, mode });
 
     console.log(`💬 [${mode}] Prompt from ${clientId}: ${prompt.slice(0, 80)}`);
 
@@ -384,7 +445,75 @@ async function boot(): Promise<void> {
       sessionId,
       prompt,
       mode,
-      workspacePath: payload.workspacePath ?? process.cwd(),
+      // The daemon owns the active workspace. Clients cannot redirect an
+      // autonomous agent to an arbitrary filesystem path.
+      workspacePath,
+    });
+  });
+
+  server.onMessage("permission:respond", async (_clientId, message) => {
+    const payload = message.payload as PermissionResponse;
+    const pending = pendingApprovals.get(payload.requestId);
+    if (!pending) return;
+    clearTimeout(pending.timeout);
+    pendingApprovals.delete(payload.requestId);
+    pending.resolve(payload.decision);
+  });
+
+  server.onMessage("vault:configure", async (clientId, message) => {
+    const payload = message.payload as {
+      passphrase?: string;
+      keys?: { anthropic?: string; openai?: string; gemini?: string };
+      ollamaEndpoint?: string;
+    };
+    const passphrase = payload.passphrase?.trim();
+    if (!passphrase) {
+      server.sendToClient(clientId, {
+        id: generateId("msg"), type: "error",
+        payload: { code: "VAULT_PASSPHRASE_REQUIRED", message: "A local vault passphrase is required to save BYOK credentials." },
+        timestamp: new Date().toISOString(),
+      });
+      return;
+    }
+
+    const unlocked = vault.exists() ? await vault.unlock(passphrase) : (await vault.initialize(passphrase), true);
+    if (!unlocked) {
+      server.sendToClient(clientId, {
+        id: generateId("msg"), type: "error",
+        payload: { code: "VAULT_UNLOCK_FAILED", message: "Could not unlock the local BYOK vault." },
+        timestamp: new Date().toISOString(),
+      });
+      return;
+    }
+
+    if (payload.keys?.anthropic?.trim()) {
+      await vault.setKey("anthropic", payload.keys.anthropic.trim(), passphrase);
+      anthropic.configure({ apiKey: vault.getKey("anthropic"), provider: "anthropic", isEnabled: true });
+      router.setProviderAvailability("anthropic", await anthropic.isAvailable());
+    }
+    if (payload.keys?.openai?.trim()) {
+      await vault.setKey("openai", payload.keys.openai.trim(), passphrase);
+      openai.configure({ apiKey: vault.getKey("openai"), provider: "openai", isEnabled: true });
+      router.setProviderAvailability("openai", await openai.isAvailable());
+    }
+    if (payload.keys?.gemini?.trim()) {
+      await vault.setKey("gemini", payload.keys.gemini.trim(), passphrase);
+      gemini.configure({ apiKey: vault.getKey("gemini"), provider: "google", isEnabled: true });
+      router.setProviderAvailability("google", await gemini.isAvailable());
+    }
+    if (payload.ollamaEndpoint?.trim()) {
+      await vault.setEndpoint("ollama", payload.ollamaEndpoint.trim(), passphrase);
+      ollama.configure({ baseUrl: vault.getEndpoint("ollama"), provider: "ollama", isEnabled: true });
+      router.setProviderAvailability("ollama", await ollama.isAvailable());
+    }
+
+    server.sendToClient(clientId, {
+      id: generateId("msg"), type: "agent:action",
+      payload: {
+        id: generateId("action"), timestamp: new Date().toISOString(), type: "message",
+        summary: "BYOK settings were encrypted in the local vault.",
+      },
+      timestamp: new Date().toISOString(),
     });
   });
 
@@ -415,7 +544,7 @@ async function boot(): Promise<void> {
     if (!payload.checkpointId) return;
 
     try {
-      await checkpointManager.rollback(payload.checkpointId);
+      await checkpointManager.rollback(payload.checkpointId, workspacePath);
       server.sendToClient(clientId, {
         id: generateId("msg"),
         type: "checkpoint:restored",
@@ -460,7 +589,7 @@ async function boot(): Promise<void> {
   });
 
   server.onMessage("brain:query", async (clientId, message) => {
-    const payload = (message.payload as BrainQuery) ?? { query: "" };
+    const payload = (message.payload as unknown as BrainQuery) ?? { type: "search", query: "" };
     const result = await brain.query(payload);
     server.sendToClient(clientId, {
       id: generateId("msg"),
@@ -534,3 +663,5 @@ export { McpManager } from "./mcp.js";
 export { AccountingManager } from "./accounting.js";
 export { FileMutex } from "./mutex.js";
 export { BUILTIN_PERSONAS, getPersona } from "./agents/personas.js";
+export { SupabaseRepository } from "./supabase.js";
+

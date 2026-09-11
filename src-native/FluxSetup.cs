@@ -163,11 +163,7 @@ namespace FluxIDE.Setup
                     string sourceDir = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
                     
                     // If running from installer package, copy package files
-                    string appSource = @"E:\FluxIDE\fluxIDE APP";
-                    if (!Directory.Exists(appSource))
-                    {
-                        appSource = sourceDir;
-                    }
+                    string appSource = FindApplicationSource(sourceDir);
 
                     CopyDirectory(Path.Combine(appSource, "packages"), Path.Combine(targetDir, "packages"));
                     
@@ -340,7 +336,7 @@ namespace FluxIDE.Setup
                 string targetDir = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Programs", "FluxIDE");
                 if (!Directory.Exists(targetDir)) Directory.CreateDirectory(targetDir);
 
-                string appSource = @"E:\FluxIDE\fluxIDE APP";
+                string appSource = FindApplicationSource(AppDomain.CurrentDomain.BaseDirectory);
                 CopyDirectory(Path.Combine(appSource, "packages"), Path.Combine(targetDir, "packages"));
                 
                 File.Copy(Path.Combine(appSource, "FluxIDE-Desktop.bat"), Path.Combine(targetDir, "FluxIDE-Desktop.bat"), true);
@@ -364,6 +360,21 @@ namespace FluxIDE.Setup
             {
                 File.WriteAllText(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "installer-log.txt"), "Install error: " + ex.ToString());
             }
+        }
+
+        private static string FindApplicationSource(string startDirectory)
+        {
+            string current = startDirectory;
+            for (int level = 0; level < 3 && !String.IsNullOrEmpty(current); level++)
+            {
+                if (Directory.Exists(Path.Combine(current, "packages")))
+                {
+                    return current;
+                }
+                DirectoryInfo parent = Directory.GetParent(current);
+                current = parent == null ? null : parent.FullName;
+            }
+            return startDirectory;
         }
 
         [STAThread]

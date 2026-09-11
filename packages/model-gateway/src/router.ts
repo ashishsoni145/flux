@@ -28,6 +28,7 @@ const DEFAULT_ROUTER_CONFIG: RouterConfig = {
 export class ModelRouter {
   private providers = new Map<string, ModelProviderAdapter>();
   private modelRegistry = new Map<string, ModelEntry>();
+  private providerAvailability = new Map<string, boolean>();
   private config: RouterConfig;
 
   constructor(config: RouterConfig = DEFAULT_ROUTER_CONFIG) {
@@ -39,8 +40,19 @@ export class ModelRouter {
    */
   registerProvider(provider: ModelProviderAdapter): void {
     this.providers.set(provider.providerId, provider);
+    // A provider is unavailable until the host has confirmed its credentials
+    // (or local runtime) are usable. This prevents `auto` from selecting a
+    // model merely because its adapter was registered.
+    this.providerAvailability.set(provider.providerId, false);
     for (const model of provider.listModels()) {
       this.modelRegistry.set(model.id, model);
+    }
+  }
+
+  /** Update the host-verified availability of a provider. */
+  setProviderAvailability(providerId: string, isAvailable: boolean): void {
+    if (this.providers.has(providerId)) {
+      this.providerAvailability.set(providerId, isAvailable);
     }
   }
 
@@ -50,6 +62,7 @@ export class ModelRouter {
   getProviderForModel(modelId: string): ModelProviderAdapter | undefined {
     const entry = this.modelRegistry.get(modelId);
     if (!entry) return undefined;
+    if (!this.providerAvailability.get(entry.provider)) return undefined;
     return this.providers.get(entry.provider);
   }
 
@@ -73,6 +86,7 @@ export class ModelRouter {
     if (requiredCapabilities && requiredCapabilities.length > 0) {
       const candidates = Array.from(this.modelRegistry.values()).filter(
         (m) =>
+          this.providerAvailability.get(m.provider) === true &&
           requiredCapabilities.every((cap) => m.capabilities.includes(cap))
       );
 
@@ -88,14 +102,26 @@ export class ModelRouter {
       }
     }
 
-    return this.config.defaultModel;
+    const defaultModel = this.modelRegistry.get(this.config.defaultModel);
+    if (defaultModel && this.providerAvailability.get(defaultModel.provider)) {
+      return defaultModel.id;
+    }
+
+    const available = Array.from(this.modelRegistry.values()).find(
+      (model) => this.providerAvailability.get(model.provider) === true
+    );
+    if (available) return available.id;
+
+    throw new Error("No configured model provider is currently available.");
   }
 
   /**
    * List all available models across providers.
    */
   listAllModels(): ModelEntry[] {
-    return Array.from(this.modelRegistry.values());
+    return Array.from(this.modelRegistry.values()).filter(
+      (model) => this.providerAvailability.get(model.provider) === true
+    );
   }
 
   /** Route a non-streaming completion to its registered provider. */

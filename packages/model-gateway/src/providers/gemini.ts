@@ -155,14 +155,18 @@ export class GeminiProvider implements ModelProviderAdapter {
             }
             if (part["functionCall"]) {
               const fc = part["functionCall"] as Record<string, unknown>;
+              const id = `call_${Date.now()}_${Math.random().toString(36).slice(2, 8)}`;
               yield {
-                type: "tool_call",
-                toolCall: {
-                  id: `call_${Date.now()}_${Math.random().toString(36).slice(2, 6)}`,
-                  name: (fc["name"] as string) ?? "",
-                  input: (fc["args"] as Record<string, unknown>) ?? {},
-                },
+                type: "tool_call_start",
+                id,
+                name: (fc["name"] as string) ?? "",
               };
+              yield {
+                type: "tool_call_delta",
+                id,
+                input: JSON.stringify((fc["args"] as Record<string, unknown>) ?? {}),
+              };
+              yield { type: "tool_call_end", id };
             }
           }
 
@@ -184,26 +188,34 @@ export class GeminiProvider implements ModelProviderAdapter {
   private buildRequestBody(request: CompletionRequest): Record<string, unknown> {
     const contents: Array<Record<string, unknown>> = [];
 
-    for (const m of request.messages) {
-      if (m.role === "system") continue; // system instruction passed separately
+    for (const message of request.messages) {
+      if (message.role === "system") continue; // system instruction passed separately
 
-      if (m.role === "tool") {
+      if (message.role === "tool") {
         contents.push({
           role: "user",
           parts: [
             {
               functionResponse: {
-                name: m.toolCallId ?? "tool",
-                response: { result: m.content },
+                name: message.name ?? message.toolCallId ?? "tool",
+                response: { result: this.textContent(message.content) },
               },
             },
           ],
         });
       } else {
-        const role = m.role === "assistant" ? "model" : "user";
+        const role = message.role === "assistant" ? "model" : "user";
+        const parts = Array.isArray(message.content)
+          ? message.content.map((block) => {
+              if (block.type === "tool_use") {
+                return { functionCall: { name: block.name, args: block.input } };
+              }
+              return { text: block.type === "text" ? block.text : "" };
+            })
+          : [{ text: message.content }];
         contents.push({
           role,
-          parts: [{ text: m.content }],
+          parts,
         });
       }
     }
@@ -237,6 +249,14 @@ export class GeminiProvider implements ModelProviderAdapter {
     return body;
   }
 
+  private textContent(content: CompletionRequest["messages"][number]["content"]): string {
+    if (typeof content === "string") return content;
+    return content
+      .filter((block) => block.type === "text")
+      .map((block) => block.text)
+      .join("");
+  }
+
   private parseResponse(
     data: Record<string, unknown>,
     model: string
@@ -268,10 +288,9 @@ export class GeminiProvider implements ModelProviderAdapter {
     const completionTokens = usageMetadata["candidatesTokenCount"] ?? 0;
 
     const usage: TokenUsage = {
-      promptTokens,
-      completionTokens,
-      totalTokens: promptTokens + completionTokens,
-      estimatedCostUSD: this.estimateCost(model, promptTokens, completionTokens),
+      inputTokens: promptTokens,
+      outputTokens: completionTokens,
+      estimatedCostUsd: this.estimateCost(model, promptTokens, completionTokens),
     };
 
     const finishReason = (firstCandidate["finishReason"] as string) ?? "STOP";
@@ -279,7 +298,7 @@ export class GeminiProvider implements ModelProviderAdapter {
     return {
       id: `gemini_${Date.now()}`,
       model,
-      text,
+      content: text,
       toolCalls,
       stopReason: toolCalls.length > 0 || finishReason === "TOOL_CALL" ? "tool_use" : "end_turn",
       usage,

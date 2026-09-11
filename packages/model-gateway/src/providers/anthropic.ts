@@ -12,7 +12,7 @@ import type {
   ProviderConfig,
   TokenUsage,
 } from "@fluxide/protocol";
-import type { ModelProviderAdapter } from "./provider.js";
+import type { ModelProviderAdapter } from "../provider.js";
 
 export class AnthropicProvider implements ModelProviderAdapter {
   readonly providerId = "anthropic";
@@ -129,6 +129,7 @@ export class AnthropicProvider implements ModelProviderAdapter {
 
     const decoder = new TextDecoder();
     let buffer = "";
+    const toolBlockIds = new Map<number, string>();
 
     while (true) {
       const { done, value } = await reader.read();
@@ -148,7 +149,7 @@ export class AnthropicProvider implements ModelProviderAdapter {
 
           try {
             const event = JSON.parse(data) as Record<string, unknown>;
-            const chunks = this.parseStreamEvent(event);
+            const chunks = this.parseStreamEvent(event, toolBlockIds);
             for (const chunk of chunks) {
               yield chunk;
             }
@@ -165,12 +166,41 @@ export class AnthropicProvider implements ModelProviderAdapter {
   private buildRequestBody(
     request: CompletionRequest
   ): Record<string, unknown> {
-    const messages = request.messages
-      .filter((m) => m.role !== "system")
-      .map((m) => ({
-        role: m.role === "tool" ? "user" : m.role,
-        content: m.content,
-      }));
+    const messages: Array<Record<string, unknown>> = [];
+    let pendingToolResults: Array<Record<string, unknown>> = [];
+
+    const flushToolResults = (): void => {
+      if (pendingToolResults.length > 0) {
+        messages.push({ role: "user", content: pendingToolResults });
+        pendingToolResults = [];
+      }
+    };
+
+    for (const message of request.messages) {
+      if (message.role === "system") continue;
+      if (message.role === "tool") {
+        pendingToolResults.push({
+          type: "tool_result",
+          tool_use_id: message.toolCallId,
+          content: this.textContent(message.content),
+        });
+        continue;
+      }
+
+      flushToolResults();
+      messages.push({
+        role: message.role,
+        content: typeof message.content === "string"
+          ? message.content
+          : message.content.map((block) => {
+              if (block.type === "tool_use") {
+                return { type: "tool_use", id: block.id, name: block.name, input: block.input };
+              }
+              return { type: "text", text: block.type === "text" ? block.text : "" };
+            }),
+      });
+    }
+    flushToolResults();
 
     const body: Record<string, unknown> = {
       model: request.model,
@@ -195,6 +225,14 @@ export class AnthropicProvider implements ModelProviderAdapter {
     }
 
     return body;
+  }
+
+  private textContent(content: CompletionRequest["messages"][number]["content"]): string {
+    if (typeof content === "string") return content;
+    return content
+      .filter((block) => block.type === "text")
+      .map((block) => block.text)
+      .join("");
   }
 
   private parseResponse(
@@ -240,7 +278,8 @@ export class AnthropicProvider implements ModelProviderAdapter {
   }
 
   private parseStreamEvent(
-    event: Record<string, unknown>
+    event: Record<string, unknown>,
+    toolBlockIds: Map<number, string>
   ): StreamChunk[] {
     const type = event["type"] as string;
     const chunks: StreamChunk[] = [];
@@ -259,9 +298,10 @@ export class AnthropicProvider implements ModelProviderAdapter {
             text: delta["thinking"] as string,
           });
         } else if (delta?.["type"] === "input_json_delta") {
+          const index = event["index"] as number | undefined;
           chunks.push({
             type: "tool_call_delta",
-            id: "",
+            id: index === undefined ? "" : toolBlockIds.get(index) ?? "",
             input: delta["partial_json"] as string,
           });
         }
@@ -270,16 +310,24 @@ export class AnthropicProvider implements ModelProviderAdapter {
       case "content_block_start": {
         const contentBlock = event["content_block"] as Record<string, unknown> | undefined;
         if (contentBlock?.["type"] === "tool_use") {
+          const index = event["index"] as number | undefined;
+          const id = contentBlock["id"] as string;
+          if (index !== undefined) toolBlockIds.set(index, id);
           chunks.push({
             type: "tool_call_start",
-            id: contentBlock["id"] as string,
+            id,
             name: contentBlock["name"] as string,
           });
         }
         break;
       }
       case "content_block_stop": {
-        // Could emit tool_call_end if tracking
+        const index = event["index"] as number | undefined;
+        const id = index === undefined ? undefined : toolBlockIds.get(index);
+        if (id) {
+          chunks.push({ type: "tool_call_end", id });
+          toolBlockIds.delete(index!);
+        }
         break;
       }
       case "message_delta": {

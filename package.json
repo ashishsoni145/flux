@@ -9,6 +9,7 @@
     "packages/*"
   ],
   "scripts": {
+    "lint": "eslint . --ext .ts,.tsx",
     "build": "node scripts/build.js",
     "build:protocol": "npm run build -w @fluxide/protocol",
     "build:gateway": "npm run build -w @fluxide/model-gateway",
@@ -19,8 +20,12 @@
     "test": "npm run test --workspaces --if-present",
     "clean": "npm run clean --workspaces --if-present",
     "flux": "node packages/cli/dist/index.js",
-    "fluxd": "node packages/engine/dist/index.js"
+    "fluxd": "node packages/engine/dist/index.js",
+    "start": "node packages/engine/dist/index.js"
   },
+
+
+
   "devDependencies": {
     "typescript": "^5.8.0",
     "@types/node": "^22.0.0",

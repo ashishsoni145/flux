@@ -1,109 +1,153 @@
 /**
  * FluxIDE Engine — Checkpoint Manager
  *
- * Creates and manages checkpoints for safe agent rollback.
- * Uses git stash / lightweight tags to preserve state.
+ * Checkpoints are file snapshots, not temporary git stashes. Creating one
+ * must never alter a user's index, working tree, or stash list. A checkpoint
+ * records the exact pre-change state of each affected file so rollback is
+ * deterministic even when a repository has uncommitted work.
  */
 
+import { access, copyFile, mkdir, rm, writeFile } from "node:fs/promises";
+import { constants } from "node:fs";
+import { dirname, isAbsolute, join, relative, resolve, sep } from "node:path";
 import { generateId } from "@fluxide/protocol";
 import type { Checkpoint } from "@fluxide/protocol";
-import { terminalExecute } from "./tools/terminal.js";
+
+interface SnapshotEntry {
+  readonly path: string;
+  readonly existed: boolean;
+  readonly snapshotPath?: string;
+}
+
+interface StoredCheckpoint {
+  readonly checkpoint: Checkpoint;
+  readonly workspacePath: string;
+  readonly snapshots: readonly SnapshotEntry[];
+}
 
 export class CheckpointManager {
-  private checkpoints = new Map<string, Checkpoint>();
+  private checkpoints = new Map<string, StoredCheckpoint>();
 
-  /**
-   * Create a checkpoint before a significant modification.
-   */
+  async createCheckpoint(options: {
+    workspacePath: string;
+    description: string;
+    files?: string[];
+    taskId?: string;
+    agentId?: string;
+  }): Promise<Checkpoint> {
+    return this.create(
+      options.workspacePath,
+      options.description,
+      options.taskId,
+      options.agentId,
+      options.files
+    );
+  }
+
+  /** Create a recoverable snapshot before a significant modification. */
   async create(
     workspacePath: string,
     description: string,
     taskId?: string,
-    agentId?: string
+    agentId?: string,
+    files: readonly string[] = []
   ): Promise<Checkpoint> {
     const id = generateId("chk");
+    const root = resolve(workspacePath);
+    const checkpointDir = join(root, ".flux", "checkpoints", id);
+    await mkdir(checkpointDir, { recursive: true });
 
-    // Create a temporary commit to capture current state
-    const stashResult = await terminalExecute({
-      command: `git stash push -m "flux-checkpoint-${id}" --include-untracked`,
-      cwd: workspacePath,
-    });
+    const uniqueFiles = [...new Set(files)].filter(Boolean);
+    const snapshots: SnapshotEntry[] = [];
 
-    // Get the stash ref
-    const refResult = await terminalExecute({
-      command: "git stash list --format=%H -n 1",
-      cwd: workspacePath,
-    });
+    for (const requestedPath of uniqueFiles) {
+      const absolutePath = resolve(root, requestedPath);
+      const pathFromRoot = relative(root, absolutePath);
+      if (
+        pathFromRoot === "" ||
+        pathFromRoot === ".." ||
+        pathFromRoot.startsWith(`..${sep}`) ||
+        isAbsolute(pathFromRoot)
+      ) {
+        throw new Error(`Checkpoint path must remain inside the workspace: ${requestedPath}`);
+      }
 
-    // Pop the stash back immediately — we just wanted the ref
-    await terminalExecute({
-      command: "git stash pop",
-      cwd: workspacePath,
-    });
+      const snapshotPath = join(checkpointDir, pathFromRoot);
+      const existed = await this.fileExists(absolutePath);
+      if (existed) {
+        await mkdir(dirname(snapshotPath), { recursive: true });
+        await copyFile(absolutePath, snapshotPath);
+      }
 
-    // Get file manifest
-    const filesResult = await terminalExecute({
-      command: "git ls-files",
-      cwd: workspacePath,
-    });
-
-    const gitRef = refResult.split("\n").find((l) => l.match(/^[a-f0-9]+$/)) ?? id;
-    const fileManifest = filesResult
-      .split("\n")
-      .filter((l) => l.trim() && !l.startsWith("$") && !l.startsWith("Exit"));
+      snapshots.push({
+        path: pathFromRoot.replace(/\\/g, "/"),
+        existed,
+        ...(existed ? { snapshotPath } : {}),
+      });
+    }
 
     const checkpoint: Checkpoint = {
       id,
       taskId,
       agentId,
       description,
-      gitRef,
-      fileManifest,
+      // This is a snapshot identifier rather than a mutable Git reference.
+      gitRef: `snapshot:${id}`,
+      fileManifest: snapshots.map((snapshot) => snapshot.path),
       createdAt: new Date().toISOString(),
     };
 
-    this.checkpoints.set(id, checkpoint);
-    console.log(`📌 Checkpoint created: ${id} — "${description}"`);
+    await writeFile(
+      join(checkpointDir, "manifest.json"),
+      JSON.stringify({ checkpoint, snapshots }, null, 2),
+      "utf8"
+    );
 
+    this.checkpoints.set(id, { checkpoint, workspacePath: root, snapshots });
     return checkpoint;
   }
 
-  /**
-   * Get a checkpoint by ID.
-   */
   get(id: string): Checkpoint | undefined {
-    return this.checkpoints.get(id);
+    return this.checkpoints.get(id)?.checkpoint;
   }
 
-  /**
-   * List all checkpoints.
-   */
   list(): Checkpoint[] {
-    return Array.from(this.checkpoints.values()).sort(
-      (a, b) =>
-        new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
-    );
+    return Array.from(this.checkpoints.values())
+      .map((entry) => entry.checkpoint)
+      .sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime());
   }
 
-  /**
-   * Rollback to a checkpoint (restores git state).
-   */
-  async rollback(
-    checkpointId: string,
-    workspacePath: string
-  ): Promise<string> {
-    const checkpoint = this.checkpoints.get(checkpointId);
-    if (!checkpoint) {
+  /** Restore only files captured by this checkpoint; unrelated work is kept. */
+  async rollback(checkpointId: string, workspacePath?: string): Promise<string> {
+    const stored = this.checkpoints.get(checkpointId);
+    if (!stored) {
       throw new Error(`Checkpoint not found: ${checkpointId}`);
     }
 
-    // Hard reset to the checkpoint commit
-    const result = await terminalExecute({
-      command: `git checkout ${checkpoint.gitRef} -- .`,
-      cwd: workspacePath,
-    });
+    const root = resolve(workspacePath ?? stored.workspacePath);
+    if (root !== stored.workspacePath) {
+      throw new Error("Checkpoint belongs to a different workspace.");
+    }
 
-    console.log(`⏪ Rolled back to checkpoint: ${checkpointId}`);
-    return `Rolled back to checkpoint "${checkpoint.description}" (${checkpoint.createdAt})\n${result}`;
+    for (const snapshot of stored.snapshots) {
+      const targetPath = resolve(root, snapshot.path);
+      if (snapshot.existed && snapshot.snapshotPath) {
+        await mkdir(dirname(targetPath), { recursive: true });
+        await copyFile(snapshot.snapshotPath, targetPath);
+      } else if (await this.fileExists(targetPath)) {
+        await rm(targetPath, { force: true });
+      }
+    }
+
+    return `Restored checkpoint "${stored.checkpoint.description}" (${stored.checkpoint.createdAt}).`;
+  }
+
+  private async fileExists(path: string): Promise<boolean> {
+    try {
+      await access(path, constants.F_OK);
+      return true;
+    } catch {
+      return false;
+    }
   }
 }

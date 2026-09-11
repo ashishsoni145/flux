@@ -61,7 +61,17 @@ export interface PermissionRequest {
 // ─── Permission Response (from client) ──────────────────────
 export interface PermissionResponse {
   readonly requestId: string;
-  readonly decision: "allow_once" | "allow_session" | "allow_always" | "deny";
+  /**
+   * `allow_project` is persisted by the host application's project policy
+   * store. `allow_always` is reserved for a user-level policy managed by the
+   * authenticated backend; it must never be inferred from a client request.
+   */
+  readonly decision:
+    | "allow_once"
+    | "allow_session"
+    | "allow_project"
+    | "allow_always"
+    | "deny";
 }
 
 // ─── Permission Configuration ───────────────────────────────

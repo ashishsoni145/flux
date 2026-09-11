@@ -102,8 +102,10 @@ export class ContextEngine {
       if (node.filePath && !items.some((i) => i.filePath === node.filePath)) {
         const item = await this.loadFileContext(node.filePath);
         if (item) {
-          item.relevanceScore = brainResult.relevanceScores[node.id] ?? 0.6;
-          items.push(item);
+          items.push({
+            ...item,
+            relevanceScore: brainResult.relevanceScores[node.id] ?? 0.6,
+          });
         }
       }
     }
